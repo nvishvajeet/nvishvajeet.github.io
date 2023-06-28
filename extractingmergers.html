@@ -64,10 +64,10 @@ marginwidth=100 marginheight=20>
 	</div>
 	<br/>
 	<div style="padding-bottom:30px;">
-	<span style="font-weight:bold;"> Conference: </span>
+	<span style="font-weight:bold;"> Conference:  </span>
 	<span id="pub" style="font-size:16px">
 	<span class="paper-author"> 
-	<a href="">Submitted</a>
+	<a href="https://randomconference.com/random-2023-home/"> International Conference on Randomness and Computation (RANDOM) 2023 </a>
 		</span>
 	</span>
 	</div>
@@ -79,21 +79,23 @@ marginwidth=100 marginheight=20>
 		
 <br/><br/>
 
-This paper studies the problem of extracting randomness from somewhere-random sources, and related combinatorial phenomena.
-A somewhere-random source is a tuple (X_1,...,X_t) of (possibly correlated) {0,1}^n-valued random variables X_i where for some i ∈ [t], X_i is guaranteed to be uniformly distributed. An extracting merger is a seeded device that takes a somewhere-random source as input and outputs nearly uniform random bits. We study the seed length needed for extracting mergers with constant t and constant error.
 
-<br/><br/>
+We study the problem of extracting randomness from somewhere-random sources, and related combinatorial phenomena: partition analogues of Shearer’s lemma on projections.
 
-Since a somewhere-random source has min-entropy at least n, a standard extractor can also serve as an extracting merger. Our goal is to understand whether the further structure of being somewhere-random rather than just high entropy enables smaller seed length, and towards this we show:
-<br/><br/>		
+A somewhere-random source is a tuple (X_1,...,X_t) of (possibly correlated) {0,1}^n-valued random variables Xi where for some unknown i ∈ [t], X_i is guaranteed to be uniformly dis- tributed. An extracting merger is a seeded device that takes a somewhere-random source as input and outputs nearly uniform random bits. We study the seed-length needed for extracting mergers with constant t and constant error.
+		
+Since a somewhere-random source has min-entropy at least n, a standard extractor can also serve as an extracting merger. Our goal is to understand whether the further structure of being somewhere-random rather than just having high entropy enables smaller seed-length, and towards this we show:
+
 • Just like in the case of standard extractors, seedless extracting mergers with even just one output bit do not exist.
-<br/><br/>
-• Unlike the case of standard extractors, it is possible to have extracting mergers that output a constant number of bits using only constant seed. Furthermore, a random choice of merger does not work for this!
-<br/><br/>
+
+• Unlike the case of standard extractors, it is possible to have extracting mergers that output a constant number of bits using only constant seed. Furthermore, a random choice of merger does not work for this purpose!
+
 • Nevertheless, just like in the case of standard extractors, an extracting merger which gets most of the entropy out (namely, having Ω(n) output bits) must have Ω(log n) seed. This is the main technical result of our work, and is proved by a second-moment strengthening of the graph-theoretic approach of Radhakrishnan and Ta-Shma to extractors.
-<br/><br/>
+
 All this is in contrast to the status for condensing mergers (where the output is only required to have high min-entropy), whose seed-length/output-length tradeoffs can all be fully explained by using standard condensers.
-Inspired by such considerations, we also formulate a new and basic class of problems in combinatorics: partition analogues of Shearer’s lemma. We show basic results in this direction; in particular, we prove that in any partition of the 3 dimensional cube [0, 1]^3 into two parts, one of the parts has an axis parallel 2-dimensional projection of area at least 3/4.
+		
+Inspired by such considerations, we also formulate a new and basic class of problems in combinatorics: partition analogues of Shearer’s lemma. We show basic results in this direction; in particular, we prove that in any partition of the 3-dimensional cube [0, 1]3 into two parts, one of the parts has an axis parallel 2-dimensional projection of area at least 3/4.
+
 		
 		
 <br/><br/>
