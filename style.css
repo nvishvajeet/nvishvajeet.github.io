@@ -342,7 +342,7 @@ p {
   margin: 18px 0 0;
   font-size: 20px;
   line-height: 1.45;
-  color: #233b4e;
+  color: var(--heading-color);
   font-weight: 500;
 }
 
