@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <url>
+    <loc>https://nvishvajeet.github.io/</loc>
+    <lastmod>2026-02-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.00</priority>
+  </url>
+
+  <url>
+    <loc>https://nvishvajeet.github.io/index.html</loc>
+    <lastmod>2026-02-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://nvishvajeet.github.io/research.html</loc>
+    <lastmod>2026-02-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://nvishvajeet.github.io/teaching.html</loc>
+    <lastmod>2026-02-17T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://nvishvajeet.github.io/cv.html</loc>
+    <lastmod>2026-02-17T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://nvishvajeet.github.io/paper.html</loc>
+    <lastmod>2026-02-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://nvishvajeet.github.io/1-streaming-xor.html</loc>
+    <lastmod>2026-02-17T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://nvishvajeet.github.io/2-extractingmergers.html</loc>
+    <lastmod>2026-02-17T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://nvishvajeet.github.io/3-volumematching.html</loc>
+    <lastmod>2026-02-17T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://nvishvajeet.github.io/i.html</loc>
+    <lastmod>2026-02-17T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+
+  <url>
+    <loc>https://nvishvajeet.github.io/0-VishvajeetN-CV-Nov-2025.pdf</loc>
+    <lastmod>2026-02-17T00:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://nvishvajeet.github.io/1-stoc21conf.pdf</loc>
+    <lastmod>2026-02-17T00:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://nvishvajeet.github.io/2-extracting-talk.pdf</loc>
+    <lastmod>2026-02-17T00:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.50</priority>
+  </url>
+
+  <url>
+    <loc>https://nvishvajeet.github.io/3-volumematching-talk.pdf</loc>
+    <lastmod>2026-02-17T00:00:00+00:00</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.50</priority>
+  </url>
+
+</urlset>
