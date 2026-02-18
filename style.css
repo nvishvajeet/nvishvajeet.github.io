@@ -481,6 +481,10 @@ p {
   font-weight: 500;
 }
 
+.closing-highlight-mobile {
+  display: none;
+}
+
 /* ===== Teaching list ===== */
 
 .course {
@@ -635,10 +639,23 @@ h3 {
     border-top: 0;
     padding-left: 0;
     padding-top: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .profile img {
     width: min(100%, 300px);
+    margin: 0 auto;
+  }
+
+  .closing-highlight-desktop {
+    display: none;
+  }
+
+  .closing-highlight-mobile {
+    display: block;
+    margin: 8px 0 0;
   }
 
   .page-title {
