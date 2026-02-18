@@ -44,7 +44,7 @@
 
     <div class="topbar-right">
       <a href="index.html">Home</a>
-      <a href="research.html">Research</a>
+      <a href="research.html" aria-current="page">Research</a>
       <a href="teaching.html">Teaching</a>
       <a href="cv.html">CV</a>
       <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
@@ -60,8 +60,19 @@
 
 <div class="container">
 
-<div class="page-header">
+<div class="page-header research-page-header">
 <h2 class="page-title">Research</h2>
+<div class="profile-links research-profile-links" aria-label="Academic profile links">
+  <a class="profile-link-icon" href="https://dblp.org/pid/290/2005.html" target="_blank" rel="noopener noreferrer" aria-label="DBLP" title="DBLP">
+    <img class="profile-favicon profile-favicon-dblp" src="https://dblp.org/favicon.ico" alt="" loading="lazy">
+  </a>
+  <a class="profile-link-icon" href="https://scholar.google.com/citations?user=lRdytyQAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar" title="Google Scholar">
+    <img class="profile-favicon profile-favicon-scholar" src="https://scholar.google.com/favicon.ico" alt="" loading="lazy">
+  </a>
+  <a class="profile-link-icon" href="https://orcid.org/0000-0002-1502-9231" target="_blank" rel="noopener noreferrer" aria-label="ORCID" title="ORCID">
+    <img class="profile-favicon profile-favicon-orcid" src="https://orcid.org/favicon.ico" alt="" loading="lazy">
+  </a>
+</div>
 </div>
 
 <div id="papers-list"></div>

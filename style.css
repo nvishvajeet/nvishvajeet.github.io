@@ -15,6 +15,7 @@
   --button-bg: #d7e2ea;
   --button-text: #1f2d3a;
   --switch-knob: #ffffff;
+  --nav-hover-color: #1f4f6b;
 }
 
 :root[data-theme="dark"] {
@@ -30,6 +31,7 @@
   --button-bg: #2b4b62;
   --button-text: #e5edf4;
   --switch-knob: #f6fbff;
+  --nav-hover-color: #b8d7ea;
 }
 
 /* ===== Base page ===== */
@@ -108,6 +110,21 @@ a:hover {
   font-weight: 500;
 }
 
+.topbar-right a:hover {
+  color: var(--nav-hover-color);
+  text-decoration: none;
+}
+
+.topbar-right a[aria-current="page"] {
+  color: var(--brand-color);
+  text-decoration: none;
+}
+
+.topbar-right a[aria-current="page"]:hover {
+  color: var(--brand-color);
+  text-decoration: none;
+}
+
 .topbar-right a[href="cv.html"] {
   letter-spacing: 0.03em;
 }
@@ -137,7 +154,9 @@ a:hover {
 .theme-icon-light {
   left: 8px;
   background: #ffd27a;
-  box-shadow: 0 0 0 1px rgba(255, 210, 122, 0.5);
+  box-shadow:
+    0 0 0 1px rgba(255, 210, 122, 0.55),
+    0 0 0 3px rgba(255, 210, 122, 0.25);
 }
 
 .theme-icon-dark {
@@ -218,6 +237,38 @@ a:hover {
   color: var(--heading-color);
 }
 
+.profile-links {
+  margin-top: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.profile-link-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
+}
+
+.profile-link-icon:hover {
+  opacity: 1;
+  text-decoration: none;
+}
+
+.profile-favicon {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  display: block;
+  transform-origin: center;
+  transform: scale(1);
+}
+
 /* ===== Paper list styling ===== */
 
 .paper {
@@ -283,6 +334,41 @@ a:hover {
 
 .page-header {
   position: relative;
+}
+
+.research-page-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: 16px;
+  margin-bottom: 22px;
+}
+
+.research-page-header .page-title {
+  margin: 0;
+}
+
+.research-profile-links {
+  margin-top: 0;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 12px;
+  padding: 6px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--topbar-bg);
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.research-profile-links .profile-link-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.research-profile-links .profile-favicon {
+  width: 22px;
+  height: 22px;
 }
 
 .page-header.with-back-link .back-link {
@@ -508,6 +594,22 @@ h3 {
 
   .page-title {
     font-size: 30px;
+  }
+
+  .research-profile-links {
+    gap: 8px;
+    padding: 4px 8px;
+    height: 34px;
+  }
+
+  .research-profile-links .profile-link-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .research-profile-links .profile-favicon {
+    width: 18px;
+    height: 18px;
   }
 
   .page-header.with-back-link .back-link {
