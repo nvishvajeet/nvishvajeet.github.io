@@ -307,7 +307,7 @@ a:hover {
 
 .paper {
   margin-bottom: 0;
-  padding: 12px 0 24px;
+  padding: 10px 0 20px;
 }
 
 .paper-title {
@@ -383,7 +383,7 @@ a:hover {
   display: flex;
   align-items: flex-start;
   gap: 16px;
-  margin-bottom: 22px;
+  margin-bottom: 26px;
 }
 
 .research-page-header .page-title {
@@ -493,8 +493,8 @@ p {
 }
 
 .teaching-list li {
-  margin-bottom: 14px;
-  padding: 6px 0 10px;
+  margin-bottom: 12px;
+  padding: 5px 0 8px;
   border-bottom: 1px solid color-mix(in srgb, var(--border-color) 72%, transparent);
 }
 
@@ -626,7 +626,7 @@ h3 {
   }
 
   .profile {
-    flex-direction: column-reverse;
+    flex-direction: column;
     gap: 22px;
   }
 
