@@ -475,8 +475,20 @@ p {
   margin-top: 0;
 }
 
+.profile-text .about-para {
+  margin-top: 0;
+}
+
+.profile-text .about-para-single {
+  margin-bottom: 1em;
+}
+
+.profile-text .about-para-wide {
+  margin-bottom: 2em;
+}
+
 .closing-highlight {
-  margin: 18px 0 0;
+  margin: 0;
   font-size: 18px;
   line-height: 1.45;
   color: var(--heading-color);
