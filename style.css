@@ -658,6 +658,14 @@ h3 {
     margin: 8px 0 0;
   }
 
+  .container > .closing-highlight {
+    display: none;
+  }
+
+  .profile-text > .closing-highlight-mobile {
+    display: block;
+  }
+
   .page-title {
     font-size: 30px;
   }
