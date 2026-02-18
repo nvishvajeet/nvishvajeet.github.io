@@ -14,6 +14,7 @@ function typesetMath(root) {
 function renderResearchList() {
   const list = document.getElementById("papers-list");
   if (!list || !window.PAPERS) return;
+  list.classList.add("papers-list-fade");
 
   const html = window.PAPERS.map((paper) => {
     const conference = paper.conference;
@@ -36,6 +37,9 @@ function renderResearchList() {
 
   list.innerHTML = html;
   typesetMath(list);
+  requestAnimationFrame(() => {
+    list.classList.add("is-visible");
+  });
 }
 
 document.addEventListener("DOMContentLoaded", renderResearchList);
