@@ -46,13 +46,13 @@ SQLite, no build step. Current stable release: <code>v1.4.5</code>.
     Once you're signed in, jump straight into any of these views:
   </p>
   <ul class="demo-link-list">
-    <li><a href="http://127.0.0.1:5055/" target="_blank" rel="noopener">Dashboard</a> — role-scoped homepage with pending approvals and today's stats</li>
-    <li><a href="http://127.0.0.1:5055/instruments" target="_blank" rel="noopener">Instruments</a> — the facility roster with intake-mode toggles</li>
-    <li><a href="http://127.0.0.1:5055/instruments/1" target="_blank" rel="noopener">Instrument detail (FESEM)</a> — 10-tile grid: info, stats, queue, team, activity, edit</li>
-    <li><a href="http://127.0.0.1:5055/schedule" target="_blank" rel="noopener">Queue / Schedule</a> — every active sample request with inline approve/reject</li>
-    <li><a href="http://127.0.0.1:5055/requests/new" target="_blank" rel="noopener">New sample request form</a> — the tile-based intake form</li>
-    <li><a href="http://127.0.0.1:5055/admin/dev_panel" target="_blank" rel="noopener">Dev panel</a> — live git tag, last-shipped commit, crawler health, WAVES pipeline</li>
-    <li><a href="http://127.0.0.1:5055/sitemap" target="_blank" rel="noopener">Sitemap</a> — full role-aware navigation map</li>
+    <li><a href="{{ site.prism_demo.base }}/" target="_blank" rel="noopener">Dashboard</a> — role-scoped homepage with pending approvals and today's stats</li>
+    <li><a href="{{ site.prism_demo.base }}/instruments" target="_blank" rel="noopener">Instruments</a> — the facility roster with intake-mode toggles</li>
+    <li><a href="{{ site.prism_demo.base }}/instruments/1" target="_blank" rel="noopener">Instrument detail (FESEM)</a> — 10-tile grid: info, stats, queue, team, activity, edit</li>
+    <li><a href="{{ site.prism_demo.base }}/schedule" target="_blank" rel="noopener">Queue / Schedule</a> — every active sample request with inline approve/reject</li>
+    <li><a href="{{ site.prism_demo.base }}/requests/new" target="_blank" rel="noopener">New sample request form</a> — the tile-based intake form</li>
+    <li><a href="{{ site.prism_demo.base }}/admin/dev_panel" target="_blank" rel="noopener">Dev panel</a> — live git tag, last-shipped commit, crawler health, WAVES pipeline</li>
+    <li><a href="{{ site.prism_demo.base }}/sitemap" target="_blank" rel="noopener">Sitemap</a> — full role-aware navigation map</li>
   </ul>
 
   <p class="demo-note">
@@ -69,14 +69,14 @@ SQLite, no build step. Current stable release: <code>v1.4.5</code>.
   </p>
 
   <p class="demo-note demo-note-ops">
-    <strong>Access note:</strong> the demo link currently points at
-    <code>http://127.0.0.1:5055</code> — my local Flask instance.
-    It opens instantly from my own browser; public visitors will
-    hit a connection error until the tailnet-hosted Mac mini
-    lands its public HTTPS URL (one outstanding ops gate). The
-    demo credentials above are never operational and the demo
-    data is physically separated from real lab state per PRISM's
-    hard/soft attribute contract.
+    <strong>Access note:</strong> the demo is served over public
+    HTTPS via a Cloudflare quick tunnel proxying my laptop's Flask
+    instance. Works from any device on the internet — no VPN, no
+    tailnet required. The demo credentials above are never
+    operational and the demo data is physically separated from
+    real lab state per PRISM's hard/soft attribute contract.
+    If the tunnel is down (laptop asleep, tunnel restarted), the
+    link returns a Cloudflare error — ping me and I'll restart it.
   </p>
 
   <p class="demo-repo">

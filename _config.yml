@@ -6,17 +6,19 @@ url: https://nvishvajeet.github.io
 # "unavailable" stub, without touching demo.html itself. Use this
 # when the demo host is down or being rebuilt.
 #
-# URL points at 127.0.0.1:5055 — the laptop's local Flask dev
-# server. Modern browsers allow HTTPS → http://localhost as a
-# mixed-content exception, so the link is clickable from this
-# github.io page when the operator's laptop is running PRISM.
-# Public visitors without access to the laptop will hit a
-# connection error — that's expected until the Tailscale Serve
-# public HTTPS gate lands (see `docs/NEXT_WAVES.md` § "Tech
-# bet — HTTPS for the public internet" in the PRISM repo).
+# URL points at a Cloudflare quick-tunnel proxying the operator's
+# laptop Flask (:5055) to a public HTTPS endpoint. Works for
+# anyone on the internet — no tailnet, no VPN. The tunnel URL
+# changes every time cloudflared restarts; when it does, run
+# `cloudflared tunnel --url http://127.0.0.1:5055`, grab the new
+# `*.trycloudflare.com` URL from the output, and update this line
+# + the deep-links in demo.html, then push. A helper script
+# (`scripts/update_demo_tunnel.sh`) can be added later if the
+# tunnel restart churn gets annoying.
 prism_demo:
   enabled: true
-  url: http://127.0.0.1:5055/login?demo=1
+  url: https://safer-regularly-zones-clients.trycloudflare.com/login?demo=1
+  base: https://safer-regularly-zones-clients.trycloudflare.com
 
 # Jekyll defaults are fine for this site. Pages with YAML front
 # matter (index.html, research.html, teaching.html, service.html,
