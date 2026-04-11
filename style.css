@@ -567,6 +567,27 @@ p {
   opacity: 0.85;
 }
 
+/* ===== Service page ===== */
+
+.service-subhead {
+  margin: 22px 0 6px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--heading-color);
+  opacity: 0.92;
+}
+
+.service-list {
+  margin: 0 0 8px;
+  padding-left: 22px;
+}
+
+.service-list li {
+  margin-bottom: 4px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
 /* ===== CV page ===== */
 
 .cv-actions {
