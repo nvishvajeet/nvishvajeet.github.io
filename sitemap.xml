@@ -48,21 +48,21 @@
   </url>
 
   <url>
-    <loc>https://nvishvajeet.github.io/1-streaming-xor.html</loc>
+    <loc>https://nvishvajeet.github.io/paper.html?slug=streaming-xor</loc>
     <lastmod>2026-02-17T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
 
   <url>
-    <loc>https://nvishvajeet.github.io/2-extractingmergers.html</loc>
+    <loc>https://nvishvajeet.github.io/paper.html?slug=extracting-mergers</loc>
     <lastmod>2026-02-17T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
 
   <url>
-    <loc>https://nvishvajeet.github.io/3-volumematching.html</loc>
+    <loc>https://nvishvajeet.github.io/paper.html?slug=volume-matching</loc>
     <lastmod>2026-02-17T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
