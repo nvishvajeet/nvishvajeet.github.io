@@ -22,8 +22,27 @@ PRISM is a LAN-first Flask sample-request and instrument workflow
 system I built for MIT-WPU's shared lab facility. Sequential
 approvals (finance → professor → operator), queue management,
 per-request attachments, SHA-256 audit chain. Single binary,
-SQLite, no build step. Current stable release: <code>v1.4.5</code>.
+SQLite, no build step.
 </p>
+
+<dl class="demo-dev-state">
+  <div class="demo-dev-state-cell">
+    <dt>Stable release</dt>
+    <dd><code>{{ site.prism_demo.stable_release }}</code></dd>
+  </div>
+  <div class="demo-dev-state-cell">
+    <dt>Patches shipped today</dt>
+    <dd>{{ site.prism_demo.patches_shipped }} iOS-cadence tags</dd>
+  </div>
+  <div class="demo-dev-state-cell">
+    <dt>Crawler suite</dt>
+    <dd>{{ site.prism_demo.crawler_strategies }} strategies, {{ site.prism_demo.sanity_strategies }} in the pre-push gate</dd>
+  </div>
+  <div class="demo-dev-state-cell">
+    <dt>v1.5.0 pre-seed</dt>
+    <dd>{{ site.prism_demo.future_fixes_remaining }} TODO markers awaiting multi-role graduation</dd>
+  </div>
+</dl>
 
 <div class="demo-card">
   <h3 class="demo-card-title">Try it in your browser</h3>
