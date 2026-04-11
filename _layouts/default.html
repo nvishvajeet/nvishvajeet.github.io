@@ -25,6 +25,7 @@
 <script src="darkmode.js" defer></script>
 {% for src in page.extra_scripts %}<script src="{{ src }}" defer></script>
 {% endfor %}
+{% if page.head_extra %}{{ page.head_extra }}{% endif %}
 </head>
 
 <body>
