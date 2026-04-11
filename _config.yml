@@ -1,0 +1,12 @@
+title: Vishvajeet N
+url: https://nvishvajeet.github.io
+
+# Jekyll defaults are fine for this site. Pages with YAML front
+# matter (index.html, research.html, teaching.html, service.html,
+# cv.html, paper.html) get rendered through _layouts/default.html.
+# Other files (i.html, *.css, *.js, *.pdf, *.png, *.JPG, sitemap.xml)
+# have no front matter so Jekyll copies them through unchanged.
+
+exclude:
+  - README.md
+  - .gitignore

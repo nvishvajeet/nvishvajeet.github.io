@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>{{ page.title }}</title>
+<meta name="description" content="{{ page.description }}">
+
+<script>(function(){try{var t=localStorage.getItem("site-theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}if(t==="dark"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="0-favicon_shield.png">
+{% if page.mathjax %}
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [["\\(", "\\)"], ["$", "$"]],
+      displayMath: [["\\[", "\\]"], ["$$", "$$"]]
+    }
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+{% endif %}
+<script src="darkmode.js" defer></script>
+{% for src in page.extra_scripts %}<script src="{{ src }}" defer></script>
+{% endfor %}
+</head>
+
+<body>
+
+<!-- ===== NAVBAR ===== -->
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-left">
+      <a href="index.html">Vishvajeet N</a>
+    </div>
+
+    <div class="topbar-right">
+      <a href="index.html"{% if page.active == "about" %} aria-current="page"{% endif %}>About</a>
+      <a href="research.html"{% if page.active == "research" %} aria-current="page"{% endif %}>Research</a>
+      <a href="teaching.html"{% if page.active == "teaching" %} aria-current="page"{% endif %}>Teaching</a>
+      <a href="service.html"{% if page.active == "service" %} aria-current="page"{% endif %}>Service</a>
+      <a href="cv.html"{% if page.active == "cv" %} aria-current="page"{% endif %}>CV</a>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
+        <span class="theme-icon theme-icon-light" aria-hidden="true"></span>
+        <span class="theme-icon theme-icon-dark" aria-hidden="true"></span>
+        <span class="switch-thumb" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CONTENT ===== -->
+
+<div class="container"{% if page.container_id %} id="{{ page.container_id }}"{% endif %}>
+{{ content }}
+</div>
+
+</body>
+</html>

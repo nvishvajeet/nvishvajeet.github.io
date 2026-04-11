@@ -1,54 +1,11 @@
-<!DOCTYPE html>
-<!-- Root file role: Core page (Paper template, loaded via ?slug=...). -->
-<html lang="en">
-<head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Paper — Vishvajeet N</title>
-<meta name="description" content="A research paper by Vishvajeet N.">
-
-<script>(function(){try{var t=localStorage.getItem("site-theme");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";}if(t==="dark"){document.documentElement.setAttribute("data-theme","dark");}}catch(e){}})();</script>
-<link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/png" href="0-favicon_shield.png">
-<script>
-  window.MathJax = {
-    tex: {
-      inlineMath: [["\\(", "\\)"], ["$", "$"]],
-      displayMath: [["\\[", "\\]"], ["$$", "$$"]]
-    }
-  };
-</script>
-<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<script src="darkmode.js" defer></script>
-<script src="papers-data.js" defer></script>
-<script src="paper-render.js" defer></script>
-
-</head>
-
-<body>
-
-<div class="topbar">
-  <div class="topbar-inner">
-    <div class="topbar-left">
-      <a href="index.html">Vishvajeet N</a>
-    </div>
-    <div class="topbar-right">
-      <a href="index.html">About</a>
-      <a href="research.html" aria-current="page">Research</a>
-      <a href="teaching.html">Teaching</a>
-      <a href="service.html">Service</a>
-      <a href="cv.html">CV</a>
-      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" aria-pressed="false">
-        <span class="theme-icon theme-icon-light" aria-hidden="true"></span>
-        <span class="theme-icon theme-icon-dark" aria-hidden="true"></span>
-        <span class="switch-thumb" aria-hidden="true"></span>
-      </button>
-    </div>
-  </div>
-</div>
-
-<div class="container" id="paper-content"></div>
-
-</body>
-</html>
+---
+layout: default
+title: Paper — Vishvajeet N
+description: A research paper by Vishvajeet N.
+active: research
+mathjax: true
+container_id: paper-content
+extra_scripts:
+  - papers-data.js
+  - paper-render.js
+---
