@@ -52,13 +52,14 @@ SQLite, no build step. Current stable release: <code>v1.4.5</code>.
   </p>
 
   <p class="demo-note demo-note-ops">
-    <strong>Note:</strong> the demo runs on my tailnet-hosted Mac
-    mini. Public-internet access requires one outstanding ops
-    step (Tailscale Serve enablement) — until that lands, the
-    link works from tailnet-connected devices and falls back to
-    a dead link for other visitors. The credentials above are
-    not operational and the demo data is physically separated
-    from real lab state per PRISM's hard/soft attribute contract.
+    <strong>Access note:</strong> the demo link currently points at
+    <code>http://127.0.0.1:5055</code> — my local Flask instance.
+    It opens instantly from my own browser; public visitors will
+    hit a connection error until the tailnet-hosted Mac mini
+    lands its public HTTPS URL (one outstanding ops gate). The
+    demo credentials above are never operational and the demo
+    data is physically separated from real lab state per PRISM's
+    hard/soft attribute contract.
   </p>
 
   <p class="demo-repo">

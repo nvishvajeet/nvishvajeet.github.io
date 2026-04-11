@@ -4,10 +4,19 @@ url: https://nvishvajeet.github.io
 # Kill switch for the PRISM demo tab. Flip `enabled` to `false`
 # and the nav link disappears AND demo.html renders an empty
 # "unavailable" stub, without touching demo.html itself. Use this
-# when the tailnet URL is down or the demo is being rebuilt.
+# when the demo host is down or being rebuilt.
+#
+# URL points at 127.0.0.1:5055 — the laptop's local Flask dev
+# server. Modern browsers allow HTTPS → http://localhost as a
+# mixed-content exception, so the link is clickable from this
+# github.io page when the operator's laptop is running PRISM.
+# Public visitors without access to the laptop will hit a
+# connection error — that's expected until the Tailscale Serve
+# public HTTPS gate lands (see `docs/NEXT_WAVES.md` § "Tech
+# bet — HTTPS for the public internet" in the PRISM repo).
 prism_demo:
   enabled: true
-  url: https://prism-mini.tail-xxxx.ts.net/login?demo=1
+  url: http://127.0.0.1:5055/login?demo=1
 
 # Jekyll defaults are fine for this site. Pages with YAML front
 # matter (index.html, research.html, teaching.html, service.html,
