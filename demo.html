@@ -1,0 +1,73 @@
+---
+layout: default
+title: PRISM Demo — Vishvajeet N
+description: Live demo of PRISM, a Flask-based lab sample-request and instrument workflow system built for MIT-WPU's shared facility.
+active: demo
+---
+{% if site.prism_demo.enabled == false %}
+<h2 class="page-title">PRISM Demo — unavailable</h2>
+<p class="about-para about-para-wide">
+The PRISM demo is currently offline. It'll be back soon.
+Meanwhile, check out the other tabs or email me for a walkthrough.
+</p>
+{% else %}
+<h2 class="page-title">PRISM — Live Demo</h2>
+
+<p class="about-para about-para-wide">
+PRISM is a LAN-first Flask sample-request and instrument workflow
+system I built for MIT-WPU's shared lab facility. Sequential
+approvals (finance → professor → operator), queue management,
+per-request attachments, SHA-256 audit chain. Single binary,
+SQLite, no build step. Current stable release: <code>v1.4.5</code>.
+</p>
+
+<div class="demo-card">
+  <h3 class="demo-card-title">Try it in your browser</h3>
+
+  <p class="demo-card-lead">
+    One click below, credentials prefilled, you land signed-in as
+    the super-admin persona inside a populated demo lab.
+  </p>
+
+  <a class="demo-cta" href="{{ site.prism_demo.url }}" target="_blank" rel="noopener">
+    Open PRISM demo →
+  </a>
+
+  <dl class="demo-credentials">
+    <dt>Username</dt><dd><code>admin@lab.local</code></dd>
+    <dt>Password</dt><dd><code>12345</code></dd>
+  </dl>
+
+  <p class="demo-note">
+    <strong>Role-aware tour:</strong> the demo has seeded personas
+    for every canonical role. To switch roles, log out and log in
+    as one of:
+    <code>operator@lab.local</code>,
+    <code>requester@lab.local</code>,
+    <code>approver@lab.local</code>,
+    <code>finance@lab.local</code>,
+    <code>instrument_admin@lab.local</code>,
+    <code>site_admin@lab.local</code>
+    — all with password <code>12345</code>.
+  </p>
+
+  <p class="demo-note demo-note-ops">
+    <strong>Note:</strong> the demo runs on my tailnet-hosted Mac
+    mini. Public-internet access requires one outstanding ops
+    step (Tailscale Serve enablement) — until that lands, the
+    link works from tailnet-connected devices and falls back to
+    a dead link for other visitors. The credentials above are
+    not operational and the demo data is physically separated
+    from real lab state per PRISM's hard/soft attribute contract.
+  </p>
+
+  <p class="demo-repo">
+    Source code lives in a private repo. Highlights of the v1.4.x
+    line: tile-based UI with a 6-column grid architecture,
+    ~15-strategy crawler suite gating every push,
+    pre-receive sanity wave on the central bare, and a live
+    dev panel showing the stable release tag + git state + latest
+    shipped commit. Happy to walk through it — email me for a tour.
+  </p>
+</div>
+{% endif %}

@@ -717,3 +717,50 @@ h3 {
     transition: none;
   }
 }
+
+/* ───── PRISM demo card (temporary tab, gated by site.prism_demo.enabled) ───── */
+.demo-card {
+  margin-top: 24px;
+  padding: 24px 28px;
+  border: 1px solid var(--border, #d8dde6);
+  border-radius: 14px;
+  background: var(--panel, #f7f8fb);
+  max-width: 780px;
+}
+.demo-card-title {
+  margin: 0 0 8px 0;
+  font-size: 1.15em;
+}
+.demo-card-lead {
+  margin: 0 0 16px 0;
+  color: var(--muted, #5d6573);
+}
+.demo-cta {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: var(--accent, #3b6fc7);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  margin-bottom: 18px;
+}
+.demo-cta:hover { filter: brightness(1.08); }
+.demo-credentials {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 14px;
+  margin: 0 0 16px 0;
+  font-size: 0.92em;
+}
+.demo-credentials dt { font-weight: 600; color: var(--muted, #5d6573); }
+.demo-credentials dd { margin: 0; }
+.demo-note {
+  margin: 10px 0 0 0;
+  font-size: 0.88em;
+  color: var(--muted, #5d6573);
+  line-height: 1.55;
+}
+.demo-note code { font-size: 0.9em; }
+.demo-note-ops { padding-top: 10px; border-top: 1px dashed var(--border, #d8dde6); margin-top: 14px; }
+.demo-repo { font-size: 0.85em; color: var(--muted, #5d6573); margin-top: 14px; line-height: 1.55; }
