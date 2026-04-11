@@ -30,44 +30,48 @@ Entry points: `index.html` (home), `cv.html` (CV + linked PDF),
 `paper.html` + `paper-render.js` (dynamic paper listings),
 `i.html` (interests / side projects).
 
-## 2. Topology — TWO REMOTES, LOCAL-first
+## 2. Topology — TWO REMOTES, Level 1 is canonical
 
-This is the first project on this laptop with a real GLOBAL publish
-target, so the two-tier topology is actually load-bearing here.
+This is the only project on this laptop with a real Level-2
+publish target: GitHub Pages serves the rendered site from the
+`main` branch of `github.com/nvishvajeet/nvishvajeet.github.io`.
 
 | Thing | Path |
 |---|---|
-| LOCAL bare (canonical origin) | `~/.claude/git-server/nvishvajeet.github.io.git` |
+| Level 1 bare (canonical origin) | `~/.claude/git-server/nvishvajeet.github.io.git` |
 | Working copy | `~/Claude/nvishvajeet.github.io/` *(moved from `~/nvishvajeet.github.io/` on 2026-04-11)* |
 | Default branch | `main` |
-| Mirror target | `prism-mini:~/git/nvishvajeet.github.io.git` (automatic, post-receive hook) |
-| GLOBAL remote | `github` → `https://github.com/nvishvajeet/nvishvajeet.github.io.git` |
+| Level 2 upstream | `github` → `https://github.com/nvishvajeet/nvishvajeet.github.io.git` (GitHub Pages publish target, manual push on publish) |
+
+The Mac mini has no role for this project — there is no mini
+mirror, no post-receive hook to the mini, no mini bare. GitHub
+Pages IS the publish target, and it is driven manually.
 
 **Two remotes on the working copy:**
 
 ```
-origin  = /Users/vishvajeetn/.claude/git-server/nvishvajeet.github.io.git   (LOCAL bare)
-github  = https://github.com/nvishvajeet/nvishvajeet.github.io.git          (GLOBAL Pages)
+origin  = /Users/vishvajeetn/.claude/git-server/nvishvajeet.github.io.git   (Level 1 LOCAL bare)
+github  = https://github.com/nvishvajeet/nvishvajeet.github.io.git          (Level 2 GitHub Pages)
 ```
 
 ### Push rules
 
-1. **Every commit goes to `origin` first.** That is the canonical
-   tier; the post-receive hook mirrors it to the Mac mini
-   automatically. This is Level 1 behavior.
+1. **Every commit goes to `origin` first.** That is the Level 1
+   canonical origin. No post-receive hook is installed — `origin`
+   is the only server-side copy on this laptop.
 2. **Pushing to `github` is an explicit publish action.** It is
    NOT automatic. An agent pushes to `github` only when:
    - The user explicitly says "publish" / "push to github" / "go live"
    - The change is a content change the user wants publicly visible
    - The working copy is clean and all commits have been pushed to
-     LOCAL first
+     `origin` first
 3. **GitHub Pages rebuild time is ~1-2 minutes** after a `git push
    github main`. Do not re-push to work around perceived lag.
 
 ### Publish recipe
 
 ```bash
-git push origin main        # always — fires the mini mirror hook
+git push origin main        # always — Level 1 canonical
 git push github main        # only when explicitly publishing
 ```
 
