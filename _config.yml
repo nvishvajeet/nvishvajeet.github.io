@@ -25,13 +25,13 @@ prism_demo:
   # glance. Single source of truth for the card; if you bump
   # stable_release here and push, the site re-renders with the
   # new number within ~60s of GitHub Pages rebuild.
-  stable_release: v1.4.10
-  patches_shipped: 10
-  crawler_strategies: 22
+  stable_release: v3.0.0
+  patches_shipped: 30+
+  crawler_strategies: 25
   sanity_strategies: 11
-  future_fixes_remaining: 106
+  future_fixes_remaining: 0
   tag_cadence_first: v1.3.8
-  tag_cadence_last_date: 2026-04-11
+  tag_cadence_last_date: 2026-04-12
 
 # Jekyll defaults are fine for this site. Pages with YAML front
 # matter (index.html, research.html, teaching.html, service.html,
