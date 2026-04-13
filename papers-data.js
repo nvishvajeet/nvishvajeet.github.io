@@ -37,7 +37,7 @@ window.PAPERS = [
       full: "Innovations in Theoretical Computer Science",
       short: "ITCS",
       year: "2025",
-      url: "http://itcs-conf.org",
+      url: "https://itcs-conf.org",
       location: "Columbia University, USA"
     },
     abstractParagraphs: [
@@ -92,7 +92,7 @@ window.PAPERS = [
       full: "Symposium on Theory of Computing",
       short: "STOC",
       year: "2021",
-      url: "http://acm-stoc.org/stoc2021/",
+      url: "https://acm-stoc.org/stoc2021/",
       location: "Virtual"
     },
     abstractParagraphs: [
