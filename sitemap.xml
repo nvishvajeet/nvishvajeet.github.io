@@ -76,6 +76,27 @@
   </url>
 
   <url>
+    <loc>https://nvishvajeet.github.io/qubit/</loc>
+    <lastmod>2026-04-14T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://nvishvajeet.github.io/qubit/people.html</loc>
+    <lastmod>2026-04-14T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
+    <loc>https://nvishvajeet.github.io/qubit/research.html</loc>
+    <lastmod>2026-04-14T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
     <loc>https://nvishvajeet.github.io/i.html</loc>
     <lastmod>2026-04-11T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
