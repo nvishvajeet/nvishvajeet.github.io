@@ -18,7 +18,7 @@
     <a class="nav-link" href="structure.html">Structure</a>
     <a class="nav-link" href="status.html">Dev status</a>
     <span class="nav-spacer"></span>
-    <span class="nav-meta">v1.3.0-stable · feature/erp-demo-triad</span>
+    <span class="nav-meta">v1.3.0-stable · feature/insights-module</span>
   </div>
 </nav>
 
@@ -34,17 +34,17 @@
 <section>
   <h2>By the numbers</h2>
   <div class="grid">
-    <div class="tile"><p class="stat">19<span class="label">modules in MODULE_REGISTRY</span></p></div>
-    <div class="tile"><p class="stat">256<span class="label">routes in app.py</span></p></div>
-    <div class="tile"><p class="stat">141<span class="label">HTML templates</span></p></div>
-    <div class="tile"><p class="stat">28,462<span class="label">lines in app.py</span></p></div>
+    <div class="tile"><p class="stat">20<span class="label">modules in MODULE_REGISTRY</span></p></div>
+    <div class="tile"><p class="stat">263<span class="label">routes in app.py</span></p></div>
+    <div class="tile"><p class="stat">144<span class="label">HTML templates</span></p></div>
+    <div class="tile"><p class="stat">29,137<span class="label">lines in app.py</span></p></div>
     <div class="tile"><p class="stat green">10,159<span class="label">crawler-pass score, Lab variant</span></p></div>
     <div class="tile"><p class="stat green">0<span class="label">hard fails across 26k+ assertions</span></p></div>
   </div>
 </section>
 
 <section>
-  <h2>Modules shipped <span class="hint">all 19 in MODULE_REGISTRY</span></h2>
+  <h2>Modules shipped <span class="hint">all 20 in MODULE_REGISTRY</span></h2>
   <p>
     <span class="chip on">instruments</span>
     <span class="chip on">finance</span>
@@ -65,6 +65,7 @@
     <span class="chip on">tuck_shop</span>
     <span class="chip on">compute</span>
     <span class="chip on">admin</span>
+    <span class="chip on">insights</span>
   </p>
 </section>
 
@@ -100,12 +101,47 @@
       <p>First cut at <code>templates/org_chart.html</code>: blobs per user, directional reporting arrows, click to change reports-to, drag to pin, super/site-admin gated. Extension to unit nodes is in flight. <a href="structure-editor-mockup.html">See mockup →</a></p>
     </div>
     <div class="tile">
+      <h3>Insights telemetry</h3>
+      <p>Privacy-floor user-behaviour telemetry: route hits, click actions (auto-inferred from DOM), session start/end, portal switches. 90-day retention purge runs at <code>init_db</code>. <em>Does not</em> capture raw mouse coordinates, keystrokes, form values, or any cross-session fingerprinting. Dashboard at <code>/insights</code>, backend in the <code>insights</code> module.</p>
+    </div>
+    <div class="tile">
       <h3>Crawler taxonomy — 6 categories</h3>
-      <p>skeleton · testing · roleplay · feature · backend · data — 16 strategies. Hourly sanity, daily wave-all, weekly security sweep.</p>
+      <p>skeleton · testing · roleplay · feature · backend · data — 16+ strategies including <code>csrf_token_present</code>, <code>css_variable_defined</code>, <code>aria_label_present</code>. Hourly sanity, daily wave-all, weekly security sweep.</p>
     </div>
     <div class="tile">
       <h3>Multi-instance launchers</h3>
       <p>Two orthogonal axes: <code>start_demo_channels.sh</code> (release versions) and <code>start_erp_triad.sh</code> (module bundles). Same codebase, different config.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Governance documents</h2>
+  <p>Policy + planning docs backing the build. All live under <code>sahajpur-university/docs/</code> (source in private repo):</p>
+  <div class="grid">
+    <div class="tile">
+      <h3>Charter &amp; structure</h3>
+      <p>CHARTER.md · STRUCTURE_PROPOSAL_v1.md · PLAN.md · POPULATIONS_AND_BUILD_OPTIONS.md</p>
+    </div>
+    <div class="tile">
+      <h3>Operations</h3>
+      <p>APPROVAL_ROUTES.md · BUDGETS.md · AUDIT_RECORDS.md · OPENING_DAY.md · HOSTING.md</p>
+    </div>
+    <div class="tile">
+      <h3>People &amp; programs</h3>
+      <p>HIRING_STRATEGY.md · SCHOLARSHIPS.md · CURRICULUM_SHAPE.md</p>
+    </div>
+    <div class="tile">
+      <h3>Security &amp; data</h3>
+      <p>SECURITY_POLICY.md · INCIDENT_RUNBOOK.md · DATA_POLICY.md</p>
+    </div>
+    <div class="tile">
+      <h3>Module specs</h3>
+      <p>MODULE_SPECS/admissions.md — full build spec for year-1 admissions portal. Others follow this template.</p>
+    </div>
+    <div class="tile">
+      <h3>Crawl &amp; fire-plan</h3>
+      <p>DEEP_CRAWL_REPORT.md · FIRE_PLAN_DAY1_REPORT.md · FIRE_PLAN_RAVIKIRAN_DEMO_7D.md</p>
     </div>
   </div>
 </section>
@@ -119,6 +155,7 @@
     <li>Inbox aggregator across portals</li>
     <li>Tile-aggregated dashboards per role</li>
     <li>Document generator for letters / certificates / appointment orders</li>
+    <li>Insights dashboard v2 — filters, per-user drilldown, cohort views on top of the existing telemetry backend</li>
   </ul>
 </section>
 
@@ -139,18 +176,19 @@
     <span class="chip off">SMS notification channel</span>
     <span class="chip off">structure-editor v2 (full Deco graph editing)</span>
   </p>
-  <p class="muted">Each portal is 1-3 days of spine-backed scaffolding plus 1-2 weeks of refinement with real users. Build sequencing in STRUCTURE_PROPOSAL_v1.md §11 (source in private repo).</p>
+  <p class="muted">Each portal is 1-3 days of spine-backed scaffolding plus 1-2 weeks of refinement with real users. Build sequencing in STRUCTURE_PROPOSAL_v1.md §11. Full admissions spec in MODULE_SPECS/admissions.md (both source in private repo).</p>
 </section>
 
 <section>
   <h2>Open issues from the deep-crawl audit</h2>
   <ul>
-    <li><strong>112 of 256 routes leak past module gating</strong> — visitors who type a URL can reach modules outside their variant's bundle. Fix is a <code>@requires_module</code> decorator + code-mod.</li>
-    <li><strong>Four disjoint module inventories disagree.</strong> <code>MODULE_REGISTRY</code> (19 keys), <code>ERP_PORTALS</code> (lab + hq only), <code>erp_portals</code> DB table, doc'd <code>CATALYST_MODULES</code> bundles. Need reconciliation.</li>
+    <li><strong>112 of 263 routes leak past module gating</strong> — visitors who type a URL can reach modules outside their variant's bundle. Fix is a <code>@requires_module</code> decorator + code-mod.</li>
+    <li><strong>empty_states still open</strong> — owner-dashboard halts <code>wave sanity</code> on Operations + Compute variants. Fallback tile in dashboard.html pending.</li>
+    <li><strong>Four disjoint module inventories disagree.</strong> <code>MODULE_REGISTRY</code> (now 20 keys), <code>ERP_PORTALS</code> (lab + hq only), <code>erp_portals</code> DB table, doc'd <code>CATALYST_MODULES</code> bundles. Need reconciliation.</li>
     <li><strong>Wave-all crawler is blind to bleed-through</strong> — uses Flask test_client without variant env, so doesn't catch the 112-route issue. Need a new <code>cross_variant_bleed</code> crawler strategy.</li>
     <li><strong>Seeder stubs.</strong> Operations and Compute variants boot into empty DBs; <code>seed_ravikiran_ops()</code> and <code>seed_compute()</code> are literal TODOs.</li>
   </ul>
-  <p class="muted">Full report: DEEP_CRAWL_REPORT.md (source in private repo). Day-2 of the fire plan is closing these.</p>
+  <p>Full report in DEEP_CRAWL_REPORT.md (source in private repo). Day-2 of the fire plan is closing these.</p>
 </section>
 
 </div>

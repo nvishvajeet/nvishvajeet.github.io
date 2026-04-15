@@ -18,7 +18,7 @@
     <a class="nav-link" href="structure.html">Structure</a>
     <a class="nav-link active" href="status.html">Dev status</a>
     <span class="nav-spacer"></span>
-    <span class="nav-meta">v1.3.0-stable · feature/erp-demo-triad</span>
+    <span class="nav-meta">v1.3.0-stable · feature/insights-module</span>
   </div>
 </nav>
 
@@ -36,18 +36,18 @@
   <div class="grid">
     <div class="tile">
       <h3><span class="badge green">v1.3.0-stable-release</span></h3>
-      <p>Production branch. Mac mini pulls from here. Last seen at <code>2c1253f</code>.</p>
-      <p class="tile-meta">Hard-attribute lock: 15 tables, 22 indexes, request state machine, hash-chained audit, tile architecture, two-layer visibility, 48 routes, 9 roles. Per PHILOSOPHY.md §2 (source in private repo).</p>
-    </div>
-    <div class="tile">
-      <h3><span class="badge blue">feature/erp-demo-triad</span></h3>
-      <p>Three-ERP-variant demo work. Day-1 fire plan landed here.</p>
-      <p class="tile-meta">~10 commits ahead of stable. Smoke green on every push.</p>
+      <p>Production branch. Mac mini pulls from here. HEAD at <code>aaa2c72</code> — Insights module just landed on stable.</p>
+      <p class="tile-meta">Hard-attribute lock: 15 tables, 22 indexes, request state machine, hash-chained audit, tile architecture, two-layer visibility, 263 routes, 9 roles. Per PHILOSOPHY.md §2 (source in private repo).</p>
     </div>
     <div class="tile">
       <h3><span class="badge purple">feature/insights-module</span></h3>
-      <p>User-behaviour telemetry module. Phase 1 (scaffold + schema) shipped; phase 2 (endpoint + JS + dashboard) pending.</p>
-      <p class="tile-meta">Off feature/erp-demo-triad. Privacy floor: no raw mouse coords, no keystrokes, no fingerprinting.</p>
+      <p>Current active dev branch. Phase 1 (schema), phase 2 (endpoint + JS + dashboard), phase 3 (auto-infer click actions + 90-day retention purge) all shipped and merged to stable. Now carrying UI a11y + HQ polish work.</p>
+      <p class="tile-meta">Privacy floor: no raw mouse coords, no keystrokes, no cross-session fingerprinting. ~10 commits ahead of stable.</p>
+    </div>
+    <div class="tile">
+      <h3><span class="badge blue">feature/erp-demo-triad</span></h3>
+      <p>Parent of feature/insights-module. Three-ERP-variant demo work (Lab / HQ / Compute). Day-1 fire plan landed here.</p>
+      <p class="tile-meta">Smoke green on every push.</p>
     </div>
     <div class="tile">
       <h3><span class="badge grey">v2.0.0-alpha · v2.0.0-beta</span></h3>
@@ -57,31 +57,67 @@
 </section>
 
 <section>
-  <h2>Recent dev commits — feature/erp-demo-triad</h2>
+  <h2>Recent dev commits — feature/insights-module</h2>
   <table>
     <tr><th>SHA</th><th>Subject</th></tr>
-    <tr><td><code>d892467</code></td><td>crawlers: add csrf_token_present — block POST forms missing csrf_token()</td></tr>
-    <tr><td><code>15988d1</code></td><td>crawlers: add css_variable_defined — catch silent --undefined vars</td></tr>
-    <tr><td><code>c1f0b56</code></td><td>docs: UI crawl findings across 9 roles × 25 pages</td></tr>
-    <tr><td><code>a70fd71</code></td><td>fix: honor LAB_SCHEDULER_PORT env var + guard _active_portal_modules</td></tr>
-    <tr><td><code>cda428e</code></td><td>add scripts/seed_demo_triad.py — per-variant demo seeder</td></tr>
-    <tr><td><code>403ce54</code></td><td>add templates/demo_triad_landing.html — three-variant landing</td></tr>
-    <tr><td><code>e1b3509</code></td><td>add scripts/start_erp_triad.sh — three-ERP-variant launcher</td></tr>
-    <tr><td><code>d59e953</code></td><td>feat(dev-site): /dev route serving static/devsite/index.html</td></tr>
+    <tr><td><code>3a9b7ad</code></td><td>fix: portal-gate HQ mess and tuck shop</td></tr>
+    <tr><td><code>82a753a</code></td><td>claim: codex — hq-ui-backend-polish</td></tr>
+    <tr><td><code>d6a0e66</code></td><td>feat(insights): 90-day telemetry retention purge at init_db</td></tr>
+    <tr><td><code>1d82b42</code></td><td>instruments: add aria-label to '+' add-instrument icon button</td></tr>
+    <tr><td><code>a42d8e1</code></td><td>request_detail: map approval step statuses to existing badge classes</td></tr>
   </table>
   <p class="muted">Auto-refreshed by the post-commit hook (installed via <code>dev-site/install_hook.sh</code>).</p>
+</section>
+
+<section>
+  <h2>Recent stable commits — v1.3.0-stable-release</h2>
+  <table>
+    <tr><th>SHA</th><th>Subject</th></tr>
+    <tr><td><code>aaa2c72</code></td><td>release: Insights module lands on stable + fix missing make_response import</td></tr>
+    <tr><td><code>5dc42e5</code></td><td>feat(insights): 90-day telemetry retention purge at init_db</td></tr>
+    <tr><td><code>f844de4</code></td><td>feat(insights): auto-infer click actions so the feed fills without template churn</td></tr>
+    <tr><td><code>573c0af</code></td><td>feat(insights): phase 2 — telemetry ingest endpoint, client JS, dashboard</td></tr>
+    <tr><td><code>a9f3960</code></td><td>feat(insights): scaffold Insights module (phase 1 — schema only)</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>Local demo endpoints</h2>
+  <p><em>Local only — requires the triad launcher (<code>scripts/start_erp_triad.sh</code>) running on your MacBook Pro. No public internet exposure.</em></p>
+  <div class="grid">
+    <div class="tile">
+      <h3><span class="badge blue">Lab variant</span></h3>
+      <p><a href="http://localhost:5101/dev"><code>http://localhost:5101/dev</code></a></p>
+      <p class="tile-meta">Lab portal — instruments, queue, calendar, receipts, compute.</p>
+    </div>
+    <div class="tile">
+      <h3><span class="badge blue">HQ variant</span></h3>
+      <p><a href="http://localhost:5102/dev"><code>http://localhost:5102/dev</code></a></p>
+      <p class="tile-meta">HQ portal — finance, vendor payments, personnel, attendance, mess, tuck shop, letters.</p>
+    </div>
+    <div class="tile">
+      <h3><span class="badge blue">Compute variant</span></h3>
+      <p><a href="http://localhost:5103/dev"><code>http://localhost:5103/dev</code></a></p>
+      <p class="tile-meta">Compute portal — AI job submission, inventory, storage admin.</p>
+    </div>
+  </div>
+  <p>Demo login for all three: <code>owner@catalyst.local</code> / password <code>12345</code>. The <code>/dev</code> route serves the project dev-site; append your own path (e.g. <code>/</code>, <code>/schedule</code>, <code>/insights</code>) to reach the ERP itself once signed in.</p>
 </section>
 
 <section>
   <h2>Open issues from the deep-crawl audit</h2>
   <div class="grid">
     <div class="tile">
+      <h3><span class="badge amber">In flight · Insights UI polish</span></h3>
+      <p>Insights module telemetry backend (schema + endpoint + JS + 90-day purge) is shipped on stable. The dashboard UI pass — filters, per-user drilldown, cohort views — is the next slice. Feature branch currently carrying it.</p>
+    </div>
+    <div class="tile">
       <h3><span class="badge red">P0 · empty_states</span></h3>
-      <p>Owner-dashboard halts <code>wave sanity</code> on Operations + Compute variants — fix is a fallback empty_state tile in dashboard.html. Verified across all 3 variants in main session, then reverted by parallel branch checkout. Recipe captured for re-application.</p>
+      <p>Owner-dashboard halts <code>wave sanity</code> on Operations + Compute variants — fix is a fallback empty_state tile in dashboard.html. Recipe captured. Partial fixes landed via recent a11y sweeps but the full cross-variant fallback is still open.</p>
     </div>
     <div class="tile">
       <h3><span class="badge amber">P1 · 112 ungated routes</span></h3>
-      <p>Of 256 routes in app.py, 112 leak past module gating. Fix: <code>@requires_module</code> decorator + code-mod across the codebase.</p>
+      <p>Of 263 routes in app.py, 112 leak past module gating. Fix: <code>@requires_module</code> decorator + code-mod across the codebase.</p>
     </div>
     <div class="tile">
       <h3><span class="badge amber">P1 · ERP_PORTALS gaps</span></h3>
@@ -95,12 +131,8 @@
       <h3><span class="badge amber">P1 · crawler blind spot</span></h3>
       <p>Wave-all imports app into its own test_client without variant env, so cross-variant bleed-through is structurally invisible. Need a <code>cross_variant_bleed</code> strategy that boots real HTTP per variant.</p>
     </div>
-    <div class="tile">
-      <h3><span class="badge grey">/compute/queue 404</span></h3>
-      <p>Returns 404 as owner contrary to the prior wave's claim. Investigation pending.</p>
-    </div>
   </div>
-  <p class="muted">Top-10 ranked actions in DEEP_CRAWL_REPORT.md (source in private repo).</p>
+  <p>Top-10 ranked actions in DEEP_CRAWL_REPORT.md (source in private repo).</p>
 </section>
 
 <section>
@@ -121,16 +153,17 @@
 
 <section>
   <h2>Recent agent runs</h2>
-  <p>The 1-hour parallel agent sprint (this session) — 5 agents, all writing different files in <code>sahajpur-university</code>, all succeeded (no rate limits this round):</p>
+  <p>Most recent parallel sprint — governance docs sweep, 5 agents in parallel on <code>sahajpur-university</code>, all succeeded:</p>
   <table>
-    <tr><th>Agent</th><th>Output</th><th>Result</th></tr>
-    <tr><td>A</td><td><code>docs/APPROVAL_ROUTES.md</code></td><td><span class="badge green">1119 words, 4 tables</span></td></tr>
-    <tr><td>B</td><td><code>docs/BUDGETS.md</code></td><td><span class="badge green">1135 words, 6 tables</span></td></tr>
-    <tr><td>C</td><td><code>docs/AUDIT_RECORDS.md</code></td><td><span class="badge green">864 words, 3 tables</span></td></tr>
-    <tr><td>D</td><td><code>docs/OPENING_DAY.md</code></td><td><span class="badge green">1052 words, 9 T-offset rows</span></td></tr>
-    <tr><td>E</td><td><code>dev-site/structure-editor-mockup.html</code></td><td><span class="badge green">443 lines, hand-placed SVG</span></td></tr>
+    <tr><th>Sprint</th><th>Output</th><th>Result</th></tr>
+    <tr><td>3rd — governance/policy</td><td><code>docs/HIRING_STRATEGY.md</code></td><td><span class="badge green">year-1 hiring waves + comp framework</span></td></tr>
+    <tr><td>3rd</td><td><code>docs/SCHOLARSHIPS.md</code></td><td><span class="badge green">means-tested + merit-based schemes</span></td></tr>
+    <tr><td>3rd</td><td><code>docs/CURRICULUM_SHAPE.md</code></td><td><span class="badge green">year-1 B.Tech, NEP-2020 alignment</span></td></tr>
+    <tr><td>3rd</td><td><code>docs/DATA_POLICY.md</code></td><td><span class="badge green">DPDP-aligned collection/rights</span></td></tr>
+    <tr><td>3rd</td><td><code>docs/MODULE_SPECS/admissions.md</code></td><td><span class="badge green">full year-1 admissions portal spec</span></td></tr>
   </table>
-  <p>Earlier session — 5-agent deep-crawl (route-gating audit, architecture-gap audit, 3 wave-all crawls per variant): all 5 succeeded, ~512k tokens, ~28 min wall-clock, zero merge conflicts.</p>
+  <p>2nd sprint — security + publish: <code>docs/INCIDENT_RUNBOOK.md</code> (IR playbook, severity ladder), <code>docs/SECURITY_POLICY.md</code> (threat model + controls), and the github.io public-mirror publish (<code>catalyst/</code> multi-page site).</p>
+  <p>1st sprint — docs foundation: <code>docs/APPROVAL_ROUTES.md</code>, <code>docs/BUDGETS.md</code>, <code>docs/AUDIT_RECORDS.md</code>, <code>docs/OPENING_DAY.md</code>, <code>dev-site/structure-editor-mockup.html</code>. ~28 min wall-clock, zero merge conflicts.</p>
 </section>
 
 <section>
@@ -143,7 +176,7 @@ LOCAL central git server:
   ~/.claude/git-server/sahajpur-university.git    (canonical origin)
   ~/.claude/git-server/lab-scheduler.git          (canonical origin; mirrors to mini)
   ~/.claude/git-server/nvishvajeet.github.io.git  (canonical origin; manual push to GitHub)</pre>
-  <p>One bare per project. SSH key at <code>~/.ssh/id_ed25519</code> works for every git remote. <span class="muted">Per ~/.claude/CLAUDE.md §"Project registry" (source in private repo).</span></p>
+  <p>One bare per project. SSH key at <code>~/.ssh/id_ed25519</code> works for every git remote. Per ~/.claude/CLAUDE.md §"Project registry" (source in private repo).</p>
 </section>
 
 </div>
