@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Features · CATALYST</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">CATALYST<span class="dot">·</span></a>
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="demo.html">Demo</a>
+    <a class="nav-link active" href="features.html">Features</a>
+    <a class="nav-link" href="roadmap.html">Roadmap</a>
+    <a class="nav-link" href="structure.html">Structure</a>
+    <a class="nav-link" href="status.html">Dev status</a>
+    <span class="nav-spacer"></span>
+    <span class="nav-meta">v1.3.0-stable · feature/erp-demo-triad</span>
+  </div>
+</nav>
+
+<header class="page">
+  <div class="wrap">
+    <h1>Features</h1>
+    <p class="lede">What's built today (most things), what's spine-ready (a few days of scaffolding away), what's still outstanding (the year-1 university roadmap).</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section>
+  <h2>By the numbers</h2>
+  <div class="grid">
+    <div class="tile"><p class="stat">19<span class="label">modules in MODULE_REGISTRY</span></p></div>
+    <div class="tile"><p class="stat">256<span class="label">routes in app.py</span></p></div>
+    <div class="tile"><p class="stat">141<span class="label">HTML templates</span></p></div>
+    <div class="tile"><p class="stat">28,462<span class="label">lines in app.py</span></p></div>
+    <div class="tile"><p class="stat green">10,159<span class="label">crawler-pass score, Lab variant</span></p></div>
+    <div class="tile"><p class="stat green">0<span class="label">hard fails across 26k+ assertions</span></p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Modules shipped <span class="hint">all 19 in MODULE_REGISTRY</span></h2>
+  <p>
+    <span class="chip on">instruments</span>
+    <span class="chip on">finance</span>
+    <span class="chip on">receipts</span>
+    <span class="chip on">inbox</span>
+    <span class="chip on">notifications</span>
+    <span class="chip on">attendance</span>
+    <span class="chip on">todos</span>
+    <span class="chip on">letters</span>
+    <span class="chip on">queue</span>
+    <span class="chip on">calendar</span>
+    <span class="chip on">stats</span>
+    <span class="chip on">vehicles</span>
+    <span class="chip on">personnel</span>
+    <span class="chip on">vendor_payments</span>
+    <span class="chip on">mess</span>
+    <span class="chip on">qr_attendance</span>
+    <span class="chip on">tuck_shop</span>
+    <span class="chip on">compute</span>
+    <span class="chip on">admin</span>
+  </p>
+</section>
+
+<section>
+  <h2>Spine primitives</h2>
+  <div class="grid">
+    <div class="tile">
+      <h3>Auth + sessions</h3>
+      <p>bcrypt password store, CSRF on by default, secure cookies, rate-limited login (10/5min/IP).</p>
+    </div>
+    <div class="tile">
+      <h3>RBAC — 9 personas</h3>
+      <p>owner · super_admin · site_admin · instrument_admin · operator · member · finance · professor · requester. Two-layer scoping: role × area assignment.</p>
+    </div>
+    <div class="tile">
+      <h3>Approval chain</h3>
+      <p>Polymorphic <code>approval_steps</code> table — works across sample requests, leave requests, vendor payments, anything. Load-balances across approver pools.</p>
+    </div>
+    <div class="tile">
+      <h3>Hash-chained audit log</h3>
+      <p>SHA-256 chain on every mutation. Tamper-evident. Crawler verifies chain integrity on every wave.</p>
+    </div>
+    <div class="tile">
+      <h3>Notifications bus</h3>
+      <p>In-database per-user inbox. Polymorphic emit, severity-tagged, deep-link to source entity.</p>
+    </div>
+    <div class="tile">
+      <h3>Tile macros + 6-col grid</h3>
+      <p>Apple-tile aesthetic, <code>card_heading</code> / <code>stat_blob</code> / <code>chart_bar</code> / <code>empty_state</code>, <code>data-vis</code> per-role theming.</p>
+    </div>
+    <div class="tile">
+      <h3>Balls-and-sticks org editor</h3>
+      <p>First cut at <code>templates/org_chart.html</code>: blobs per user, directional reporting arrows, click to change reports-to, drag to pin, super/site-admin gated. Extension to unit nodes is in flight. <a href="structure-editor-mockup.html">See mockup →</a></p>
+    </div>
+    <div class="tile">
+      <h3>Crawler taxonomy — 6 categories</h3>
+      <p>skeleton · testing · roleplay · feature · backend · data — 16 strategies. Hourly sanity, daily wave-all, weekly security sweep.</p>
+    </div>
+    <div class="tile">
+      <h3>Multi-instance launchers</h3>
+      <p>Two orthogonal axes: <code>start_demo_channels.sh</code> (release versions) and <code>start_erp_triad.sh</code> (module bundles). Same codebase, different config.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>What's spine-ready (1-3 days each)</h2>
+  <p>These don't need new architecture — just scaffolding on existing primitives:</p>
+  <ul>
+    <li>Structure-editor v1 (read-only, TOML-driven) — extends existing <code>org_chart.html</code></li>
+    <li>Audit viewer with hash-chain verification (existing <code>audit_logs</code>)</li>
+    <li>Inbox aggregator across portals</li>
+    <li>Tile-aggregated dashboards per role</li>
+    <li>Document generator for letters / certificates / appointment orders</li>
+  </ul>
+</section>
+
+<section>
+  <h2>What's still outstanding</h2>
+  <p>The year-1 MIT new University roadmap needs these — each is a full portal build, not a quick scaffold:</p>
+  <p>
+    <span class="chip off">admissions</span>
+    <span class="chip off">academics (courses, programs, timetable)</span>
+    <span class="chip off">exams + grades + transcripts</span>
+    <span class="chip off">student self-service</span>
+    <span class="chip off">hostel</span>
+    <span class="chip off">library</span>
+    <span class="chip off">placement</span>
+    <span class="chip off">parent portal</span>
+    <span class="chip off">research output tracker</span>
+    <span class="chip off">compliance export (UGC/AICTE/NAAC)</span>
+    <span class="chip off">SMS notification channel</span>
+    <span class="chip off">structure-editor v2 (full Deco graph editing)</span>
+  </p>
+  <p class="muted">Each portal is 1-3 days of spine-backed scaffolding plus 1-2 weeks of refinement with real users. Build sequencing in STRUCTURE_PROPOSAL_v1.md §11 (source in private repo).</p>
+</section>
+
+<section>
+  <h2>Open issues from the deep-crawl audit</h2>
+  <ul>
+    <li><strong>112 of 256 routes leak past module gating</strong> — visitors who type a URL can reach modules outside their variant's bundle. Fix is a <code>@requires_module</code> decorator + code-mod.</li>
+    <li><strong>Four disjoint module inventories disagree.</strong> <code>MODULE_REGISTRY</code> (19 keys), <code>ERP_PORTALS</code> (lab + hq only), <code>erp_portals</code> DB table, doc'd <code>CATALYST_MODULES</code> bundles. Need reconciliation.</li>
+    <li><strong>Wave-all crawler is blind to bleed-through</strong> — uses Flask test_client without variant env, so doesn't catch the 112-route issue. Need a new <code>cross_variant_bleed</code> crawler strategy.</li>
+    <li><strong>Seeder stubs.</strong> Operations and Compute variants boot into empty DBs; <code>seed_ravikiran_ops()</code> and <code>seed_compute()</code> are literal TODOs.</li>
+  </ul>
+  <p class="muted">Full report: DEEP_CRAWL_REPORT.md (source in private repo). Day-2 of the fire plan is closing these.</p>
+</section>
+
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="demo.html">Demo</a>
+      <a href="roadmap.html">Roadmap</a>
+    </div>
+    <div class="muted">CATALYST · Built in the open</div>
+  </div>
+</footer>
+
+</body>
+</html>

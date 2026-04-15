@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Structure · CATALYST</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">CATALYST<span class="dot">·</span></a>
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="demo.html">Demo</a>
+    <a class="nav-link" href="features.html">Features</a>
+    <a class="nav-link" href="roadmap.html">Roadmap</a>
+    <a class="nav-link active" href="structure.html">Structure</a>
+    <a class="nav-link" href="status.html">Dev status</a>
+    <span class="nav-spacer"></span>
+    <span class="nav-meta">v1.3.0-stable · feature/erp-demo-triad</span>
+  </div>
+</nav>
+
+<header class="page">
+  <div class="wrap">
+    <h1>Structure</h1>
+    <p class="lede">MIT new University — Edinburgh-shaped governance with three-body separation, a federated sub-unit model, and a 1k → 10k student trajectory across five years. The structure is what the ERP wires onto.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section>
+  <h2>Governance — three bodies</h2>
+  <p>Same separation of powers as Edinburgh's Court / Senate / Principal, renamed for the Indian-trust context. Three bodies because separation defends against the failure mode common in young Indian private universities — one strong founder making every call.</p>
+
+  <div class="grid">
+    <div class="tile">
+      <h3><span class="badge grey">Board of Trustees</span></h3>
+      <p>Strategy, finance, fiduciary. Appoints the Vice-Chancellor.</p>
+      <p class="tile-meta">7-9 trustees · Edinburgh Court equivalent</p>
+    </div>
+    <div class="tile">
+      <h3><span class="badge grey">Academic Council</span></h3>
+      <p>Curriculum, degree awards, academic standards.</p>
+      <p class="tile-meta">All HoS + VC + Registrar (≤12 at year 1) · Edinburgh Senate equivalent</p>
+    </div>
+    <div class="tile">
+      <h3><span class="badge grey">VC's Office</span></h3>
+      <p>Day-to-day executive — hires, budget execution, operations.</p>
+      <p class="tile-meta">VC + Registrar + 2-3 directors</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Academic structure — phased growth</h2>
+
+  <h3>Year 1 — 1,000 students</h3>
+<pre>MIT new University
+└── College of Sciences and Engineering
+    ├── School of Computing and Data Sciences   (~400 students)
+    └── School of Engineering                   (~600 students)</pre>
+  <p class="muted">Departments are not formally constituted at year 1 — too small, adds bureaucracy. Each School has a Head of School + Director of Teaching.</p>
+
+  <h3>Year 3 — 3,000-5,000 students</h3>
+<pre>MIT new University
+├── College of Sciences and Engineering
+│   ├── School of Computing and Data Sciences
+│   ├── School of Engineering
+│   └── School of Natural Sciences              (NEW)
+└── College of Humanities and Social Sciences   (NEW college)
+    ├── School of Design                        (NEW)
+    ├── School of Business                      (NEW)
+    └── School of Liberal Arts                  (NEW)</pre>
+
+  <h3>Year 5 — 8,000-10,000 students</h3>
+  <p>Full Edinburgh shape: 3 colleges, 8-10 schools, ~12 departments under schools, plus cross-cutting research institutes that draw faculty from multiple schools (Climate &amp; Sustainability, AI Safety, Indian-Language NLP). Departments hold discretionary budgets within school allocations.</p>
+  <p class="muted">Detail: STRUCTURE_PROPOSAL_v1.md §2 (source in private repo).</p>
+</section>
+
+<section>
+  <h2>Role taxonomy <span class="hint">central · school · sub-unit</span></h2>
+
+  <div class="grid">
+    <div class="tile">
+      <h3>Central</h3>
+      <p>
+        <span class="chip">vice_chancellor</span>
+        <span class="chip">registrar</span>
+        <span class="chip">chief_finance_officer</span>
+        <span class="chip">chief_hr_officer</span>
+        <span class="chip">controller_of_examinations</span>
+        <span class="chip">it_admin</span>
+        <span class="chip">internal_auditor</span>
+      </p>
+    </div>
+    <div class="tile">
+      <h3>College + School</h3>
+      <p>
+        <span class="chip">dean</span>
+        <span class="chip">associate_dean_academic</span>
+        <span class="chip">associate_dean_research</span>
+        <span class="chip">head_of_school</span>
+        <span class="chip">director_of_teaching</span>
+        <span class="chip">director_of_research</span>
+        <span class="chip">school_administrator</span>
+        <span class="chip">head_of_department</span>
+      </p>
+    </div>
+    <div class="tile">
+      <h3>Sub-unit (federated)</h3>
+      <p>
+        <span class="chip">lab_admin</span>
+        <span class="chip">mess_manager</span>
+        <span class="chip">hostel_warden</span>
+        <span class="chip">library_admin</span>
+        <span class="chip">placement_officer</span>
+        <span class="chip">cultural_coordinator</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Federation rule — sub-units run their own ERPs</h2>
+  <p>Per user direction (2026-04-15): every unit inside MIT new University can have its own ERP slice, or a role-activated subset of the central ERP. Ravikiran-style. The central registry has read-everything for compliance + reporting; sub-units have full control within their slice.</p>
+  <p>Examples: each lab gets a lab-ops portal; each mess gets a dining portal; each hostel gets a residential portal; each school gets an academic-administration portal. All run from one CATALYST codebase, with per-unit scoping enforced by the spine.</p>
+  <p class="muted">Implementation contract in STRUCTURE_PROPOSAL_v1.md §4 (source in private repo).</p>
+</section>
+
+<section>
+  <h2>The structure editor — balls-and-sticks UI</h2>
+  <p>Three converging metaphors describe what the editor will be:</p>
+  <ul>
+    <li><strong>Balls-and-sticks</strong> (chemistry): every entity is a ball (org unit, person, role); every relationship is a stick (reports-to, member-of, area-assignment). Grab a ball, drag it, sticks follow.</li>
+    <li><strong>Deco mesh-app</strong>: hub-and-spoke topology with member-count badges on each node — primary metaphor for viewing.</li>
+    <li><strong>Lego</strong>: units interlock through a standardized contract — same pegs, every ball; you can attach, detach, and re-parent without special cases.</li>
+  </ul>
+  <p><a href="structure-editor-mockup.html">→ Visual mockup (open in browser)</a></p>
+  <p>Editor scope is delegated by role — superadmin sees everything; HR can move people between schools; HoS can edit within their school; HoD edits within their department; sub-unit admins manage their own slice. <span class="muted">Detail: STRUCTURE_PROPOSAL_v1.md §9 (source in private repo).</span></p>
+</section>
+
+<section>
+  <h2>Governance documents</h2>
+  <div class="grid">
+    <div class="tile">
+      <h3>APPROVAL_ROUTES.md</h3>
+      <p>Spend + people-flow + academic approval routes; mapped to CATALYST's <code>approval_steps</code> primitive.</p>
+      <p class="tile-meta muted">(source in private repo)</p>
+    </div>
+    <div class="tile">
+      <h3>BUDGETS.md</h3>
+      <p>Devolution rules, year-1/3/5 envelopes, per-school + sub-unit allocations, reserve policy.</p>
+      <p class="tile-meta muted">(source in private repo)</p>
+    </div>
+    <div class="tile">
+      <h3>AUDIT_RECORDS.md</h3>
+      <p>Three-tier retention, role × tier read-access matrix, PII classification, hash-chain integrity.</p>
+      <p class="tile-meta muted">(source in private repo)</p>
+    </div>
+    <div class="tile">
+      <h3>OPENING_DAY.md</h3>
+      <p>Four-thread playbook (infrastructure / people / ERP / regulatory) with T-90 → T+90 offsets.</p>
+      <p class="tile-meta muted">(source in private repo)</p>
+    </div>
+    <div class="tile">
+      <h3>CHARTER.md</h3>
+      <p>Project scope, ownership, cadence, what's in/out of scope.</p>
+      <p class="tile-meta muted">(source in private repo)</p>
+    </div>
+    <div class="tile">
+      <h3>STRUCTURE_PROPOSAL_v1.md</h3>
+      <p>The full structure design — source of truth for every other governance doc.</p>
+      <p class="tile-meta muted">(source in private repo)</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Software company (separate from the university)</h2>
+  <p>The CATALYST product is being commercialized through a separate Pvt Ltd company, founded by Vishvajeet (CTO + product) and Nikita (co-founder, commercial). MIT new University is the anchor customer; MIT ADT, MITWPU, and external vendors follow. <span class="muted">Detail: PLAN.md §B (source in private repo).</span></p>
+</section>
+
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="demo.html">Demo</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="structure-editor-mockup.html">Editor mockup</a>
+    </div>
+    <div class="muted">CATALYST · Built in the open</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dev status · CATALYST</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="wrap">
+    <a class="brand" href="index.html">CATALYST<span class="dot">·</span></a>
+    <a class="nav-link" href="index.html">Home</a>
+    <a class="nav-link" href="demo.html">Demo</a>
+    <a class="nav-link" href="features.html">Features</a>
+    <a class="nav-link" href="roadmap.html">Roadmap</a>
+    <a class="nav-link" href="structure.html">Structure</a>
+    <a class="nav-link active" href="status.html">Dev status</a>
+    <span class="nav-spacer"></span>
+    <span class="nav-meta">v1.3.0-stable · feature/erp-demo-triad</span>
+  </div>
+</nav>
+
+<header class="page">
+  <div class="wrap">
+    <h1>Dev status</h1>
+    <p class="lede">What's moving right now — branches, recent commits, the active fire-plan day, agent activity, and the always-on three-machine crawler cadence.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<section>
+  <h2>Branches in flight</h2>
+  <div class="grid">
+    <div class="tile">
+      <h3><span class="badge green">v1.3.0-stable-release</span></h3>
+      <p>Production branch. Mac mini pulls from here. Last seen at <code>2c1253f</code>.</p>
+      <p class="tile-meta">Hard-attribute lock: 15 tables, 22 indexes, request state machine, hash-chained audit, tile architecture, two-layer visibility, 48 routes, 9 roles. Per PHILOSOPHY.md §2 (source in private repo).</p>
+    </div>
+    <div class="tile">
+      <h3><span class="badge blue">feature/erp-demo-triad</span></h3>
+      <p>Three-ERP-variant demo work. Day-1 fire plan landed here.</p>
+      <p class="tile-meta">~10 commits ahead of stable. Smoke green on every push.</p>
+    </div>
+    <div class="tile">
+      <h3><span class="badge purple">feature/insights-module</span></h3>
+      <p>User-behaviour telemetry module. Phase 1 (scaffold + schema) shipped; phase 2 (endpoint + JS + dashboard) pending.</p>
+      <p class="tile-meta">Off feature/erp-demo-triad. Privacy floor: no raw mouse coords, no keystrokes, no fingerprinting.</p>
+    </div>
+    <div class="tile">
+      <h3><span class="badge grey">v2.0.0-alpha · v2.0.0-beta</span></h3>
+      <p>Forward-version branches for the ERP-multi-portal release line. Used by <code>start_demo_channels.sh</code> to boot stable/beta/alpha side-by-side.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Recent dev commits — feature/erp-demo-triad</h2>
+  <table>
+    <tr><th>SHA</th><th>Subject</th></tr>
+    <tr><td><code>d892467</code></td><td>crawlers: add csrf_token_present — block POST forms missing csrf_token()</td></tr>
+    <tr><td><code>15988d1</code></td><td>crawlers: add css_variable_defined — catch silent --undefined vars</td></tr>
+    <tr><td><code>c1f0b56</code></td><td>docs: UI crawl findings across 9 roles × 25 pages</td></tr>
+    <tr><td><code>a70fd71</code></td><td>fix: honor LAB_SCHEDULER_PORT env var + guard _active_portal_modules</td></tr>
+    <tr><td><code>cda428e</code></td><td>add scripts/seed_demo_triad.py — per-variant demo seeder</td></tr>
+    <tr><td><code>403ce54</code></td><td>add templates/demo_triad_landing.html — three-variant landing</td></tr>
+    <tr><td><code>e1b3509</code></td><td>add scripts/start_erp_triad.sh — three-ERP-variant launcher</td></tr>
+    <tr><td><code>d59e953</code></td><td>feat(dev-site): /dev route serving static/devsite/index.html</td></tr>
+  </table>
+  <p class="muted">Auto-refreshed by the post-commit hook (installed via <code>dev-site/install_hook.sh</code>).</p>
+</section>
+
+<section>
+  <h2>Open issues from the deep-crawl audit</h2>
+  <div class="grid">
+    <div class="tile">
+      <h3><span class="badge red">P0 · empty_states</span></h3>
+      <p>Owner-dashboard halts <code>wave sanity</code> on Operations + Compute variants — fix is a fallback empty_state tile in dashboard.html. Verified across all 3 variants in main session, then reverted by parallel branch checkout. Recipe captured for re-application.</p>
+    </div>
+    <div class="tile">
+      <h3><span class="badge amber">P1 · 112 ungated routes</span></h3>
+      <p>Of 256 routes in app.py, 112 leak past module gating. Fix: <code>@requires_module</code> decorator + code-mod across the codebase.</p>
+    </div>
+    <div class="tile">
+      <h3><span class="badge amber">P1 · ERP_PORTALS gaps</span></h3>
+      <p>Only <code>lab</code> + <code>hq</code> registered. Need <code>ravikiran_ops</code> + <code>compute</code> entries; ghost modules (<code>schedule</code>, <code>requests</code>, <code>payroll</code>, <code>filing</code>) need reconciling against MODULE_REGISTRY.</p>
+    </div>
+    <div class="tile">
+      <h3><span class="badge amber">P1 · seed stubs</span></h3>
+      <p><code>seed_ravikiran_ops()</code> and <code>seed_compute()</code> are TODOs. Operations + Compute variants boot into empty DBs.</p>
+    </div>
+    <div class="tile">
+      <h3><span class="badge amber">P1 · crawler blind spot</span></h3>
+      <p>Wave-all imports app into its own test_client without variant env, so cross-variant bleed-through is structurally invisible. Need a <code>cross_variant_bleed</code> strategy that boots real HTTP per variant.</p>
+    </div>
+    <div class="tile">
+      <h3><span class="badge grey">/compute/queue 404</span></h3>
+      <p>Returns 404 as owner contrary to the prior wave's claim. Investigation pending.</p>
+    </div>
+  </div>
+  <p class="muted">Top-10 ranked actions in DEEP_CRAWL_REPORT.md (source in private repo).</p>
+</section>
+
+<section>
+  <h2>Three-machine continuous crawler cadence</h2>
+  <p>24×7 across MacBook Pro + Mac mini + iMac, per WORKFLOW.md §5.5 (source in private repo):</p>
+  <table>
+    <tr><th>Cadence</th><th>Wave</th><th>Runtime</th></tr>
+    <tr><td>hourly</td><td><code>wave sanity</code></td><td>~15s</td></tr>
+    <tr><td>hourly</td><td><code>scripts/smoke_test.py</code></td><td>~5s</td></tr>
+    <tr><td>every 4h</td><td><code>wave rhythm</code></td><td>~1 min</td></tr>
+    <tr><td>every 6h</td><td><code>wave feature</code></td><td>~varies</td></tr>
+    <tr><td>daily</td><td><code>wave all</code></td><td>~15 min</td></tr>
+    <tr><td>daily</td><td><code>wave security</code> (planned)</td><td>~varies</td></tr>
+    <tr><td>weekly</td><td>pip-audit + gitleaks + dep upgrade</td><td>~varies</td></tr>
+  </table>
+  <p>MBP load policy: aggressive by default, ~10% interactive headroom for human work. Mini + iMac max out always.</p>
+</section>
+
+<section>
+  <h2>Recent agent runs</h2>
+  <p>The 1-hour parallel agent sprint (this session) — 5 agents, all writing different files in <code>sahajpur-university</code>, all succeeded (no rate limits this round):</p>
+  <table>
+    <tr><th>Agent</th><th>Output</th><th>Result</th></tr>
+    <tr><td>A</td><td><code>docs/APPROVAL_ROUTES.md</code></td><td><span class="badge green">1119 words, 4 tables</span></td></tr>
+    <tr><td>B</td><td><code>docs/BUDGETS.md</code></td><td><span class="badge green">1135 words, 6 tables</span></td></tr>
+    <tr><td>C</td><td><code>docs/AUDIT_RECORDS.md</code></td><td><span class="badge green">864 words, 3 tables</span></td></tr>
+    <tr><td>D</td><td><code>docs/OPENING_DAY.md</code></td><td><span class="badge green">1052 words, 9 T-offset rows</span></td></tr>
+    <tr><td>E</td><td><code>dev-site/structure-editor-mockup.html</code></td><td><span class="badge green">443 lines, hand-placed SVG</span></td></tr>
+  </table>
+  <p>Earlier session — 5-agent deep-crawl (route-gating audit, architecture-gap audit, 3 wave-all crawls per variant): all 5 succeeded, ~512k tokens, ~28 min wall-clock, zero merge conflicts.</p>
+</section>
+
+<section>
+  <h2>Repo topology</h2>
+<pre>~/Claude/sahajpur-university/        ← THIS repo (planning + governance)
+~/Documents/Scheduler/Main/          ← lab-scheduler / CATALYST (the ERP code)
+~/Claude/nvishvajeet.github.io/      ← public website mirror
+
+LOCAL central git server:
+  ~/.claude/git-server/sahajpur-university.git    (canonical origin)
+  ~/.claude/git-server/lab-scheduler.git          (canonical origin; mirrors to mini)
+  ~/.claude/git-server/nvishvajeet.github.io.git  (canonical origin; manual push to GitHub)</pre>
+  <p>One bare per project. SSH key at <code>~/.ssh/id_ed25519</code> works for every git remote. <span class="muted">Per ~/.claude/CLAUDE.md §"Project registry" (source in private repo).</span></p>
+</section>
+
+</div>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="demo.html">Demo</a>
+      <a href="features.html">Features</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="structure.html">Structure</a>
+    </div>
+    <div class="muted">CATALYST · Built in the open · Stats refresh from live state</div>
+  </div>
+</footer>
+
+</body>
+</html>
