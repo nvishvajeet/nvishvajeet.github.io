@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CATALYST · Dev Site</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --panel: #fff;
+    --border: #e5e5ea;
+    --text: #1c1c1e;
+    --text-muted: #6e6e73;
+    --accent: #0071e3;
+    --green: #34c759;
+    --amber: #ff9f0a;
+    --red: #ff3b30;
+    --mono: ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 2rem 1.5rem;
+    font-family: -apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display",system-ui,sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  header { padding: 1rem 0 2rem; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
+  h1 { font-size: 2.2rem; margin: 0 0 .3rem; letter-spacing: -0.02em; font-weight: 600; }
+  .tagline { color: var(--text-muted); font-size: 1.05rem; margin: 0; }
+  .meta { color: var(--text-muted); font-size: 0.85rem; margin-top: 1rem; font-family: var(--mono); }
+  section { margin: 2.5rem 0; }
+  h2 { font-size: 1.35rem; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 .4rem; }
+  h2 .hint { font-weight: 400; color: var(--text-muted); font-size: .9rem; margin-left: .5rem; }
+  h3 { font-size: 1rem; font-weight: 600; margin: 0 0 .5rem; }
+  .grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); margin-top: 1rem; }
+  .tile {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.1rem 1.2rem;
+  }
+  .tile .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: .75rem;
+    font-weight: 500;
+    margin-right: .3rem;
+  }
+  .badge.green  { background: #e8f8ec; color: #1e7a30; }
+  .badge.amber  { background: #fff6e5; color: #a6670b; }
+  .badge.red    { background: #ffeae8; color: #a8281e; }
+  .badge.blue   { background: #e8f2fd; color: #0050b4; }
+  .badge.grey   { background: #f1f1f3; color: #555; }
+  code, .mono { font-family: var(--mono); font-size: .9em; }
+  kbd { font-family: var(--mono); font-size: .85em; background: #f4f4f6; border: 1px solid var(--border); padding: 1px 6px; border-radius: 4px; }
+  ul { padding-left: 1.2rem; margin: .4rem 0; }
+  li { margin: .2rem 0; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .stat { font-size: 1.8rem; font-weight: 600; letter-spacing: -0.02em; margin: 0; }
+  .stat .label { display: block; font-size: .8rem; color: var(--text-muted); font-weight: 400; margin-top: 2px; letter-spacing: 0; }
+  pre { background: #f5f5f7; border-radius: 8px; padding: .9rem 1rem; overflow-x: auto; font-size: .82rem; margin: .5rem 0 0; }
+  .chip { display: inline-block; padding: 2px 9px; border-radius: 6px; font-size: .78rem; margin: 2px 3px 2px 0; background: #f1f1f3; color: #444; font-family: var(--mono); }
+  .chip.on  { background: #e8f8ec; color: #1e7a30; }
+  .chip.off { background: #fdecec; color: #8c2020; }
+  table { border-collapse: collapse; width: 100%; font-size: .9rem; margin-top: .5rem; }
+  th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid var(--border); }
+  th { background: #f7f7f9; font-weight: 600; }
+  .divider { border-top: 1px solid var(--border); margin: 2rem 0; }
+  footer { color: var(--text-muted); font-size: .85rem; padding: 2rem 0 1rem; border-top: 1px solid var(--border); margin-top: 3rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>CATALYST · Dev Site</h1>
+  <p class="tagline">One codebase, many ERPs. Status + structure + roadmap in a single pane.</p>
+  <p class="meta">
+    Generated 2026-04-15 15:20 · Stable: <code>v1.3.0-stable-release @ 2c1253f</code> · Dev: <code>feature/erp-demo-triad @ d892467</code>
+  </p>
+</header>
+
+<!-- ============== 1. CURRENT DEMO ============== -->
+<section>
+  <h2>1 · Current site demo <span class="hint">three ERPs, one codebase</span></h2>
+  <p>The running demo proves the module-propagation story: same <code>app.py</code>, three <code>CATALYST_MODULES</code> bundles, three live instances.</p>
+
+  <div class="grid">
+    <div class="tile">
+      <h3><span class="badge blue">Lab ERP</span></h3>
+      <p>Shared instrumentation, research approvals, grant-linked finance.</p>
+      <p class="mono"><a href="http://catalyst.local:5101 <small>(run locally)</small>">127.0.0.1:5101</a></p>
+      <p>
+        <span class="chip on">instruments</span>
+        <span class="chip on">finance</span>
+        <span class="chip on">queue</span>
+        <span class="chip on">calendar</span>
+        <span class="chip on">stats</span>
+        <span class="chip on">attendance</span>
+        <span class="chip on">inbox</span>
+        <span class="chip on">notifications</span>
+        <span class="chip on">admin</span>
+      </p>
+    </div>
+    <div class="tile">
+      <h3><span class="badge blue">Ravikiran Operations ERP</span></h3>
+      <p>Staff, vehicles, receipts, payroll, task coordination for service businesses.</p>
+      <p class="mono"><a href="http://catalyst.local:5102 <small>(run locally)</small>">127.0.0.1:5102</a></p>
+      <p>
+        <span class="chip on">finance</span>
+        <span class="chip on">personnel</span>
+        <span class="chip on">vehicles</span>
+        <span class="chip on">attendance</span>
+        <span class="chip on">receipts</span>
+        <span class="chip on">todos</span>
+        <span class="chip on">inbox</span>
+        <span class="chip on">notifications</span>
+        <span class="chip on">admin</span>
+      </p>
+    </div>
+    <div class="tile">
+      <h3><span class="badge blue">Compute ERP</span></h3>
+      <p>HPC queue + notifications + admin for a compute cluster.</p>
+      <p class="mono"><a href="http://catalyst.local:5103 <small>(run locally)</small>">127.0.0.1:5103</a></p>
+      <p>
+        <span class="chip on">compute</span>
+        <span class="chip on">notifications</span>
+        <span class="chip on">inbox</span>
+        <span class="chip on">admin</span>
+      </p>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 1.5rem;">Bring up the triad</h3>
+  <pre>cd ~/Documents/Scheduler/Main
+./scripts/start_erp_triad.sh          # start
+./scripts/start_erp_triad.sh --status # show PIDs + ports
+./scripts/start_erp_triad.sh --stop   # stop all three</pre>
+  <p class="mono" style="margin-top:.5rem; color: var(--text-muted);">
+    Landing template (route not yet wired): <code>templates/demo_triad_landing.html</code>
+  </p>
+</section>
+
+<!-- ============== 2. FEATURES THERE ============== -->
+<section>
+  <h2>2 · Features that are there <span class="hint">what's built today</span></h2>
+
+  <div class="grid">
+    <div class="tile">
+      <p class="stat">19 <span class="label">modules in MODULE_REGISTRY</span></p>
+    </div>
+    <div class="tile">
+      <p class="stat">256 <span class="label">routes in app.py</span></p>
+    </div>
+    <div class="tile">
+      <p class="stat">141 <span class="label">HTML templates</span></p>
+    </div>
+    <div class="tile">
+      <p class="stat">28,462 <span class="label">lines in app.py</span></p>
+    </div>
+    <div class="tile">
+      <p class="stat" style="color: var(--green);">10,159<span class="label">wave-all PASS (Lab variant)</span></p>
+    </div>
+    <div class="tile">
+      <p class="stat" style="color: var(--green);">0<span class="label">hard fails, all three variants</span></p>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 1.5rem;">Modules shipped</h3>
+  <p>
+    <span class="chip on">instruments</span>
+    <span class="chip on">finance</span>
+    <span class="chip on">receipts</span>
+    <span class="chip on">inbox</span>
+    <span class="chip on">notifications</span>
+    <span class="chip on">attendance</span>
+    <span class="chip on">todos</span>
+    <span class="chip on">letters</span>
+    <span class="chip on">queue</span>
+    <span class="chip on">calendar</span>
+    <span class="chip on">stats</span>
+    <span class="chip on">vehicles</span>
+    <span class="chip on">personnel</span>
+    <span class="chip on">vendor_payments</span>
+    <span class="chip on">mess</span>
+    <span class="chip on">qr_attendance</span>
+    <span class="chip on">tuck_shop</span>
+    <span class="chip on">compute</span>
+    <span class="chip on">admin</span>
+  </p>
+
+  <h3 style="margin-top: 1.5rem;">Core spine primitives</h3>
+  <ul>
+    <li>Auth + session (bcrypt, CSRF on by default)</li>
+    <li>RBAC — 9 personas (owner, super_admin, site_admin, instrument_admin, operator, member, finance, professor, requester)</li>
+    <li>Approval chain — polymorphic <code>approval_steps</code> table, works across request types</li>
+    <li>Hash-chained <code>audit_logs</code> (SHA-256) — tamper-evident event stream</li>
+    <li>Notifications bus — in-database, per-user inbox</li>
+    <li>Tile macros + 6-col grid + <code>data-vis</code> theming</li>
+    <li>Balls-and-sticks org chart editor (<code>templates/org_chart.html</code>) — superadmin + site admin</li>
+    <li>Crawler taxonomy — 6 categories (skeleton, testing, roleplay, feature, backend, data), 16 strategies</li>
+    <li>Three-channel version launcher (<code>start_demo_channels.sh</code>) and three-variant module launcher (<code>start_erp_triad.sh</code>)</li>
+  </ul>
+</section>
+
+<!-- ============== 3. FEATURES NEEDED ============== -->
+<section>
+  <h2>3 · Features that need to be there <span class="hint">prioritized backlog</span></h2>
+
+  <h3>Day-2 of fire plan (before Day 3)</h3>
+  <table>
+    <tr><th>#</th><th>Action</th><th>Effort</th><th>Status</th></tr>
+    <tr><td>1</td><td>Implement <code>seed_ravikiran_ops()</code> + <code>seed_compute()</code> bodies</td><td>M (4-6h)</td><td><span class="badge amber">pending</span></td></tr>
+    <tr><td>2</td><td><code>@requires_module(&quot;name&quot;)</code> decorator + code-mod across 190 ungated routes</td><td>L (1d)</td><td><span class="badge amber">pending</span></td></tr>
+    <tr><td>3</td><td>Register <code>ravikiran_ops</code> / <code>compute</code> in <code>ERP_PORTALS</code>, reconcile ghost modules</td><td>M (3-4h)</td><td><span class="badge amber">pending</span></td></tr>
+    <tr><td>4</td><td>Fix owner-dashboard <code>empty_states</code> template violation</td><td>S (30m)</td><td><span class="badge amber">pending</span></td></tr>
+  </table>
+
+  <h3 style="margin-top: 1.2rem;">By Day 5 (deploy gate)</h3>
+  <table>
+    <tr><th>#</th><th>Action</th><th>Effort</th></tr>
+    <tr><td>5</td><td>New <code>cross_variant_bleed</code> crawler strategy (boots real HTTP per variant; covers the wave-all blind spot)</td><td>M (4h)</td></tr>
+    <tr><td>6</td><td>Wire <code>/demo-triad</code> route for the already-shipped landing template</td><td>S (1h)</td></tr>
+    <tr><td>7</td><td>Investigate <code>/compute/queue</code> 404</td><td>S (1h)</td></tr>
+    <tr><td>8</td><td>Re-run <code>wave all</code> × 3 variants after 1-7 land</td><td>S (30m)</td></tr>
+  </table>
+
+  <h3 style="margin-top: 1.2rem;">New portals still to build for MIT new University</h3>
+  <p>
+    <span class="chip off">admissions</span>
+    <span class="chip off">academics</span>
+    <span class="chip off">exams</span>
+    <span class="chip off">student_self_service</span>
+    <span class="chip off">hostel</span>
+    <span class="chip off">library</span>
+    <span class="chip off">placement</span>
+    <span class="chip off">parent_portal</span>
+    <span class="chip off">research_tracker</span>
+    <span class="chip off">compliance_export</span>
+    <span class="chip off">sms_gateway</span>
+    <span class="chip off">structure_editor v2 (Deco graph)</span>
+  </p>
+  <p style="color: var(--text-muted); font-size: .9rem;">Each portal is 1-3 days of spine-backed scaffolding + 1-2 weeks of refinement with real users. Full sequencing in <code>docs/STRUCTURE_PROPOSAL_v1.md §11</code>.</p>
+</section>
+
+<!-- ============== 4. CURRENT DEV ============== -->
+<section>
+  <h2>4 · Current dev <span class="hint">what's moving right now</span></h2>
+
+  <div class="grid">
+    <div class="tile">
+      <h3>Active branch</h3>
+      <p class="mono"><code>feature/erp-demo-triad</code></p>
+      <p style="color: var(--text-muted); font-size: .9rem;">Day-1 of the 7-day fire plan landed here. Not merged to stable yet.</p>
+    </div>
+    <div class="tile">
+      <h3>Latest dev commits</h3>
+      <ul style="font-family: var(--mono); font-size: .82rem;">
+        <li>d892467 · crawlers: add csrf_token_present</li>
+        <li>15988d1 · crawlers: add css_variable_defined</li>
+        <li>c1f0b56 · docs: UI crawl findings 9 roles × 25 pages</li>
+        <li>a70fd71 · fix: LAB_SCHEDULER_PORT + request-context guards</li>
+        <li>cda428e · add scripts/seed_demo_triad.py</li>
+        <li>403ce54 · add templates/demo_triad_landing.html</li>
+        <li>e1b3509 · add scripts/start_erp_triad.sh</li>
+      </ul>
+    </div>
+    <div class="tile">
+      <h3>Open on deep-crawl audit</h3>
+      <ul>
+        <li>112 of 256 routes leak past module gate</li>
+        <li>4 module inventories disagree</li>
+        <li>Seeder stubs for ops + compute</li>
+        <li>Wave-all blind to bleed-through</li>
+      </ul>
+      <p><a href="#DEEP_CRAWL_REPORT.md">Full report →</a></p>
+    </div>
+    <div class="tile">
+      <h3>Three-machine cadence</h3>
+      <p>24×7 continuous crawlers across MBP + Mac mini + iMac. Per <a href="#">WORKFLOW.md §5.5</a>.</p>
+      <p style="color: var(--text-muted); font-size: .9rem;">Hourly <code>wave sanity</code>; every 4h <code>wave rhythm</code>; daily <code>wave all</code>; weekly security sweep.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 5. CURRENT STABLE ============== -->
+<section>
+  <h2>5 · Current stable release <span class="hint">what runs in production today</span></h2>
+
+  <div class="grid">
+    <div class="tile">
+      <h3>Version</h3>
+      <p class="stat" style="font-size: 1.5rem;">v1.3.0<span class="label">branch: <code>v1.3.0-stable-release</code></span></p>
+    </div>
+    <div class="tile">
+      <h3>Latest stable commits</h3>
+      <ul style="font-family: var(--mono); font-size: .82rem;">
+        <li>185f4af · ERP-aware overlay/extract + ERP_TOPOLOGY doc</li>
+        <li>e37f2d0 · docs: ROLE_SURFACES (login/forgot-password/Action-Queue)</li>
+        <li>ea081ce · fix: dev-panel margin + persist schedule sort</li>
+        <li>3b84ba9 · refactor: extract inline JS, 400-line template budget</li>
+        <li>ee5da16 · docs: raise MBP verifier budget</li>
+      </ul>
+    </div>
+    <div class="tile">
+      <h3>Where it runs</h3>
+      <p>Mac mini M4 in India, launchd-managed, Cloudflare tunnel for external.</p>
+      <p class="mono" style="font-size: .85rem;">
+        local.catalyst.plist · service on :5055<br>
+        Active tenant: Ravikiran lab operations
+      </p>
+    </div>
+    <div class="tile">
+      <h3>Hard attributes</h3>
+      <p style="font-size: .9rem;">Locked except at major version bumps: data model (15 tables, 22 indexes), request state machine, hash-chained audit, tile architecture, event stream, two-layer visibility, 48 routes, 9 roles.</p>
+      <p><a href="#">docs/PHILOSOPHY.md §2 →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 6. ORG STRUCTURE ============== -->
+<section>
+  <h2>6 · Current organization structure <span class="hint">MIT new University, proposed v1</span></h2>
+
+  <h3>Governance — three-body separation</h3>
+  <div class="grid">
+    <div class="tile">
+      <h3><span class="badge grey">Trustees</span></h3>
+      <p>Strategic + financial + fiduciary. Appoints VC.</p>
+      <p class="mono">7-9 members · Edinburgh <i>Court</i> equivalent</p>
+    </div>
+    <div class="tile">
+      <h3><span class="badge grey">Academic Council</span></h3>
+      <p>Curriculum + degree awards + academic standards.</p>
+      <p class="mono">All HoS + VC + Registrar · Edinburgh <i>Senate</i> equivalent</p>
+    </div>
+    <div class="tile">
+      <h3><span class="badge grey">VC's Office</span></h3>
+      <p>Day-to-day executive. Hires, budget execution.</p>
+      <p class="mono">VC + Registrar + 2-3 directors</p>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 1.5rem;">Year-1 academic tree (1,000 students)</h3>
+<pre>MIT new University
+└── College of Sciences and Engineering
+    ├── School of Computing and Data Sciences  (~400 students)
+    └── School of Engineering                  (~600 students)</pre>
+  <p style="color: var(--text-muted); font-size: .9rem;">Year-3 (3-5k students) adds College of Humanities + three new schools. Year-5 (8-10k) reaches full Edinburgh shape: 3 colleges, ~10 schools, cross-cutting research institutes. Full detail in <a href="#STRUCTURE_PROPOSAL_v1.md">STRUCTURE_PROPOSAL_v1.md</a>.</p>
+
+  <h3 style="margin-top: 1.5rem;">Role taxonomy (central + school + sub-unit)</h3>
+  <div class="grid">
+    <div class="tile">
+      <h3>Central</h3>
+      <p><span class="chip">vice_chancellor</span> <span class="chip">registrar</span> <span class="chip">chief_finance_officer</span> <span class="chip">chief_hr_officer</span> <span class="chip">controller_of_examinations</span> <span class="chip">it_admin</span> <span class="chip">internal_auditor</span></p>
+    </div>
+    <div class="tile">
+      <h3>School</h3>
+      <p><span class="chip">head_of_school</span> <span class="chip">director_of_teaching</span> <span class="chip">director_of_research</span> <span class="chip">school_administrator</span> <span class="chip">head_of_department</span></p>
+    </div>
+    <div class="tile">
+      <h3>Sub-unit (federated)</h3>
+      <p><span class="chip">lab_admin</span> <span class="chip">mess_manager</span> <span class="chip">hostel_warden</span> <span class="chip">library_admin</span> <span class="chip">placement_officer</span> <span class="chip">cultural_coordinator</span></p>
+    </div>
+  </div>
+
+  <h3 style="margin-top: 1.5rem;">Software company (separate from the university)</h3>
+  <div class="grid">
+    <div class="tile">
+      <h3>Founders</h3>
+      <p>Vishvajeet (CTO + product) · Nikita (co-founder, commercial)</p>
+    </div>
+    <div class="tile">
+      <h3>Vehicle</h3>
+      <p>Private Limited Company (recommended). Under CA brief; see <a href="#PLAN.md">PLAN.md §B</a>.</p>
+    </div>
+    <div class="tile">
+      <h3>Customer roadmap</h3>
+      <p>MIT new University (anchor) → MIT ADT → MITWPU → external vendors. Company incorporated after Phase 4 of <code>COMMERCIALIZATION_POLICY.md</code>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 7. FUTURE PLANS ============== -->
+<section>
+  <h2>7 · Future plans <span class="hint">what we're aiming at</span></h2>
+
+  <h3>7-day fire plan — the Ravikiran public demo</h3>
+  <table>
+    <tr><th>Day</th><th>Milestone</th><th>Status</th></tr>
+    <tr><td>1</td><td>Variants boot + launcher</td><td><span class="badge green">done (partial)</span></td></tr>
+    <tr><td>2</td><td>Seed scripts fully implemented + bleed-through fix</td><td><span class="badge amber">pending</span></td></tr>
+    <tr><td>3</td><td>Compelling demo data per variant</td><td><span class="badge amber">pending</span></td></tr>
+    <tr><td>4</td><td>Landing page + topbar cross-variant switch</td><td><span class="badge amber">pending</span></td></tr>
+    <tr><td>5</td><td>Mac mini deploy + TLS + external URLs</td><td><span class="badge amber">pending</span></td></tr>
+    <tr><td>6</td><td>Module propagation verification</td><td><span class="badge amber">pending</span></td></tr>
+    <tr><td>7</td><td>Crawler pass + trust demo + buffer</td><td><span class="badge amber">pending</span></td></tr>
+  </table>
+  <p><a href="#FIRE_PLAN_RAVIKIRAN_DEMO_7D.md">FIRE_PLAN_RAVIKIRAN_DEMO_7D.md →</a></p>
+
+  <h3 style="margin-top: 1.5rem;">24-week plan</h3>
+  <div class="grid">
+    <div class="tile">
+      <h3>Track A — ERP build</h3>
+      <ul>
+        <li>Lock structure proposal v1</li>
+        <li>Land A1-A3 (structure_editor, hr, admissions)</li>
+        <li>Land B1-B3 (academics, attendance, devices)</li>
+        <li>Land C1-C2 (student self-service, finance)</li>
+      </ul>
+    </div>
+    <div class="tile">
+      <h3>Track B — Software company</h3>
+      <ul>
+        <li>CA brief + entity selection</li>
+        <li>Co-founder agreement + IP assignment</li>
+        <li>ROC filing → incorporation</li>
+        <li>First MSA template</li>
+      </ul>
+    </div>
+  </div>
+  <p><a href="#PLAN.md">Full 24-week plan →</a></p>
+
+  <h3 style="margin-top: 1.5rem;">Commercial trajectory</h3>
+  <table>
+    <tr><th>Milestone</th><th>Realistic</th></tr>
+    <tr><td>Ravikiran 2-week cohort exit</td><td>2026-06</td></tr>
+    <tr><td>R&D cohort exit</td><td>2026-09</td></tr>
+    <tr><td>MIT ADT R&D (first external)</td><td>2027-04</td></tr>
+    <tr><td>Full ERP functioning (≥6 portals × ≥2 tenants × 3mo)</td><td>2028-03</td></tr>
+    <tr><td>First three paying renewals</td><td>2029-09</td></tr>
+  </table>
+  <p><a href="#COMMERCIALIZATION_POLICY.md">COMMERCIALIZATION_POLICY.md §5 →</a></p>
+
+  <h3 style="margin-top: 1.5rem;">Hosting phases</h3>
+  <div class="grid">
+    <div class="tile">
+      <h3>Phase A</h3>
+      <p>Mac mini co-located (dogfood, &lt;50 users)</p>
+    </div>
+    <div class="tile">
+      <h3>Phase B</h3>
+      <p>India VPS (operations, 50-500 users) — DigitalOcean Bangalore recommended</p>
+    </div>
+    <div class="tile">
+      <h3>Phase C</h3>
+      <p>Per-tenant cloud (1000+ across tenants) — per-tenant Postgres + encryption keys</p>
+    </div>
+  </div>
+  <p><a href="#HOSTING.md">HOSTING.md →</a></p>
+</section>
+
+<footer>
+  <p>
+    Source docs: <a href="#">README</a> · <a href="#CHARTER.md">CHARTER</a> · <a href="#STRUCTURE_PROPOSAL_v1.md">STRUCTURE_PROPOSAL_v1</a> · <a href="#PLAN.md">PLAN</a> · <a href="#POPULATIONS_AND_BUILD_OPTIONS.md">POPULATIONS_AND_BUILD_OPTIONS</a> · <a href="#NEXT_STEPS.md">NEXT_STEPS</a> · <a href="#HOSTING.md">HOSTING</a> · <a href="#FIRE_PLAN_RAVIKIRAN_DEMO_7D.md">FIRE_PLAN_7D</a> · <a href="#DEEP_CRAWL_REPORT.md">DEEP_CRAWL_REPORT</a> · <a href="#MODULE_PROPAGATION.md">MODULE_PROPAGATION</a>
+  </p>
+  <p>
+    This page is regenerated from live repo state by <code>dev-site/generate.py</code>. Last generation: 2026-04-15 15:20.
+  </p>
+</footer>
+
+</div>
+</body>
+</html>
