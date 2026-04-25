@@ -1,38 +1,6 @@
 title: Vishvajeet N
 url: https://nvishvajeet.github.io
 
-# Kill switch for the PRISM demo tab. Flip `enabled` to `false`
-# and the nav link disappears AND demo.html renders an empty
-# "unavailable" stub, without touching demo.html itself. Use this
-# when the demo host is down or being rebuilt.
-#
-# URL points at a Cloudflare quick-tunnel proxying the operator's
-# laptop Flask (:5055) to a public HTTPS endpoint. Works for
-# anyone on the internet — no tailnet, no VPN. The tunnel URL
-# changes every time cloudflared restarts; when it does, run
-# `cloudflared tunnel --url http://127.0.0.1:5055`, grab the new
-# `*.trycloudflare.com` URL from the output, and update this line
-# + the deep-links in demo.html, then push. A helper script
-# (`scripts/update_demo_tunnel.sh`) can be added later if the
-# tunnel restart churn gets annoying.
-prism_demo:
-  enabled: true
-  url: https://safer-regularly-zones-clients.trycloudflare.com/login?demo=1
-  base: https://safer-regularly-zones-clients.trycloudflare.com
-  # Live dev state — update when a new patch tag ships. The
-  # demo.html page renders these as a metadata strip under the
-  # CTA so visitors see the current iOS-cadence posture at a
-  # glance. Single source of truth for the card; if you bump
-  # stable_release here and push, the site re-renders with the
-  # new number within ~60s of GitHub Pages rebuild.
-  stable_release: v3.0.0
-  patches_shipped: 30+
-  crawler_strategies: 25
-  sanity_strategies: 11
-  future_fixes_remaining: 0
-  tag_cadence_first: v1.3.8
-  tag_cadence_last_date: 2026-04-12
-
 # Jekyll defaults are fine for this site. Pages with YAML front
 # matter (index.html, research.html, teaching.html, service.html,
 # cv.html, paper.html) get rendered through _layouts/default.html.
