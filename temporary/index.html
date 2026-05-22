@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>TR64 finish-line PowerShell</title>
+<style>
+  body { font-family: -apple-system, system-ui, sans-serif; max-width: 900px; margin: 3em auto; padding: 0 1em; color: #222; }
+  h1 { font-size: 1.4em; }
+  pre { background: #f4f4f4; padding: 1em; border: 1px solid #ddd; font-size: 1em; user-select: all; white-space: pre-wrap; word-break: break-all; line-height: 1.4; }
+  button { font-size: 1em; padding: 0.5em 1em; cursor: pointer; }
+  .note { color: #666; font-size: 0.9em; }
+  .ok { color: #2a8; font-weight: bold; }
+</style>
+</head>
+<body>
+<h1>TR64 finish-line — one PowerShell line</h1>
+<p>Open <b>Windows PowerShell as Administrator</b>. Paste the line below + press Enter:</p>
+
+<pre id="cmd">Start-Service sshd; Set-Service sshd -StartupType Automatic; if(-not(Get-NetFirewallRule -Name OpenSSH-Server-In-TCP -EA SilentlyContinue)){New-NetFirewallRule -Name OpenSSH-Server-In-TCP -DisplayName "OpenSSH Server" -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22|Out-Null}; New-Item -ItemType Directory -Path C:\Users\nebula\.ssh -Force|Out-Null; Set-Content C:\Users\nebula\.ssh\authorized_keys 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH79Y9ygZLTFENFsN4sIx+BpFjbRJs7DX5/qJhnHZ+xC nebula@nebula-controller'; icacls C:\Users\nebula\.ssh /inheritance:r /grant:r "nebula:(F)" "SYSTEM:(F)" "Administrators:(F)"|Out-Null; icacls C:\Users\nebula\.ssh\authorized_keys /inheritance:r /grant:r "nebula:(F)" "SYSTEM:(F)" "Administrators:(F)"|Out-Null; Get-NetTCPConnection -State Listen -LocalPort 22</pre>
+
+<p>
+  <button onclick="navigator.clipboard.writeText(document.getElementById('cmd').innerText).then(()=>document.getElementById('s').innerText='✓ copied — go paste it in PowerShell')">Copy to clipboard</button>
+  <span id="s" class="ok"></span>
+</p>
+
+<p class="note">
+  What it does (7 chained statements):
+</p>
+<ol class="note">
+  <li>Start sshd + set automatic startup</li>
+  <li>Open firewall :22 (if not already open)</li>
+  <li>Create <code>C:\Users\nebula\.ssh</code></li>
+  <li>Install the Nebula-HQ public key in <code>authorized_keys</code></li>
+  <li>Lock down ACLs on both</li>
+  <li>Print the listening :22 row → proves sshd is up</li>
+</ol>
+
+<p class="note">
+  Expected last line of output: a table row showing <code>LocalAddress=0.0.0.0  LocalPort=22</code>.
+  Send the operator a screenshot of that.
+</p>
+
+<p class="note">
+  Temporary page — will be removed after PHYSICS-HPC is fully onboarded.
+</p>
+</body>
+</html>
