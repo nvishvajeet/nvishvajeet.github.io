@@ -2,51 +2,64 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Physics-HPC onboarding v4 — installs OpenSSH + dual key + reports IP</title>
+<title>Physics-HPC onboarding — finish-line scripts</title>
 <style>
   body { font-family: -apple-system, system-ui, sans-serif; max-width: 1000px; margin: 3em auto; padding: 0 1em; color: #222; }
   h1 { font-size: 1.4em; }
+  h2 { font-size: 1.15em; margin-top: 2em; padding-top: 1em; border-top: 2px solid #ddd; }
   pre { background: #f4f4f4; padding: 1em; border: 1px solid #ddd; font-size: 0.95em; user-select: all; white-space: pre-wrap; word-break: break-all; line-height: 1.4; }
   button { font-size: 1em; padding: 0.5em 1em; cursor: pointer; }
   .note { color: #666; font-size: 0.9em; }
   .ok { color: #2a8; font-weight: bold; }
   .warn { color: #b80; }
+  .badge { display: inline-block; padding: 0.1em 0.5em; border-radius: 4px; background: #fc6; color: #000; font-size: 0.85em; font-weight: bold; margin-right: 0.5em; }
+  .badge-done { background: #cfc; color: #060; }
 </style>
 </head>
 <body>
-<h1>Physics-HPC finish-line — v4 (dual key + IP report)</h1>
 
-<p class="warn">⚠ Must run in <b>Administrator PowerShell</b> (title bar reads "Administrator: Windows PowerShell" or prompt is <code>PS C:\WINDOWS\system32&gt;</code>).</p>
+<h1>Physics-HPC finish-line scripts</h1>
 
-<pre id="cmd">$cap = Get-WindowsCapability -Online -Name OpenSSH.Server* | Select-Object -First 1; Write-Host "OpenSSH.Server state: $($cap.State)"; if ($cap.State -ne 'Installed') { Write-Host "Installing OpenSSH.Server (1-2 min)..."; Add-WindowsCapability -Online -Name $cap.Name | Out-Null }; $tries=0; while (-not (Get-Service sshd -ErrorAction SilentlyContinue) -and $tries -lt 30) { Start-Sleep -Seconds 2; $tries++ }; if (Get-Service sshd -ErrorAction SilentlyContinue) { Start-Service sshd; Set-Service sshd -StartupType Automatic; if (-not (Get-NetFirewallRule -Name OpenSSH-Server-In-TCP -EA SilentlyContinue)) { New-NetFirewallRule -Name OpenSSH-Server-In-TCP -DisplayName "OpenSSH Server" -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22 | Out-Null }; New-Item -ItemType Directory -Path C:\ProgramData\ssh -Force | Out-Null; @('ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH79Y9ygZLTFENFsN4sIx+BpFjbRJs7DX5/qJhnHZ+xC nebula@nebula-controller','ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBn/i2wum2UnqaZ3s0GBrSgpgWLSfBmJO5CzMu3AV27I copper-otter-window-salt') | Set-Content C:\ProgramData\ssh\administrators_authorized_keys; icacls C:\ProgramData\ssh\administrators_authorized_keys /inheritance:r /grant "Administrators:F" "SYSTEM:F" | Out-Null; Write-Host "`n=== READY ==="; Write-Host "  sshd       : $((Get-Service sshd).Status)"; Write-Host "  listening  :"; Get-NetTCPConnection -State Listen -LocalPort 22 | Format-Table -AutoSize; Write-Host "  IP addresses (give these to operator):"; Get-NetIPAddress -AddressFamily IPv4 | Where-Object { $_.IPAddress -notlike '127.*' -and $_.IPAddress -notlike '169.254.*' } | Format-Table InterfaceAlias, IPAddress -AutoSize; Write-Host "  hostname   : $env:COMPUTERNAME"; Write-Host "  username   : $env:USERNAME" } else { Write-Host "`n=== sshd service did NOT register ==="; Write-Host "  REBOOT the box, then come back to this URL and run again." }</pre>
+<p class="warn">⚠ All scripts run in <b>Administrator PowerShell</b> on PHYSICS-HPC (title bar = "Administrator: Windows PowerShell").</p>
+
+<!-- =================================================================== -->
+<h2><span class="badge">RUN NEXT</span> Round 2 — firewall fix (mini can ping but :22 blocked)</h2>
+
+<p class="note">v4 (below) installed OpenSSH + added keys + opened TCP :22 — but the mini's <code>nc -zv 10.3.0.246 22</code> times out. Likely the Windows firewall rule got scoped to Private/Domain only and the network is classified Public. This forces it to apply to <b>any</b> profile + verifies the rest of the state.</p>
+
+<pre id="fix">Get-Service sshd | Format-Table Name, Status -AutoSize; Get-NetTCPConnection -State Listen -LocalPort 22 -EA SilentlyContinue | Format-Table -AutoSize; Get-NetConnectionProfile | Format-Table InterfaceAlias, NetworkCategory -AutoSize; Set-NetFirewallRule -Name OpenSSH-Server-In-TCP -Profile Any -Enabled True; Write-Host "`n=== AFTER ==="; Get-NetFirewallRule -Name OpenSSH-Server-In-TCP | Format-List Name, Enabled, Profile</pre>
 
 <p>
-  <button onclick="navigator.clipboard.writeText(document.getElementById('cmd').innerText).then(()=>document.getElementById('s').innerText='✓ copied — paste in elevated PowerShell + Enter')">Copy to clipboard</button>
-  <span id="s" class="ok"></span>
+  <button onclick="navigator.clipboard.writeText(document.getElementById('fix').innerText).then(()=>document.getElementById('s2').innerText='✓ copied — paste in elevated PowerShell + Enter')">Copy fix to clipboard</button>
+  <span id="s2" class="ok"></span>
 </p>
 
 <p class="note">What this does:</p>
 <ol class="note">
-  <li>Checks if OpenSSH.Server Windows capability is installed; installs it if missing (~1-2 min)</li>
-  <li>Waits up to 60s for the sshd service to register</li>
-  <li>If registered: starts sshd, sets auto-start, opens firewall TCP :22</li>
-  <li>Writes <b>two</b> SSH keys into <code>C:\ProgramData\ssh\administrators_authorized_keys</code>:
-    <ul>
-      <li><code>nebula@nebula-controller</code> — for mini automation</li>
-      <li><code>copper-otter-window-salt</code> — operator's user key (interactive SSH)</li>
-    </ul>
-  </li>
-  <li>Locks the ACL down to Administrators + SYSTEM only</li>
-  <li>Prints "READY" + listening port + <b>IPv4 addresses</b> + hostname + Windows username (paste these back to the operator)</li>
-  <li>If sshd doesn't register in 60s → reboot + re-run (Windows sometimes finalises OpenSSH.Server only after a reboot)</li>
+  <li>Shows sshd service status — must say <code>Running</code></li>
+  <li>Shows what's listening on TCP :22 — must show a row with <code>0.0.0.0:22 Listen</code></li>
+  <li>Shows the network category (Public / Private / Domain)</li>
+  <li><b>Forces the OpenSSH firewall rule to apply to ALL profiles</b> (the actual fix)</li>
+  <li>Prints the rule's final state — <code>Profile: Any</code>, <code>Enabled: True</code></li>
 </ol>
 
-<p class="note">
-  Expected last lines: <code>=== READY ===</code> followed by a row showing <code>:22 Listen</code> + a table of interfaces. Paste those back to the operator so the <code>ProxyJump</code> entry can be added.
+<p class="note">If sshd is <b>not</b> Running or nothing is listening on :22: <code>Restart-Service sshd</code> and re-run. If still nothing → reboot.</p>
+
+<p class="note">Paste the full output back to operator. Once <code>:22 Listen</code> appears + rule shows <code>Profile: Any</code>, mini → Physics-HPC SSH should immediately work.</p>
+
+
+<!-- =================================================================== -->
+<h2><span class="badge badge-done">DONE</span> Round 1 — v4 (kept for reference; do NOT re-run unless starting from scratch)</h2>
+
+<p class="note">Installs OpenSSH Server, opens firewall, writes both nebula + operator keys to <code>administrators_authorized_keys</code>, reports IPs + hostname.</p>
+
+<pre id="cmd">$cap = Get-WindowsCapability -Online -Name OpenSSH.Server* | Select-Object -First 1; Write-Host "OpenSSH.Server state: $($cap.State)"; if ($cap.State -ne 'Installed') { Write-Host "Installing OpenSSH.Server (1-2 min)..."; Add-WindowsCapability -Online -Name $cap.Name | Out-Null }; $tries=0; while (-not (Get-Service sshd -ErrorAction SilentlyContinue) -and $tries -lt 30) { Start-Sleep -Seconds 2; $tries++ }; if (Get-Service sshd -ErrorAction SilentlyContinue) { Start-Service sshd; Set-Service sshd -StartupType Automatic; if (-not (Get-NetFirewallRule -Name OpenSSH-Server-In-TCP -EA SilentlyContinue)) { New-NetFirewallRule -Name OpenSSH-Server-In-TCP -DisplayName "OpenSSH Server" -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22 | Out-Null }; New-Item -ItemType Directory -Path C:\ProgramData\ssh -Force | Out-Null; @('ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH79Y9ygZLTFENFsN4sIx+BpFjbRJs7DX5/qJhnHZ+xC nebula@nebula-controller','ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBn/i2wum2UnqaZ3s0GBrSgpgWLSfBmJO5CzMu3AV27I copper-otter-window-salt') | Set-Content C:\ProgramData\ssh\administrators_authorized_keys; icacls C:\ProgramData\ssh\administrators_authorized_keys /inheritance:r /grant "Administrators:F" "SYSTEM:F" | Out-Null; Write-Host "`n=== READY ==="; Write-Host "  sshd       : $((Get-Service sshd).Status)"; Write-Host "  listening  :"; Get-NetTCPConnection -State Listen -LocalPort 22 | Format-Table -AutoSize; Write-Host "  IP addresses (give these to operator):"; Get-NetIPAddress -AddressFamily IPv4 | Where-Object { $_.IPAddress -notlike '127.*' -and $_.IPAddress -notlike '169.254.*' } | Format-Table InterfaceAlias, IPAddress -AutoSize; Write-Host "  hostname   : $env:COMPUTERNAME"; Write-Host "  username   : $env:USERNAME" } else { Write-Host "`n=== sshd service did NOT register ==="; Write-Host "  REBOOT the box, then come back to this URL and run again." }</pre>
+
+<p>
+  <button onclick="navigator.clipboard.writeText(document.getElementById('cmd').innerText).then(()=>document.getElementById('s').innerText='✓ copied')">Copy v4 to clipboard</button>
+  <span id="s" class="ok"></span>
 </p>
 
-<p class="note">
-  Once the operator has SSH'd in successfully, this page gets deleted (per the "PHYSICS-HPC SSH established" pattern from the TR64 onboarding).
-</p>
+<p class="note">Page gets deleted once operator confirms SSH from MacBook → Physics-HPC works end-to-end.</p>
 </body>
 </html>
