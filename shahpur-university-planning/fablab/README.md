@@ -179,7 +179,40 @@ Prices are realistic street estimates for India in 2026 and will vary with brand
 | **Standard (500 m²)** | **1.4–1.7 cr** | **$170–205k** |
 | Flagship / CFI-scale (1000–1500 m²) | 4–7 cr | $480k–840k |
 
-> For context, the Fab Foundation's classic "FabLab inventory" is often quoted at roughly **US$50k–100k of machines** — the Standard tier above sits comfortably above that because it adds robotics, more print capacity, dirty-zone tooling, and India-specific infra/extraction.
+---
+
+## 5a. Benchmarked against the official Fab Foundation cost standard
+
+The Fab Foundation publishes the canonical "what does a Fab Lab cost" figures
+(source: [Getting Started with Fab Labs](https://fabfoundation.org/getting-started/),
+referenced from the [Growing the Fab Lab Network](https://fabfoundation.org/blog/growing-fab-lab-network) post).
+Their numbers cover **machines + consumables only** — they explicitly do *not* include the building,
+fit-out, furniture, or staff. At ~₹85/US$ (2026):
+
+| Fab Foundation official figure | USD | INR (≈ ₹85/$) |
+|---|---:|---:|
+| Capital equipment (MIT inventory list) | $25,000 – $65,000 | ₹21 – 55 lakh |
+| Initial consumables | $15,000 – $40,000 | ₹13 – 34 lakh |
+| **Subtotal to stand up a "regular" Fab Lab** | **$40,000 – $105,000** | **₹34 – 89 lakh** |
+| Mobile Fab Lab (reference only) | $298,000 | ≈ ₹2.5 crore |
+
+*(UK chapter quotes the equivalent £30–80k capital + £10–25k consumables.)*
+
+**How the Shahpur proposal maps onto this benchmark:**
+
+| | Fab Foundation "regular lab" | This proposal (Standard tier) |
+|---|---|---|
+| **Machines/equipment** (Sections 4.1–4.5) | $25k–65k = ₹21–55 L | **≈ ₹55 L** — sits right at the top of the FF range |
+| Why at the top, not the middle | — | adds robotics/AI boards, a 6-printer farm, dirty-zone power tools & welding, and India-grade fume/dust extraction that the bare FF inventory omits |
+| **Consumables** (Year 1, Section 6) | $15k–40k = ₹13–34 L | ₹6–10 L/yr running rate (lower; FF figure front-loads bulk initial stock) |
+| **Building + fit-out + furniture** | *not counted by FF* | + ~₹80 L (the retrofit, power, HVAC, extraction, benches) |
+| **Staff** | *not counted by FF* | OpEx, ₹8–14 L/yr |
+
+**Takeaway:** the *equipment* line of this proposal (~₹55 lakh) is fully consistent with — and at the
+upper bound of — the official Fab Foundation capital standard. The reason the headline total reaches
+**₹1.5 crore** is the building/fit-out (~₹80 L) and a robotics/dirty-zone scope that the bare Fab Lab
+inventory doesn't include. A pure, by-the-book Fab Foundation lab in Shahpur (machines + first-year
+consumables, fitted into an existing room) would land at **≈ ₹35–90 lakh** — i.e. the **Starter tier**.
 
 ---
 
