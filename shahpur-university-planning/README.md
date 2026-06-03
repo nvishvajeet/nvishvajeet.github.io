@@ -5,8 +5,8 @@ Kept separate from the main personal/academic site content.
 
 ## Projects
 
-| # | Project | Status | Doc |
+| # | Project | Status | Docs |
 |---|---|---|---|
-| 1 | **FabLab / Innovation Center** — open-access, student-run makerspace (3D printing, laser/CNC, electronics, robotics) modelled on eirLab (Talence) + CFI (IIT Madras) | Draft proposal | [`fablab/README.md`](fablab/README.md) |
+| 1 | **FabLab / Innovation Center** — open-access, student-run makerspace (3D printing, laser/CNC, electronics, robotics) modelled on eirLab (Talence) + CFI (IIT Madras); built to the Fab Foundation standard for network membership | Draft proposal | [Markdown](fablab/README.md) · [PDF](fablab/FabLab-Shahpur-Proposal.pdf) |
 
 _Add further planning projects as their own subdirectories under this folder._
