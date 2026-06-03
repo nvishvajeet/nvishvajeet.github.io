@@ -82,95 +82,110 @@ A single large hall plus 2–3 partitionable rooms is enough to start. Ground-fl
 
 ---
 
-## 4. Equipment list — by zone (India 2026 price estimates)
+## 4. Equipment list — best-in-class spec (India 2026 estimates)
 
-Prices are realistic street estimates for India in 2026 and will vary with brand, GST, and education discounts. "Qty" reflects the **Standard tier**. This list is built to **satisfy the Fab Foundation common-inventory requirement** (Section 8).
+**Procurement philosophy (the "HPC mentality"):** buy *professional-grade, serviceable, safety-first* machines, not the cheapest unit that technically works. Where a marginal ("epsilon") spend buys real gains in **uptime, output quality, repairability, local service/warranty, or operator safety**, we take the upgrade — because in an open, high-throughput student lab the lifetime cost of a flaky machine (downtime, scrapped work, frustrated users, safety incidents) dwarfs the purchase price. Named models below are concrete *anchors* for quality/price; equivalent-tier alternatives are listed so procurement can competitively quote. This list also satisfies the Fab Foundation common-inventory requirement (§8) — several picks (ShopBot, Roland mill/vinyl) *are* the Fab standard machines.
 
 ### 4.1 Digital fabrication (the FabLab core)
 
-| Equipment | Qty | Unit (₹) | Subtotal (₹) | Notes |
+| Equipment | Qty | Unit (₹) | Subtotal (₹) | Best-in-class anchor & why |
 |---|---|---:|---:|---|
-| FDM 3D printers (Bambu/Creality class) | 6 | 40,000 | 2,40,000 | The workhorse "print farm". Quantity > fanciness. |
-| Resin (SLA/MSLA) printer + wash/cure | 1 | 60,000 | 60,000 | Fine detail; needs ventilation + PPE. |
-| Large-format / engineering FDM | 1 | 4,00,000 | 4,00,000 | Bigger build volume, engineering filaments. |
-| CO₂ laser cutter/engraver, 60–100 W + chiller + exhaust | 1 | 5,00,000 | 5,00,000 | Acrylic/wood/MDF. Bed ~600×900 mm+. The most-loved machine in any fablab. |
-| CNC router (desktop→benchtop) | 1 | 2,50,000 | 2,50,000 | Wood/plastic/soft metal. |
-| Vinyl cutter / plotter | 1 | 50,000 | 50,000 | Stickers, stencils, flexible-circuit/copper. |
-| **Subtotal** | | | **15,00,000** | |
+| FDM 3D printer — enclosed CoreXY + multi-material | 4 | 1,30,000 | 5,20,000 | **Bambu Lab X1-Carbon + AMS** — fastest reliable prosumer, multi-colour/material, hardened nozzle for CF. The student workhorse. |
+| FDM 3D printer — open, ultra-serviceable | 2 | 1,00,000 | 2,00,000 | **Prusa MK4S** — open-source, every part replaceable in-house, runs for years. Insurance against vendor lock-in. |
+| Engineering FDM — dual-extrusion, soluble support | 1 | 7,50,000 | 7,50,000 | **UltiMaker S7 Pro bundle** — heated chamber, PVA support, true engineering polymers (PC, PA, PETG-CF). |
+| Composite FDM — continuous carbon/glass fibre | 1 | 12,00,000 | 12,00,000 | **Markforged Mark Two / Onyx Pro** — prints metal-strength functional parts (jigs, drone frames, robotics arms). Nothing else does this in-house. *(Flagship item — high value-per-rupee for serious teams.)* |
+| Resin SLA — precision + closed ecosystem | 1 | 5,00,000 | 5,00,000 | **Formlabs Form 4 + Form Wash + Form Cure** — best surface finish & repeatability, engineering/dental/castable resins. |
+| Large MSLA resin + wash/cure | 1 | 70,000 | 70,000 | **Elegoo Saturn 4 Ultra** (+station) — high-volume detailed prints at low cost. |
+| CO₂ laser cutter 100 W + chiller + premium extraction | 1 | 12,00,000 | 12,00,000 | **Thunder Laser Nova 51 (RECI tube)** — metal frame, autofocus, rock-solid; pairs with BOFA extraction (§4.5). *(Trotec Speedy is the ~₹30 L step-up.)* |
+| Fibre laser marker/cutter (metal) | 1 | 4,50,000 | 4,50,000 | **Raycus/JPT 30–50 W fibre** — engrave & mark metal, cut thin sheet; opens metalwork the CO₂ can't. |
+| CNC router — full-sheet (the Fab standard) | 1 | 18,00,000 | 18,00,000 | **ShopBot PRSalpha 96×48** — the canonical Fab Lab CNC; furniture, large enclosures, mould-making. |
+| Desktop precision mill — PCBs + small metal | 1 | 4,50,000 | 4,50,000 | **Roland SRM-20** (Fab standard) — clean single-/double-sided PCBs, wax/aluminium machining. |
+| Desktop PCB prototyping mill (fast turn) | 1 | 5,50,000 | 5,50,000 | **Bantam Tools Desktop PCB Mill** — same-hour PCB iteration; huge for electronics/robotics teams. |
+| Vinyl cutter (the Fab standard) | 1 | 1,80,000 | 1,80,000 | **Roland CAMM-1 GS-24** — stickers, stencils, flexible copper, vinyl masks for etching. |
+| **Subtotal** | | | **78,70,000** | |
 
 ### 4.2 Electronics & robotics
 
-| Equipment | Qty | Unit (₹) | Subtotal (₹) | Notes |
+| Equipment | Qty | Unit (₹) | Subtotal (₹) | Best-in-class anchor & why |
 |---|---|---:|---:|---|
-| ESD soldering/rework stations | 8 | 12,000 | 96,000 | Hot-air rework on a couple. |
-| Digital oscilloscopes (100 MHz) | 3 | 55,000 | 1,65,000 | |
-| Bench power supplies (triple-output) | 6 | 12,000 | 72,000 | |
-| Function generators + bench DMMs | set | — | 1,20,000 | |
-| Logic analysers / LCR / spectrum (entry) | set | — | 80,000 | |
-| Reflow oven + stencil setup | 1 | 35,000 | 35,000 | SMD assembly. |
-| Desktop PCB mill *(optional)* | 1 | 3,00,000 | 3,00,000 | Or outsource PCBs and skip this in Phase 1. |
-| Microcontroller/SBC pool (Arduino, ESP32, RPi, **Jetson Nano/Orin**, STM32) | pool | — | 2,00,000 | Loaner kits + a few AI/vision boards. |
-| Robotics kits, motors, drivers, sensors, LiDAR, IMUs, batteries/chargers | pool | — | 3,00,000 | Feeds Robocon/competition teams. |
-| Component inventory (R/L/C, ICs, connectors, wire) + storage | — | — | 1,50,000 | Treat as partly consumable (Section 6). |
-| **Subtotal** | | | **15,18,000** | |
+| Soldering station — reference grade | 4 | 55,000 | 2,20,000 | **JBC CD-2BHE** — fastest tip recovery, best joints, near-indestructible. The bench everyone fights over. |
+| Soldering station — quality workhorse | 4 | 25,000 | 1,00,000 | **Hakko FX-951** — reliable, cheap tips, perfect for the rest of the benches. |
+| Hot-air rework stations | 2 | 60,000 | 1,20,000 | **Hakko FR-810B** — SMD/BGA rework done properly. |
+| Oscilloscope — reference (350 MHz, 4-ch MSO) | 1 | 5,50,000 | 5,50,000 | **Keysight InfiniiVision DSOX3034T** — the gold-standard teaching/debug scope. |
+| Oscilloscope — high-value 4-ch MSO | 3 | 1,80,000 | 5,40,000 | **Rigol MSO5074** — pro features at a fraction of the price; great for the general benches. |
+| Triple-output bench PSU | 4 | 80,000 | 3,20,000 | **Keysight E36312A** — clean, programmable, protected. |
+| Arbitrary function generator | 2 | 1,80,000 | 3,60,000 | **Keysight 33500B** — precise signals for real characterisation. |
+| Bench DMM — 6½ digit | 2 | 1,80,000 | 3,60,000 | **Keysight 34465A** — lab-reference measurements. |
+| Handheld DMM | 6 | 30,000 | 1,80,000 | **Fluke 87V** — the industry-standard rugged meter. |
+| Logic analyser | 2 | 1,00,000 | 2,00,000 | **Saleae Logic Pro 16** — best protocol-decode UX, debugs any digital bus. |
+| Spectrum analyser | 1 | 2,80,000 | 2,80,000 | **Siglent SSA3021X** — RF/EMC debugging for wireless & power projects. |
+| SMD assembly line — P&P + reflow + stencil printer | 1 set | 9,50,000 | 9,50,000 | **Neoden 4** pick-and-place + reflow oven + stencil printer — in-house small-batch PCB assembly. |
+| MCU / SBC / FPGA pool | pool | — | 5,00,000 | NVIDIA **Jetson AGX Orin** + several Orin Nano, RPi 5, ESP32, STM32, Teensy 4, **Digilent** FPGA boards — real edge-AI & embedded work. |
+| Robotics platform pool | pool | — | 9,00,000 | Desktop robot arm (**UFACTORY xArm 6** / Dobot CR), **Dynamixel** smart servos, **Intel RealSense** + **Luxonis OAK-D** vision, **Livox/RPLidar**, drone dev kits, LiPo packs + smart chargers. Feeds Robocon/FS/e-Yantra teams. |
+| Component inventory (genuine parts, SMD reels) + ESD storage | — | — | 3,00,000 | Quality, traceable parts; treat partly as consumable (§6). |
+| **Subtotal** | | | **59,00,000** | |
 
 ### 4.3 Workshop / dirty zone
 
-| Equipment | Qty | Unit (₹) | Subtotal (₹) | Notes |
+| Equipment | Qty | Unit (₹) | Subtotal (₹) | Best-in-class anchor & why |
 |---|---|---:|---:|---|
-| Workbenches + vises (heavy) | 4 | 25,000 | 1,00,000 | |
-| Drill press, band saw, table saw, mitre saw | set | — | 2,50,000 | Induction-gated. |
-| Hand & power tools (drills, drivers, Dremel, etc.) | set | — | 1,50,000 | |
-| Bench grinder, belt/disc sander | set | — | 60,000 | |
-| MIG/TIG or arc welder + safety gear | 1 | 1,20,000 | 1,20,000 | Phase 2 optional; serious ventilation needed. |
-| Sewing/textile machine + heat press (Fab standard) | 1 | 45,000 | 45,000 | Soft fabrication, wearables, drone covers. |
-| **Subtotal** | | | **7,25,000** | |
+| Table saw — flesh-detection safety | 1 | 4,50,000 | 4,50,000 | **SawStop** — stops the blade in <5 ms on skin contact. In a student lab this single upgrade prevents life-changing injuries; non-negotiable. |
+| Track saw + integrated dust extraction | 1 set | 1,60,000 | 1,60,000 | **Festool TS 55 + CT extractor** — precise sheet breakdown, near-zero dust. |
+| Bandsaw, drill press, mitre saw (quality) | set | — | 3,20,000 | **Record Power / Bosch Professional** class — accurate, durable, induction-gated. |
+| Hand & power tools | set | — | 3,00,000 | **Festool / Bosch Professional / Makita** — tools that survive shared abuse and stay accurate. |
+| Bench grinder, belt/disc sander | set | — | 1,00,000 | Quality, well-guarded units. |
+| Multiprocess welder (MIG/TIG/stick) + auto-darkening helmets + welding fume extractor | 1 set | 3,80,000 | 3,80,000 | **Miller/Lincoln/ESAB** multiprocess — proper welds for robotics/auto teams; dedicated fume capture. |
+| Heavy workbenches + quality vises | 4 | 40,000 | 1,60,000 | Steel benches that take a beating. |
+| Industrial sewing + embroidery + heat press | set | — | 1,50,000 | Soft fabrication, wearables, drone covers, composite layup. |
+| **Subtotal** | | | **20,20,000** | |
 
 ### 4.4 Computing, design & metrology
 
-| Equipment | Qty | Unit (₹) | Subtotal (₹) | Notes |
+| Equipment | Qty | Unit (₹) | Subtotal (₹) | Best-in-class anchor & why |
 |---|---|---:|---:|---|
-| CAD/CAM workstations (GPU, for CAD + slicing + sim) | 6 | 1,20,000 | 7,20,000 | |
-| Large monitor + projector for teaching nook | — | — | 80,000 | |
-| Calipers, micrometers, multimeters (qty), bench tools | — | — | 60,000 | |
-| 3D scanner *(optional)* | 1 | 1,50,000 | 1,50,000 | Reverse engineering. |
-| **Subtotal (capital)** | | | **10,10,000** | Software is OpEx (Section 6); lean on FOSS — FreeCAD, KiCad, Inkscape. |
+| CAD/CAM/sim workstations | 6 | 3,00,000 | 18,00,000 | **Dell Precision / HP Z** class, RTX 4080/A-series, 64–128 GB — heavy CAD, CAM, FEA/CFD, slicing without waiting. |
+| GPU node for AI/sim training | 1 | 4,50,000 | 4,50,000 | RTX 4090 / dual-GPU — robotics vision, ML, large simulations. |
+| Teaching display + 4K monitors | set | — | 2,00,000 | Large interactive display/projector + 4K screens for the teaching nook. |
+| 3D scanner — pro | 1 | 6,50,000 | 6,50,000 | **EinScan HX** (or **Artec Leo** at the ~₹18 L step-up) — accurate reverse-engineering & metrology-grade capture. |
+| Metrology set | set | — | 2,80,000 | **Mitutoyo** calipers/micrometers/height gauge + measuring microscope — the trusted standard. |
+| **Subtotal (capital)** | | | **33,80,000** | Software is OpEx (§6); lean on FOSS (FreeCAD, KiCad, Inkscape) + a few pro seats (Fusion 360, SolidWorks education). |
 
 ### 4.5 Safety & shared equipment
 
-| Item | Subtotal (₹) | Notes |
+| Item | Subtotal (₹) | Best-in-class anchor & why |
 |---|---:|---|
-| Fume extraction arms, dust collector, laser exhaust blower | 4,00,000 | Often under-budgeted — don't. |
-| PPE: goggles, gloves, aprons, ear/lung protection, face shields | 60,000 | |
-| Fire extinguishers, smoke/heat detectors, eyewash, first aid | 1,00,000 | |
-| Signage, induction materials, machine SOP cards, labelling | 40,000 | |
-| Access control / RFID badge system (ties to induction) | 1,50,000 | The eirLab-style "earn the badge" model. |
-| **Subtotal** | **7,50,000** | |
+| Fume extraction — laser + multi-arm solder | 6,50,000 | **BOFA** filtration — the industry premium; protects lungs and keeps the lab open during inspections. |
+| Dust extraction (cyclone + ducting + drops) | 2,80,000 | Proper HEPA cyclone system for CNC/woodworking. |
+| PPE (quality, sized, replenished) | 1,20,000 | Goggles, gloves, aprons, ear/lung protection, face shields, welding gear. |
+| Fire suppression, smoke/heat detectors, eyewash, first aid | 1,80,000 | Including a CO₂/clean-agent extinguisher near electronics & resin. |
+| Signage, induction materials, machine SOP cards, labelling | 60,000 | |
+| RFID access-control system | 2,20,000 | The eirLab-style "earn the badge" per-machine access model. |
+| **Subtotal** | **15,10,000** | |
 
 ---
 
-## 5. Equipment cost summary (Standard tier — equipment only)
+## 5. Equipment cost summary (best-in-class build — equipment only)
 
 | Block | Cost (₹) |
 |---|---:|
-| 4.1 Digital fabrication | 15,00,000 |
-| 4.2 Electronics & robotics | 15,18,000 |
-| 4.3 Workshop / dirty zone | 7,25,000 |
-| 4.4 Computing & metrology | 10,10,000 |
-| 4.5 Safety & shared equipment | 7,50,000 |
-| **Equipment subtotal** | **55,03,000** |
-| Contingency (~10%) | ~5,50,000 |
-| **TOTAL equipment capital** | **≈ ₹60.5 lakh** (~US$71k) |
+| 4.1 Digital fabrication | 78,70,000 |
+| 4.2 Electronics & robotics | 59,00,000 |
+| 4.3 Workshop / dirty zone | 20,20,000 |
+| 4.4 Computing & metrology | 33,80,000 |
+| 4.5 Safety & shared equipment | 15,10,000 |
+| **Equipment subtotal** | **2,06,80,000** |
+| Contingency (~10%) | ~20,70,000 |
+| **TOTAL equipment capital** | **≈ ₹2.27 crore** (~US$267k) |
 
-**Tier comparison (equipment only):**
+**Three build levels (equipment only) — so the budget can be staged or trimmed:**
 
-| Tier | Equipment capital (₹) | USD approx |
-|---|---:|---:|
-| Starter | 25–35 lakh | $30–41k |
-| **Standard (recommended)** | **55–65 lakh** | **$65–76k** |
-| Flagship / CFI-scale | 1.5–3 cr | $176–353k |
+| Build | What you get | Equipment capital (₹) | USD approx |
+|---|---|---:|---:|
+| Lean / by-the-book Fab Lab | Fab Foundation core inventory, value-grade brands | 35–55 lakh | $41–65k |
+| **Best-in-class (recommended)** | **the spec above — pro-grade, safety-first, edge-AI & composite capable** | **₹2.0–2.3 cr** | **$235–270k** |
+| — of which "flagship stretch" items | Markforged composite, fibre laser, ShopBot, Neoden P&P, Artec scanner | ~50–60 lakh | $59–71k |
 
-*(Building, civil, electrical, HVAC and furniture are excluded by request and are to be provided by the university.)*
+*The five "flagship stretch" items deliver capabilities nothing cheaper can match; if cash-flow demands, defer them to Phase 2 and the build still lands at a strong **≈ ₹1.6–1.7 cr** while keeping every core machine at top quality. Building, civil, electrical, HVAC and furniture remain excluded (university-provided).*
 
 ---
 
@@ -189,26 +204,31 @@ The Fab Foundation publishes canonical "what does a Fab Lab cost" figures for **
 
 *(UK chapter quotes the equivalent £30–80k capital + £10–25k consumables.)*
 
-**How this proposal maps onto the benchmark:** the Standard equipment line above (**≈ ₹55–60 lakh**) sits right
-at the **top of the official Fab Foundation capital range** (₹21–55 lakh). It runs to the upper bound because it
-adds robotics/AI boards, a 6-printer farm, and dirty-zone power tools that the bare inventory omits. Because
-building/fit-out is excluded here, **this proposal's headline number is now essentially the same as the official
-Fab Foundation equipment figure** — i.e. we are budgeting a genuine, by-the-book Fab Lab.
+**How this proposal maps onto the benchmark:** the Fab Foundation range describes a *baseline* lab built with
+value-grade machines. This proposal deliberately spends **~3–4× that baseline (≈ ₹2.0–2.3 cr)** because we chose
+**professional-grade, serviceable, safety-first equipment** and added capabilities the bare inventory omits —
+continuous-fibre composite printing, a metal-capable fibre laser, in-house PCB assembly (pick-and-place),
+flesh-detection saw safety, edge-AI/robotics platforms, and metrology-grade scanning. The result is still a
+fully **Fab-Foundation-compliant** lab (it contains every standard machine — ShopBot, Roland mill/vinyl, etc.),
+just specced at the quality tier of a top university makerspace rather than the entry minimum. A lean,
+by-the-book version remains available at **₹35–55 lakh** (table in §5) if budget is constrained.
 
 ---
 
-## 6. Operating cost (annual, Standard tier)
+## 6. Operating cost (annual, best-in-class build)
+
+Premium machines cost a little more to run (genuine consumables, AMC/service contracts) but break far less often — the trade is fewer catastrophic failures and far higher uptime.
 
 | Item | Annual (₹) |
 |---|---:|
 | Full-time technical staff (1–2: lab engineer + technician) | 8–14 lakh |
-| Consumables (filament, sheets, resin, electronic components, blades, bits, PPE refills) | 6–10 lakh |
-| Maintenance & spares (laser tube, nozzles, belts, AMC) | 3–5 lakh |
-| Software licences (minimise via FOSS) | 1–2 lakh |
-| Power (high-draw machines) | 3–6 lakh |
+| Consumables (filament, resin, sheet stock, genuine SMD parts, blades, bits, PPE refills) | 8–14 lakh |
+| Maintenance, AMC & spares (laser tube, Formlabs/UltiMaker service, ShopBot bits, calibration) | 5–10 lakh |
+| Software (mostly FOSS; a few pro seats — Fusion 360, SolidWorks education) | 1–3 lakh |
+| Power (high-draw machines + GPU node) | 4–7 lakh |
 | Competitions, project grants, hackathons, travel | 5–15 lakh |
-| Fab network participation (membership is free; Fab Academy tuition optional — see §8) | 0–8 lakh |
-| **Total OpEx** | **≈ ₹26–60 lakh / year** |
+| Fab network participation (membership free; Fab Academy tuition optional — see §8) | 0–8 lakh |
+| **Total OpEx** | **≈ ₹31–71 lakh / year** |
 
 **Sustainability levers:** small per-print/material charge-back at cost; sponsored club teams; industry-sponsored machines (named bays); paid weekend workshops for the public/schools (also satisfies the public-access requirement, §8); consultancy/prototyping for local startups (eirLab and many FabLabs do this).
 
@@ -219,11 +239,11 @@ Fab Foundation equipment figure** — i.e. we are budgeting a genuine, by-the-bo
 **Phase 0 — Pre-launch (Months 0–3)**
 University allocates space + utilities; recruit 1 faculty mentor + 1 technical staff + a 6–8 student core team; draft safety SOPs and the induction/badge system; finalise Phase-1 procurement; **publicly endorse the Fab Charter** (§8).
 
-**Phase 1 — "Get students building" (Months 3–8) · equipment ≈ ₹28–35 lakh**
-Commission: FDM print farm (6), 1 laser cutter (+extraction), electronics benches (8), CAD machines (4–6), hand tools, microcontroller/robotics pool, full safety kit. **Open the doors** with public-access hours. This alone is a complete, lovable makerspace and already meets the common-tools criterion.
+**Phase 1 — "Get students building" (Months 3–8) · equipment ≈ ₹70–90 lakh**
+Commission the everyday core at full quality: FDM print farm (Bambu ×4 + Prusa ×2), Formlabs resin, the CO₂ laser (+BOFA extraction), premium electronics benches (JBC/Keysight/Rigol), workstations, SawStop + core power tools, the MCU/robotics pool, and the full safety kit. **Open the doors** with public-access hours. This alone is a complete, lovable, top-tier makerspace and already meets the Fab common-tools criterion.
 
-**Phase 2 — "Full FabLab" (Months 8–18) · +equipment ≈ ₹20–28 lakh**
-Add CNC router, large-format + resin printing, dirty-zone power tools, metrology, PCB mill/reflow, vinyl cutter, sewing/textile. **Register on fablabs.io and join the Fab Foundation network** (§8). Launch competition teams (Robocon, e-Yantra, Formula Student feeder).
+**Phase 2 — "Full FabLab + flagship capabilities" (Months 8–18) · +equipment ≈ ₹1.2–1.4 cr**
+Add the ShopBot CNC, Markforged composite printer, fibre laser, UltiMaker engineering FDM, Neoden pick-and-place line, Roland/Bantam mills + vinyl, EinScan scanner, welding bay, and GPU node. **Register on fablabs.io and join the Fab Foundation network** (§8). Launch competition teams (Robocon, e-Yantra, Formula Student feeder).
 
 **Phase 3 — "Scale & specialise (CFI-style)" (Year 2+)**
 Welding/metal bay, dedicated club rooms, industry-sponsored bays, public/school outreach, startup incubation tie-in, optional Fab Academy node.
@@ -294,7 +314,7 @@ A space qualifies as a Fab Lab when it meets **all four**:
 
 ## 11. One-paragraph executive summary (for the proposal cover)
 
-> We propose an **open-access, student-run FabLab & Innovation Center** at the new Shahpur campus, modelled on eirLab (Talence) for its digital-fabrication discipline and IIT Madras's CFI for its student-governed, competition-driven culture, and built to the **MIT/Fab Foundation common-inventory standard** so it can **join the global Fab Lab network**. Using university-provided space, the **equipment outlay is ≈ ₹55–65 lakh** (~US$65–76k; phased, with a complete Phase-1 makerspace for ≈ ₹30 lakh), delivering 3D printing, laser/CNC cutting, electronics, robotics and a workshop accessible to **every student** via a simple safety-induction badge system. **Annual operating cost ≈ ₹26–60 lakh.** Network registration on fablabs.io is **free** once the four Fab Charter criteria are met. The center becomes the campus's hands-on engine for tinkering, prototyping, competitions, and student startups — and a recognised node on the worldwide Fab Lab map.
+> We propose an **open-access, student-run FabLab & Innovation Center** at the new Shahpur campus, modelled on eirLab (Talence) for its digital-fabrication discipline and IIT Madras's CFI for its student-governed, competition-driven culture, and built to the **MIT/Fab Foundation common-inventory standard** so it can **join the global Fab Lab network**. Equipment is specced **best-in-class** — professional-grade, serviceable, safety-first — including continuous-fibre composite 3D printing, a full-sheet ShopBot CNC, CO₂ + fibre lasers, in-house PCB pick-and-place, flesh-detection saw safety, and edge-AI/robotics platforms. Using university-provided space, the **equipment outlay is ≈ ₹2.0–2.3 crore** (~US$235–270k; phased, with a complete top-tier Phase-1 makerspace for ≈ ₹70–90 lakh; a lean by-the-book alternative is ₹35–55 lakh), delivering 3D printing, laser/CNC cutting, electronics, robotics and a workshop accessible to **every student** via a simple safety-induction badge system. **Annual operating cost ≈ ₹31–71 lakh.** Network registration on fablabs.io is **free** once the four Fab Charter criteria are met. The center becomes the campus's hands-on engine for tinkering, prototyping, competitions, and student startups — and a recognised node on the worldwide Fab Lab map.
 
 ---
 
