@@ -1,6 +1,6 @@
 # FabLab / Innovation Center — Design, Equipment & Network-Membership Proposal
 
-**For:** A new university at Shahpur, India
+**For:** A new university at Sahajpur, India
 **Prepared by:** Vishvajeet N (drawing on hands-on experience at eirLab, Talence)
 **Reference models:** eirLab (ENSEIRB-MATMECA, Talence/Bordeaux) · CFI — Center For Innovation (IIT Madras) · MIT / Fab Foundation FabLab standard
 **Date:** June 2026 · **Currency:** INR (USD reference where useful)
@@ -314,7 +314,7 @@ A space qualifies as a Fab Lab when it meets **all four**:
 
 ## 11. One-paragraph executive summary (for the proposal cover)
 
-> We propose an **open-access, student-run FabLab & Innovation Center** at the new Shahpur campus, modelled on eirLab (Talence) for its digital-fabrication discipline and IIT Madras's CFI for its student-governed, competition-driven culture, and built to the **MIT/Fab Foundation common-inventory standard** so it can **join the global Fab Lab network**. Equipment is specced **best-in-class** — professional-grade, serviceable, safety-first — including continuous-fibre composite 3D printing, a full-sheet ShopBot CNC, CO₂ + fibre lasers, in-house PCB pick-and-place, flesh-detection saw safety, and edge-AI/robotics platforms. Using university-provided space, the **equipment outlay is ≈ ₹2.0–2.3 crore** (~US$235–270k; phased, with a complete top-tier Phase-1 makerspace for ≈ ₹70–90 lakh; a lean by-the-book alternative is ₹35–55 lakh), delivering 3D printing, laser/CNC cutting, electronics, robotics and a workshop accessible to **every student** via a simple safety-induction badge system. **Annual operating cost ≈ ₹31–71 lakh.** Network registration on fablabs.io is **free** once the four Fab Charter criteria are met. The center becomes the campus's hands-on engine for tinkering, prototyping, competitions, and student startups — and a recognised node on the worldwide Fab Lab map.
+> We propose an **open-access, student-run FabLab & Innovation Center** at the new Sahajpur campus, modelled on eirLab (Talence) for its digital-fabrication discipline and IIT Madras's CFI for its student-governed, competition-driven culture, and built to the **MIT/Fab Foundation common-inventory standard** so it can **join the global Fab Lab network**. Equipment is specced **best-in-class** — professional-grade, serviceable, safety-first — including continuous-fibre composite 3D printing, a full-sheet ShopBot CNC, CO₂ + fibre lasers, in-house PCB pick-and-place, flesh-detection saw safety, and edge-AI/robotics platforms. Using university-provided space, the **equipment outlay is ≈ ₹2.0–2.3 crore** (~US$235–270k; phased, with a complete top-tier Phase-1 makerspace for ≈ ₹70–90 lakh; a lean by-the-book alternative is ₹35–55 lakh), delivering 3D printing, laser/CNC cutting, electronics, robotics and a workshop accessible to **every student** via a simple safety-induction badge system. **Annual operating cost ≈ ₹31–71 lakh.** Network registration on fablabs.io is **free** once the four Fab Charter criteria are met. The center becomes the campus's hands-on engine for tinkering, prototyping, competitions, and student startups — and a recognised node on the worldwide Fab Lab map.
 
 ---
 

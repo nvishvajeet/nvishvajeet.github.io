@@ -1,6 +1,6 @@
 # FabLab — Building Architecture Concept
 
-**Project:** FabLab / Innovation Center, new university at Shahpur
+**Project:** FabLab / Innovation Center, new university at Sahajpur
 **Companion to:** [the design/equipment/cost proposal](README.md)
 **Design driver:** *modular hexagonal honeycomb + automation-first (robot-cleanable, AMR-ready) interior.*
 **Date:** June 2026
