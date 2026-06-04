@@ -30,49 +30,47 @@ Entry points: `index.html` (home), `cv.html` (CV + linked PDF),
 `paper.html` + `paper-render.js` (dynamic paper listings),
 `i.html` (interests / side projects).
 
-## 2. Topology — TWO REMOTES, Level 1 is canonical
+## 2. Topology — Class A carve-out (no LOCAL bare; `origin` IS GitHub)
 
-This is the only project on this laptop with a real Level-2
-publish target: GitHub Pages serves the rendered site from the
-`main` branch of `github.com/nvishvajeet/nvishvajeet.github.io`.
+**Class A carve-out** *(per `~/.claude/GIT_TOPOLOGY.md`)*. This is the
+only repo on the laptop where `origin` points directly at GitHub.
+There is NO LOCAL bare in `~/.claude/git-server/` — by design,
+because a bare in the middle would just drift from the Pages-rendered
+HEAD on GitHub.
 
 | Thing | Path |
 |---|---|
-| Level 1 bare (canonical origin) | `~/.claude/git-server/nvishvajeet.github.io.git` |
-| Working copy | `~/Claude/nvishvajeet.github.io/` *(moved from `~/nvishvajeet.github.io/` on 2026-04-11)* |
+| Working copy | `~/Claude/nvishvajeet.github.io/` *(moved from `~/nvishvajeet.github.io/` on 2026-04-11; into `~/Claude/` 2026-06-04)* |
 | Default branch | `main` |
-| Level 2 upstream | `github` → `https://github.com/nvishvajeet/nvishvajeet.github.io.git` (GitHub Pages publish target, manual push on publish) |
-
-The Mac mini has no role for this project — there is no mini
-mirror, no post-receive hook to the mini, no mini bare. GitHub
-Pages IS the publish target, and it is driven manually.
-
-**Two remotes on the working copy:**
-
-```
-origin  = /Users/vishvajeetn/.claude/git-server/nvishvajeet.github.io.git   (Level 1 LOCAL bare)
-github  = https://github.com/nvishvajeet/nvishvajeet.github.io.git          (Level 2 GitHub Pages)
-```
+| `origin` | `https://github.com/nvishvajeet/nvishvajeet.github.io.git` (Public; GitHub Pages serves `main`) |
+| LOCAL bare | **none** *(intentional; carve-out)* |
+| Mini | no role; mini does not serve this site |
 
 ### Push rules
 
-1. **Every commit goes to `origin` first.** That is the Level 1
-   canonical origin. No post-receive hook is installed — `origin`
-   is the only server-side copy on this laptop.
-2. **Pushing to `github` is an explicit publish action.** It is
-   NOT automatic. An agent pushes to `github` only when:
-   - The user explicitly says "publish" / "push to github" / "go live"
-   - The change is a content change the user wants publicly visible
-   - The working copy is clean and all commits have been pushed to
-     `origin` first
-3. **GitHub Pages rebuild time is ~1-2 minutes** after a `git push
-   github main`. Do not re-push to work around perceived lag.
+1. **`git push origin main` IS the publish action.** Origin is
+   GitHub. There is no "stage in LOCAL first" — every push reaches
+   the public site (after the ~1-2 min Pages rebuild).
+2. **The canonical helper handles this correctly:**
+   ```bash
+   ~/.claude/bin/git-sync-canonical
+   ```
+   It detects the carve-out class and pushes to `origin` only.
+3. **GitHub Pages rebuild time is ~1-2 minutes.** Don't re-push to
+   work around perceived lag; check Actions for the build status.
+4. **Branch protection is enabled** on `main` (force-push and
+   deletion blocked; see `~/.claude/GITHUB_REPO_SETTINGS_AUDIT_2026_06_04.md`).
+5. **Pre-commit hook** is canonical (`~/.claude/bin/pre-commit-secret-scan.sh`).
+   It blocks committing SSH keys, API tokens, and other secret
+   patterns. The hook also dispatches to `.git-hooks/pre-commit-*`
+   if any project-specific gates are added.
 
 ### Publish recipe
 
 ```bash
-git push origin main        # always — Level 1 canonical
-git push github main        # only when explicitly publishing
+~/.claude/bin/git-sync-canonical     # canonical
+# or, equivalent:
+git push origin main                 # also fine since origin IS GitHub
 ```
 
 ## 3. Project-specific rules
