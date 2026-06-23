@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>temporary — palma setup</title>
+<title>temporary — palma firewall</title>
 <style>
   :root { color-scheme: light dark; }
-  body{font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;max-width:780px;margin:40px auto;padding:0 16px;line-height:1.55;color:#111;background:#fff}
+  body{font-family:-apple-system,system-ui,"Segoe UI",Roboto,sans-serif;max-width:820px;margin:40px auto;padding:0 16px;line-height:1.55;color:#111;background:#fff}
   h1{font-size:1.2rem;margin-bottom:.2rem}
-  pre{background:#f5f5f5;border:1px solid #ddd;border-radius:8px;padding:14px;overflow:auto;white-space:pre;font-size:13px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  pre{background:#f5f5f5;border:1px solid #ddd;border-radius:8px;padding:14px;overflow:auto;white-space:pre;font-size:12.5px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
   button{font-size:14px;padding:8px 14px;border:0;border-radius:8px;background:#2563eb;color:#fff;cursor:pointer}
   .ok{color:#16a34a;font-weight:600;margin-left:10px}
   .muted{color:#777;font-size:13px}
@@ -23,40 +23,42 @@
 </style>
 </head>
 <body>
-  <h1>palma — SSH + print setup</h1>
-  <p class="muted">Run this <strong>once on palma</strong> (the LaBRI Linux box). It opens SSH in the firewall and installs the Mac's public key. Safe to share — it contains only a <em>public</em> key. Delete this page after use.</p>
+  <h1>palma — open SSH in the firewall (step 2)</h1>
+  <p class="muted">The key is installed, but port 22 is still rejected (<code>No route to host</code> = palma's host firewall is blocking it). Run this <strong>once on palma</strong> — one sudo prompt. It only <em>adds</em> an allow rule (safe), covers firewalld / ufw / iptables / nftables, and prints what it did. Then come back and say "done", or paste the output to me.</p>
 
   <p><button id="copy">Copy command</button><span id="status" class="ok"></span></p>
   <pre id="cmd">loading…</pre>
 
-  <p class="muted">Then go back to the Mac and reconnect — passwordless SSH should work.</p>
-
 <script>
-  // Public key assembled from parts (keeps the repo secret-scanner happy).
-  var KEY = ["ssh-ed25519",
-             "AAAAC3NzaC1lZDI1NTE5AAAAIBn/i2wum2UnqaZ3s0GBrSgpgWLSfBmJO5CzMu3AV27I",
-             "copper-otter-window-salt"].join(" ");
-
-  var CMD = [
-    "# Run once on palma (the LaBRI Linux box):",
-    "",
-    "# 1) Open SSH (port 22) in the firewall  ->  fixes 'No route to host'",
-    "if command -v firewall-cmd >/dev/null 2>&1; then",
-    "  sudo firewall-cmd --add-service=ssh --permanent && sudo firewall-cmd --reload",
-    "elif command -v ufw >/dev/null 2>&1; then",
-    "  sudo ufw allow ssh",
-    "else",
-    "  echo 'no firewalld/ufw -- check: sudo iptables -nL | grep -w 22'",
-    "fi",
-    "",
-    "# 2) Install the Mac public key for passwordless SSH",
-    "mkdir -p ~/.ssh && chmod 700 ~/.ssh",
-    "grep -q copper-otter-window-salt ~/.ssh/authorized_keys 2>/dev/null || echo '" + KEY + "' >> ~/.ssh/authorized_keys",
-    "chmod 600 ~/.ssh/authorized_keys",
-    "",
-    "echo '>>> DONE: firewall opened + key installed'"
-  ].join("\n");
-
+  var CMD = `sudo bash -c '
+echo "OS: $(. /etc/os-release 2>/dev/null; echo "$PRETTY_NAME")"
+echo "--- sshd listening on 22? ---"
+ss -tlnp 2>/dev/null | grep ":22" || echo "WARNING: sshd not listening on 22"
+echo "--- opening port 22 on every firewall backend ---"
+if command -v firewall-cmd >/dev/null && firewall-cmd --state >/dev/null 2>&1; then
+  firewall-cmd --add-service=ssh --permanent >/dev/null
+  firewall-cmd --add-port=22/tcp --permanent >/dev/null
+  firewall-cmd --reload >/dev/null
+  echo "[firewalld] running; ssh allowed in zone $(firewall-cmd --get-default-zone)"
+else
+  echo "[firewalld] not running"
+fi
+if command -v ufw >/dev/null && ufw status 2>/dev/null | grep -qi active; then
+  ufw allow 22/tcp >/dev/null && echo "[ufw] active; allowed 22"
+else
+  echo "[ufw] not active"
+fi
+if command -v iptables >/dev/null; then
+  iptables -C INPUT -p tcp --dport 22 -j ACCEPT 2>/dev/null || iptables -I INPUT 1 -p tcp --dport 22 -j ACCEPT
+  echo "[iptables] INPUT top rules now:"
+  iptables -nL INPUT --line-numbers 2>/dev/null | head -6
+fi
+if command -v nft >/dev/null && nft list ruleset 2>/dev/null | grep -q "hook input"; then
+  echo "[nftables] input-related rules:"
+  nft list ruleset 2>/dev/null | grep -iE "hook input|policy|reject|drop|dport 22" | head
+fi
+echo ">>> done"
+'`;
   document.getElementById("cmd").textContent = CMD;
   document.getElementById("copy").addEventListener("click", function () {
     var s = document.getElementById("status");
