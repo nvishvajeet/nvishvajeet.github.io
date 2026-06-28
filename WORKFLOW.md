@@ -40,7 +40,7 @@ HEAD on GitHub.
 
 | Thing | Path |
 |---|---|
-| Working copy | `~/Claude/nvishvajeet.github.io/` *(moved from `~/nvishvajeet.github.io/` on 2026-04-11; into `~/Claude/` 2026-06-04)* |
+| Working copy | `~/Projects/nvishvajeet.github.io/` *(moved from `~/nvishvajeet.github.io/` on 2026-04-11; into `~/Projects/` 2026-06-04)* |
 | Default branch | `main` |
 | `origin` | `https://github.com/nvishvajeet/nvishvajeet.github.io.git` (Public; GitHub Pages serves `main`) |
 | LOCAL bare | **none** *(intentional; carve-out)* |
@@ -157,7 +157,7 @@ on github.com is public.
 ### 3.6  Edit + publish recipe
 
 ```bash
-cd ~/Claude/nvishvajeet.github.io
+cd ~/Projects/nvishvajeet.github.io
 git pull origin                        # LOCAL first
 git pull github main                   # and the GitHub side, to catch
                                        # any tweaks made via web UI
@@ -190,7 +190,7 @@ purpose and a pointer to this file for rules.
 - **2026-04-11** — Initial WORKFLOW.md created as part of the
   two-level agent operating system rollout. Project onboarded onto
   the LOCAL central git on the same day: moved from
-  `~/nvishvajeet.github.io/` to `~/Claude/nvishvajeet.github.io/`,
+  `~/nvishvajeet.github.io/` to `~/Projects/nvishvajeet.github.io/`,
   renamed existing `origin` (GitHub HTTPS) to `github`, added LOCAL
   bare at `~/.claude/git-server/nvishvajeet.github.io.git` as the
   new `origin`, mirror bare at
