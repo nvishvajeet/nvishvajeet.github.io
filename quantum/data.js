@@ -26,54 +26,16 @@ window.QUANTUM_GROUP = {
       topics: ["Computational physics", "AI and algorithms", "Quantum systems education"]
     }
   ],
-  sections: [
-    {
-      id: "leadership",
-      title: "Project Leadership",
-      description: "Scientific direction, project coordination, and research programme development."
-    },
-    {
-      id: "institutional-support",
-      title: "Administrative & Institutional Support",
-      description: "Senior institutional guidance, coordination, and administrative enablement."
-    },
-    {
-      id: "member-faculty",
-      title: "Member Faculty",
-      description: "Faculty contributing research, teaching, mentorship, and projects across disciplines."
-    },
-    {
-      id: "adjunct-faculty",
-      title: "Adjunct Faculty",
-      description: "External and visiting faculty profiles will be added after the initial membership is confirmed."
-    },
-    {
-      id: "doctoral-researchers",
-      title: "PhD Scholars",
-      description: "Doctoral researchers working on group projects and theses will be listed here."
-    },
-    {
-      id: "students",
-      title: "Students",
-      description: "Master's, undergraduate, and project students participating in the group will be listed here."
-    },
-    {
-      id: "technical-staff",
-      title: "Technical Staff",
-      description: "Laboratory, computing, instrumentation, and technical support staff will have a separate directory here."
-    }
-  ],
   people: [
     {
       id: "vishvajeet-n",
-      section: "leadership",
       memberType: "postdoctoral-researcher",
       name: "Dr. Vishvajeet N",
       groupRole: "Project Coordinator & Principal Investigator",
       designation: "Postdoctoral Researcher, CNRS / LaBRI",
       affiliation: "Université de Bordeaux, France",
       email: "",
-      photo: "../0-profileimg.JPG",
+      photo: "assets/vishvajeet.jpg",
       bio: "Vishvajeet N is a theoretical computer scientist working at the intersection of algorithms, randomness, and quantum information. He received his Ph.D. from Rutgers University and is currently a postdoctoral researcher with the Quantum Information and Computation group at LaBRI.",
       interests: ["Theoretical computer science", "Quantum information", "Randomness and computation", "Algorithms and complexity"],
       highlights: ["Ph.D., Rutgers University", "Postdoctoral research at CNRS / LaBRI", "Visiting graduate research at the Institute for Advanced Study"],
@@ -86,7 +48,6 @@ window.QUANTUM_GROUP = {
     },
     {
       id: "apurv-nellikka",
-      section: "leadership",
       memberType: "faculty",
       name: "Dr. Apurv Chaitanya Nellikka",
       groupRole: "Co-Principal Investigator",
@@ -104,23 +65,7 @@ window.QUANTUM_GROUP = {
       }
     },
     {
-      id: "balaji-patil",
-      section: "institutional-support",
-      memberType: "faculty",
-      name: "Dr. Balaji Madhavrao Patil",
-      groupRole: "Administrative & Institutional Advisor",
-      designation: "Professor and Head, Computer Science",
-      affiliation: "MIT World Peace University, Pune",
-      email: "balaji.patil@mitwpu.edu.in",
-      photo: "",
-      bio: "Balaji Patil is a senior computer-science faculty member whose work spans networks, cybersecurity, cyber forensics, and IoT. Within the proposed group, he supports institutional coordination and administrative pathways while scientific direction remains with the project leadership.",
-      interests: ["Computer networks", "Cybersecurity", "Cyber forensics", "Internet of Things"],
-      highlights: ["Long-standing teaching and academic leadership at MIT-WPU", "Research supervision in computer engineering", "Institutional and programme coordination"],
-      links: { website: "https://drbmpatil.wordpress.com/" }
-    },
-    {
       id: "debabrata-saha",
-      section: "member-faculty",
       memberType: "faculty",
       name: "Dr. Debabrata Saha",
       groupRole: "Member Faculty",
@@ -140,7 +85,6 @@ window.QUANTUM_GROUP = {
     },
     {
       id: "dev-kumar-thapa",
-      section: "member-faculty",
       memberType: "faculty",
       name: "Dr. Dev Kumar Thapa",
       groupRole: "Member Faculty",
@@ -158,7 +102,6 @@ window.QUANTUM_GROUP = {
     },
     {
       id: "anagha-karne",
-      section: "member-faculty",
       memberType: "faculty",
       name: "Prof. Anagha Sudhir Karne",
       groupRole: "Member Faculty",
@@ -178,7 +121,6 @@ window.QUANTUM_GROUP = {
     },
     {
       id: "preeti-kale",
-      section: "member-faculty",
       memberType: "faculty",
       name: "Dr. Preeti Kale",
       groupRole: "Member Faculty",
@@ -193,6 +135,20 @@ window.QUANTUM_GROUP = {
         profile: "https://mitwpu.irins.org/profile/148543",
         research: "https://research.mitwpu.edu.in/researcher/preeti-kale"
       }
+    },
+    {
+      id: "balaji-patil",
+      memberType: "faculty",
+      name: "Dr. Balaji Madhavrao Patil",
+      groupRole: "Administrative & Institutional Advisor",
+      designation: "Professor and Head, Computer Science",
+      affiliation: "MIT World Peace University, Pune",
+      email: "balaji.patil@mitwpu.edu.in",
+      photo: "",
+      bio: "Balaji Patil works in networks, cybersecurity, cyber forensics, and IoT, and supports institutional coordination for the group.",
+      interests: ["Computer networks", "Cybersecurity", "Cyber forensics", "Internet of Things"],
+      highlights: ["Academic leadership at MIT-WPU", "Research supervision in computer engineering", "Institutional coordination"],
+      links: { website: "https://drbmpatil.wordpress.com/" }
     }
   ]
 };

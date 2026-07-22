@@ -1,14 +1,14 @@
 (function () {
   "use strict";
 
-  const group = window.QUANTUM_GROUP || { people: [], sections: [], researchAreas: [] };
-  const peopleTypes = [
-    { id: "faculty", label: "Faculty" },
-    { id: "postdoctoral-researcher", label: "Postdoctoral Researchers" },
-    { id: "doctoral-researcher", label: "PhD Scholars" },
-    { id: "student", label: "Students" },
-    { id: "technical-staff", label: "Technical Staff" }
-  ];
+  const group = window.QUANTUM_GROUP || { people: [], researchAreas: [] };
+  const peopleTypes = {
+    faculty: "Faculty",
+    "postdoctoral-researcher": "Postdoctoral Researcher",
+    "doctoral-researcher": "PhD Scholar",
+    student: "Student",
+    "technical-staff": "Technical Staff"
+  };
 
   function escapeHtml(value) {
     return String(value ?? "").replace(/[&<>'"]/g, (character) => ({
@@ -40,11 +40,10 @@
   }
 
   function personCard(person) {
-    const type = peopleTypes.find((item) => item.id === person.memberType);
-    return `<article class="person-card quantum-person-card">
+    return `<article class="person-card">
       <a class="portrait-link" href="member.html?id=${encodeURIComponent(person.id)}" aria-label="View ${escapeHtml(person.name)}'s profile">${portrait(person)}</a>
       <div class="person-card-body">
-        <span class="member-flair">${escapeHtml(type ? type.label.replace(/s$/, "") : "Group Member")}</span>
+        <span class="member-flair">${escapeHtml(peopleTypes[person.memberType] || "Group Member")}</span>
         <p class="person-role">${escapeHtml(person.groupRole)}</p>
         <h3><a href="member.html?id=${encodeURIComponent(person.id)}">${escapeHtml(person.name)}</a></h3>
         <p class="person-designation">${escapeHtml(person.designation)}</p>
@@ -64,52 +63,18 @@
     </article>`).join("");
   }
 
-  function renderLeadershipPreview() {
-    const target = document.getElementById("leadership-preview");
+  function renderFeaturedMembers() {
+    const target = document.getElementById("featured-members");
     if (!target) return;
-    target.innerHTML = group.people.filter((person) => person.section === "leadership").map(personCard).join("");
+    target.innerHTML = group.people.slice(0, 3).map(personCard).join("");
   }
 
-  function renderDirectory(activeType = "all") {
-    const target = document.getElementById("people-directory");
+  function renderPeople() {
+    const target = document.getElementById("people-list");
     if (!target) return;
-    const relevantSections = activeType === "all"
-      ? group.sections
-      : group.sections.filter((section) => group.people.some((person) => person.section === section.id && person.memberType === activeType));
-    const fallbackType = peopleTypes.find((type) => type.id === activeType);
-    target.innerHTML = relevantSections.map((section) => {
-      const people = group.people.filter((person) => person.section === section.id && (activeType === "all" || person.memberType === activeType));
-      const content = people.length
-        ? `<div class="people-grid directory-grid">${people.map(personCard).join("")}</div>`
-        : `<div class="pending-card"><strong>Profiles to be confirmed</strong><p>${escapeHtml(section.description)}</p></div>`;
-      return `<section class="directory-section" id="${escapeHtml(section.id)}">
-        <div class="directory-heading"><p class="eyebrow">${String(people.length).padStart(2, "0")} ${people.length === 1 ? "person" : "people"}</p><h2>${escapeHtml(section.title)}</h2><p>${escapeHtml(section.description)}</p></div>
-        ${content}
-      </section>`;
-    }).join("") || `<section class="directory-section"><div class="pending-card"><strong>${escapeHtml(fallbackType ? fallbackType.label : "Profiles")} to be added</strong><p>This role category has been created and is ready for confirmed profiles.</p></div></section>`;
+    target.innerHTML = group.people.map(personCard).join("");
     const count = document.getElementById("people-count");
-    const visibleCount = activeType === "all" ? group.people.length : group.people.filter((person) => person.memberType === activeType).length;
-    if (count) count.textContent = `${visibleCount} ${visibleCount === 1 ? "profile" : "profiles"}`;
-  }
-
-  function renderPeopleFilters() {
-    const target = document.getElementById("people-filters");
-    if (!target) return;
-    const filters = [{ id: "all", label: "All people" }, ...peopleTypes];
-    target.innerHTML = filters.map((filter, index) => {
-      const count = filter.id === "all" ? group.people.length : group.people.filter((person) => person.memberType === filter.id).length;
-      return `<button class="people-filter${index === 0 ? " is-active" : ""}" type="button" data-filter="${escapeHtml(filter.id)}" aria-pressed="${index === 0 ? "true" : "false"}">${escapeHtml(filter.label)} <span>${count}</span></button>`;
-    }).join("");
-    target.addEventListener("click", (event) => {
-      const button = event.target.closest("button[data-filter]");
-      if (!button) return;
-      target.querySelectorAll("button[data-filter]").forEach((item) => {
-        const active = item === button;
-        item.classList.toggle("is-active", active);
-        item.setAttribute("aria-pressed", String(active));
-      });
-      renderDirectory(button.dataset.filter);
-    });
+    if (count) count.textContent = `${group.people.length} ${group.people.length === 1 ? "member" : "members"}`;
   }
 
   const linkLabels = {
@@ -138,7 +103,7 @@
 
     document.title = `${person.name} · Quantum Science & Technology Group · MIT-WPU`;
     const links = profileLinks(person);
-    target.innerHTML = `<section class="profile-hero quantum-profile-hero"><div class="shell profile-hero-grid">
+    target.innerHTML = `<section class="profile-hero"><div class="shell profile-hero-grid">
       <div>${portrait(person, "member-portrait-large")}</div>
       <div class="profile-intro"><p class="eyebrow">${escapeHtml(person.groupRole)}</p><h1>${escapeHtml(person.name)}</h1>
         <p class="profile-designation">${escapeHtml(person.designation)}<br>${escapeHtml(person.affiliation)}</p>
@@ -159,7 +124,10 @@
     const activeLink = document.querySelector(`[data-nav="${active}"]`);
     if (activeLink) activeLink.setAttribute("aria-current", "page");
     document.querySelectorAll("[data-current-year]").forEach((node) => { node.textContent = new Date().getFullYear(); });
-    renderResearch(); renderLeadershipPreview(); renderPeopleFilters(); renderDirectory(); renderMember();
+    renderResearch();
+    renderFeaturedMembers();
+    renderPeople();
+    renderMember();
   }
 
   document.addEventListener("DOMContentLoaded", initialize);
