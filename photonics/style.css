@@ -347,6 +347,48 @@ h3 { font-size: 1.45rem; }
 .page-hero p:last-child { margin-bottom: 8px; color: #d4e1ed; font-family: Georgia, "Times New Roman", serif; font-size: 1.18rem; }
 .count-label { margin: 0 0 8px; color: var(--ink-soft); font-weight: 700; }
 
+.people-toolbar { margin-bottom: 24px; }
+.people-filters { display: flex; flex-wrap: wrap; gap: 9px; margin-bottom: 42px; }
+.people-filter {
+  padding: 9px 14px;
+  color: var(--ink-soft);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+.people-filter span { margin-left: 5px; color: var(--blue); }
+.people-filter:hover { border-color: var(--blue); color: var(--blue); }
+.people-filter:focus-visible { outline: 3px solid rgba(58,196,216,.45); outline-offset: 2px; }
+.people-filter.is-active { color: #fff; background: var(--navy); border-color: var(--navy); }
+.people-filter.is-active span { color: var(--gold); }
+
+.member-flair {
+  display: inline-flex;
+  margin-bottom: 13px;
+  padding: 5px 9px;
+  color: var(--navy);
+  background: #e9f6f8;
+  border: 1px solid #cbe9ed;
+  border-radius: 999px;
+  font-size: .68rem;
+  font-weight: 850;
+  letter-spacing: .04em;
+}
+
+.people-directory { border-top: 1px solid var(--line); }
+.directory-section { padding-block: 64px; border-bottom: 1px solid var(--line); }
+.directory-heading { display: grid; grid-template-columns: minmax(260px, .75fr) minmax(280px, 1.25fr); gap: 10px 70px; margin-bottom: 38px; }
+.directory-heading .eyebrow { grid-column: 1 / -1; }
+.directory-heading h2 { margin-bottom: 0; }
+.directory-heading > p:last-child { color: var(--ink-soft); font-size: 1.02rem; }
+.pending-card { max-width: 760px; padding: 30px 34px; background: var(--wash); border: 1px dashed #b9c9d8; border-radius: var(--radius); }
+.pending-card strong { font-family: Georgia, "Times New Roman", serif; font-size: 1.25rem; }
+.pending-card p { margin: 8px 0 0; color: var(--ink-soft); }
+
 .research-list { border-top: 1px solid var(--line); }
 .research-block { display: grid; grid-template-columns: 100px minmax(0, 1fr); gap: 54px; padding-block: 64px; border-bottom: 1px solid var(--line); }
 .research-index { color: var(--blue); font-size: .82rem; font-weight: 850; letter-spacing: .12em; }
@@ -366,9 +408,8 @@ h3 { font-size: 1.45rem; }
 .profile-intro .profile-link-row a { color: #fff; }
 
 .profile-content-section { background: var(--wash); }
-.profile-layout { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 64px; align-items: start; }
-.profile-quote { position: sticky; top: 120px; padding: 30px; color: #fff; background: var(--navy); border-radius: var(--radius); }
-.profile-quote blockquote { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 1.2rem; }
+.profile-layout { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; }
+.profile-layout-simple { max-width: 900px; }
 .profile-details { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); }
 .profile-section { padding: 36px 42px; border-bottom: 1px solid var(--line); }
 .profile-section:last-child { border-bottom: 0; }
@@ -422,7 +463,6 @@ h3 { font-size: 1.45rem; }
   .page-hero-inner { min-height: 300px; align-items: start; }
   .page-hero p:last-child { max-width: 600px; }
   .profile-hero-grid { grid-template-columns: 230px minmax(0,1fr); gap: 40px; }
-  .profile-quote { position: static; }
   .publication-group { grid-template-columns: 1fr; gap: 28px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-note { grid-column: 1 / -1; }
@@ -438,6 +478,8 @@ h3 { font-size: 1.45rem; }
   .section { padding-block: 72px; }
   .section-heading, .list-toolbar, .callout { align-items: flex-start; flex-direction: column; }
   .theme-grid, .people-grid { grid-template-columns: 1fr; }
+  .directory-heading { grid-template-columns: 1fr; gap: 8px; }
+  .directory-heading .eyebrow { grid-column: 1; }
   .theme-card { min-height: auto; }
   .theme-number { margin-bottom: 36px; }
   .callout { padding: 38px 28px; }

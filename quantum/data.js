@@ -46,12 +46,28 @@ window.QUANTUM_GROUP = {
       id: "adjunct-faculty",
       title: "Adjunct Faculty",
       description: "External and visiting faculty profiles will be added after the initial membership is confirmed."
+    },
+    {
+      id: "doctoral-researchers",
+      title: "PhD Scholars",
+      description: "Doctoral researchers working on group projects and theses will be listed here."
+    },
+    {
+      id: "students",
+      title: "Students",
+      description: "Master's, undergraduate, and project students participating in the group will be listed here."
+    },
+    {
+      id: "technical-staff",
+      title: "Technical Staff",
+      description: "Laboratory, computing, instrumentation, and technical support staff will have a separate directory here."
     }
   ],
   people: [
     {
       id: "vishvajeet-n",
       section: "leadership",
+      memberType: "postdoctoral-researcher",
       name: "Dr. Vishvajeet N",
       groupRole: "Project Coordinator & Principal Investigator",
       designation: "Postdoctoral Researcher, CNRS / LaBRI",
@@ -71,6 +87,7 @@ window.QUANTUM_GROUP = {
     {
       id: "apurv-nellikka",
       section: "leadership",
+      memberType: "faculty",
       name: "Dr. Apurv Chaitanya Nellikka",
       groupRole: "Co-Principal Investigator",
       designation: "Assistant Professor, Department of Physics",
@@ -89,6 +106,7 @@ window.QUANTUM_GROUP = {
     {
       id: "balaji-patil",
       section: "institutional-support",
+      memberType: "faculty",
       name: "Dr. Balaji Madhavrao Patil",
       groupRole: "Administrative & Institutional Advisor",
       designation: "Professor and Head, Computer Science",
@@ -103,6 +121,7 @@ window.QUANTUM_GROUP = {
     {
       id: "debabrata-saha",
       section: "member-faculty",
+      memberType: "faculty",
       name: "Dr. Debabrata Saha",
       groupRole: "Member Faculty",
       designation: "Assistant Professor, Department of Physics",
@@ -122,6 +141,7 @@ window.QUANTUM_GROUP = {
     {
       id: "dev-kumar-thapa",
       section: "member-faculty",
+      memberType: "faculty",
       name: "Dr. Dev Kumar Thapa",
       groupRole: "Member Faculty",
       designation: "Assistant Professor, Department of Chemistry",
@@ -139,6 +159,7 @@ window.QUANTUM_GROUP = {
     {
       id: "anagha-karne",
       section: "member-faculty",
+      memberType: "faculty",
       name: "Prof. Anagha Sudhir Karne",
       groupRole: "Member Faculty",
       designation: "Assistant Professor, Department of Physics",
@@ -158,6 +179,7 @@ window.QUANTUM_GROUP = {
     {
       id: "preeti-kale",
       section: "member-faculty",
+      memberType: "faculty",
       name: "Dr. Preeti Kale",
       groupRole: "Member Faculty",
       designation: "Associate Professor, Department of Computer Engineering and Technology",

@@ -3,6 +3,13 @@
 
   const members = Array.isArray(window.PHOTONICS_MEMBERS) ? window.PHOTONICS_MEMBERS : [];
   const site = window.PHOTONICS_SITE || { researchThemes: [] };
+  const peopleTypes = [
+    { id: "faculty", label: "Faculty", description: "Faculty leading and contributing to the group's research and teaching." },
+    { id: "postdoctoral-researcher", label: "Postdoctoral Researchers", description: "Postdoctoral researchers and research fellows affiliated with the group." },
+    { id: "doctoral-researcher", label: "PhD Scholars", description: "Doctoral researchers working on group projects and theses." },
+    { id: "student", label: "Students", description: "Master's, undergraduate, and project students participating in the group." },
+    { id: "technical-staff", label: "Technical Staff", description: "Laboratory, instrumentation, computing, and technical support staff." }
+  ];
 
   function escapeHtml(value) {
     return String(value ?? "").replace(/[&<>'"]/g, (character) => ({
@@ -50,12 +57,14 @@
 
   function memberCard(member) {
     const interests = (member.researchInterests || []).slice(0, 3);
+    const type = peopleTypes.find((item) => item.id === member.memberType);
     return `
       <article class="person-card">
         <a class="portrait-link" href="member.html?id=${encodeURIComponent(member.id)}" aria-label="View ${escapeHtml(member.name)}'s profile">
           ${portrait(member)}
         </a>
         <div class="person-card-body">
+          <span class="member-flair">${escapeHtml(type ? type.label.replace(/s$/, "") : member.role)}</span>
           <p class="person-role">${escapeHtml(member.role)}</p>
           <h3><a href="member.html?id=${encodeURIComponent(member.id)}">${escapeHtml(member.name)}</a></h3>
           <p class="person-designation">${escapeHtml(member.designation)}</p>
@@ -65,12 +74,45 @@
       </article>`;
   }
 
-  function renderPeople() {
-    const target = document.getElementById("people-list");
+  function renderPeople(activeType = "all") {
+    const target = document.getElementById("people-directory");
     if (!target) return;
-    target.innerHTML = members.map(memberCard).join("");
+    const visibleTypes = activeType === "all"
+      ? peopleTypes
+      : peopleTypes.filter((type) => type.id === activeType);
+    target.innerHTML = visibleTypes.map((type) => {
+      const people = members.filter((member) => member.memberType === type.id);
+      const content = people.length
+        ? `<div class="people-grid people-grid-full">${people.map(memberCard).join("")}</div>`
+        : `<div class="pending-card"><strong>Profiles to be added</strong><p>${escapeHtml(type.description)}</p></div>`;
+      return `<section class="directory-section" data-people-type="${escapeHtml(type.id)}">
+        <div class="directory-heading"><p class="eyebrow">${String(people.length).padStart(2, "0")} ${people.length === 1 ? "person" : "people"}</p><h2>${escapeHtml(type.label)}</h2><p>${escapeHtml(type.description)}</p></div>
+        ${content}
+      </section>`;
+    }).join("");
     const count = document.getElementById("people-count");
-    if (count) count.textContent = `${members.length} ${members.length === 1 ? "member" : "members"}`;
+    const visibleCount = activeType === "all" ? members.length : members.filter((member) => member.memberType === activeType).length;
+    if (count) count.textContent = `${visibleCount} ${visibleCount === 1 ? "profile" : "profiles"}`;
+  }
+
+  function renderPeopleFilters() {
+    const target = document.getElementById("people-filters");
+    if (!target) return;
+    const filters = [{ id: "all", label: "All people" }, ...peopleTypes];
+    target.innerHTML = filters.map((filter, index) => {
+      const count = filter.id === "all" ? members.length : members.filter((member) => member.memberType === filter.id).length;
+      return `<button class="people-filter${index === 0 ? " is-active" : ""}" type="button" data-filter="${escapeHtml(filter.id)}" aria-pressed="${index === 0 ? "true" : "false"}">${escapeHtml(filter.label)} <span>${count}</span></button>`;
+    }).join("");
+    target.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-filter]");
+      if (!button) return;
+      target.querySelectorAll("button[data-filter]").forEach((item) => {
+        const active = item === button;
+        item.classList.toggle("is-active", active);
+        item.setAttribute("aria-pressed", String(active));
+      });
+      renderPeople(button.dataset.filter);
+    });
   }
 
   function renderFeaturedMembers() {
@@ -159,8 +201,7 @@
         </div>
       </section>
       <section class="section profile-content-section">
-        <div class="shell profile-layout">
-          <aside class="profile-quote"><blockquote>“${escapeHtml(member.quote)}”</blockquote></aside>
+        <div class="shell profile-layout profile-layout-simple">
           <div class="profile-details">
             ${detailSection("Research interests", `<div class="tag-row tag-row-large">${(member.researchInterests || []).map((item) => `<span>${escapeHtml(item)}</span>`).join("")}</div>`)}
             ${detailSection("Education", list(member.education))}
@@ -208,6 +249,7 @@
 
     renderHomeResearch();
     renderFeaturedMembers();
+    renderPeopleFilters();
     renderPeople();
     renderMember();
     renderResearch();
