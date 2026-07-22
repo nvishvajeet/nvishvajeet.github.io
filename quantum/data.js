@@ -3,9 +3,9 @@ window.QUANTUM_GROUP = {
   researchAreas: [
     {
       number: "01",
-      title: "Quantum Information & Algorithms",
-      summary: "Theory and algorithms for quantum information processing, computation, and complexity.",
-      topics: ["Quantum information", "Quantum algorithms", "Complexity and randomness"]
+      title: "Quantum Information, Algorithms & Systems",
+      summary: "Theory and methods for quantum information processing and computation.",
+      topics: ["Quantum information", "Quantum algorithms", "Computing systems"]
     },
     {
       number: "02",
@@ -18,12 +18,6 @@ window.QUANTUM_GROUP = {
       title: "Quantum Materials & Devices",
       summary: "Materials, semiconductors, thin films, and photonic structures for emerging quantum technologies.",
       topics: ["Quantum materials", "Semiconductor devices", "Photonic devices", "Thin films"]
-    },
-    {
-      number: "04",
-      title: "Quantum Computing Systems",
-      summary: "Interdisciplinary work connecting computational methods, AI, networks, and quantum-enabled platforms.",
-      topics: ["Computational physics", "AI and algorithms", "Quantum systems education"]
     }
   ],
   people: [
