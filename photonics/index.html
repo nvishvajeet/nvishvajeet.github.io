@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Prototype website for the Photonics Research Group at MIT World Peace University, Pune.">
+  <title>Photonics Research Group · MIT-WPU</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="site-data.js" defer></script>
+  <script src="members-data.js" defer></script>
+  <script src="render.js" defer></script>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="prototype-bar">
+    Prototype website · Content pending group review
+  </div>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="Photonics Research Group home">
+        <span class="brand-mark" aria-hidden="true"><span></span></span>
+        <span>
+          <strong>Photonics Research Group</strong>
+          <small>MIT World Peace University</small>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a data-nav="home" href="index.html">Home</a>
+        <a data-nav="people" href="people.html">People</a>
+        <a data-nav="research" href="research.html">Research</a>
+        <a data-nav="publications" href="publications.html">Publications</a>
+        <a data-nav="contact" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Department of Physics · Pune, India</p>
+          <h1>Exploring light, matter, and the technologies they enable.</h1>
+          <p class="hero-lede">
+            Our research spans structured and quantum light, nonlinear photonics,
+            optical materials, spectroscopy, and emerging photonic devices.
+          </p>
+          <div class="button-row">
+            <a class="button button-primary" href="research.html">Explore our research</a>
+            <a class="button button-secondary" href="people.html">Meet the group</a>
+          </div>
+        </div>
+        <div class="light-field" aria-hidden="true">
+          <span class="beam beam-one"></span>
+          <span class="beam beam-two"></span>
+          <span class="orbit orbit-one"></span>
+          <span class="orbit orbit-two"></span>
+          <span class="photon photon-one"></span>
+          <span class="photon photon-two"></span>
+          <span class="photon photon-three"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-intro">
+      <div class="shell intro-grid">
+        <div>
+          <p class="eyebrow">About the group</p>
+          <h2>A shared home for photonics research and education</h2>
+        </div>
+        <div class="prose-large">
+          <p>
+            The Photonics Research Group brings together complementary work in
+            experimental optics, quantum optics, nonlinear optical systems,
+            photonic materials, and spectroscopy.
+          </p>
+          <p>
+            This prototype is built from the group’s submitted member profiles.
+            Group-wide projects, facilities, news, and opportunities can be added
+            after review without changing the page design.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Research directions</p>
+            <h2>Connected areas of inquiry</h2>
+          </div>
+          <a class="text-link" href="research.html">View all research <span aria-hidden="true">→</span></a>
+        </div>
+        <div id="home-research" class="theme-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">People</p>
+            <h2>Meet the faculty</h2>
+          </div>
+          <a class="text-link" href="people.html">View the group <span aria-hidden="true">→</span></a>
+        </div>
+        <div id="featured-members" class="people-grid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section callout-section">
+      <div class="shell">
+        <div class="callout">
+          <div>
+            <p class="eyebrow">Collaborate</p>
+            <h2>Interested in photonics research?</h2>
+            <p>Explore the group’s research themes and contact the relevant faculty member.</p>
+          </div>
+          <a class="button button-light" href="contact.html">Contact the group</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-grid">
+      <div>
+        <strong>Photonics Research Group</strong>
+        <p>Department of Physics · MIT World Peace University, Pune</p>
+      </div>
+      <div class="footer-links">
+        <a href="people.html">People</a>
+        <a href="research.html">Research</a>
+        <a href="publications.html">Publications</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <p class="footer-note">Prototype · <span data-current-year></span></p>
+    </div>
+  </footer>
+</body>
+</html>
