@@ -1,0 +1,51 @@
+@import url("../group-assets/site.css");
+
+.research-directory {
+  border-top: 1px solid var(--line-dark);
+}
+
+.research-row {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.75fr) minmax(0, 1.25fr);
+  gap: 70px;
+  padding-block: 44px;
+  border-bottom: 1px solid var(--line);
+}
+
+.research-row h2 {
+  margin-bottom: 0;
+  font-size: 1.8rem;
+}
+
+.research-row p {
+  color: var(--muted);
+}
+
+.leadership-list {
+  border-top: 1px solid var(--line-dark);
+}
+
+.leadership-row {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.75fr) minmax(0, 1.25fr);
+  gap: 70px;
+  padding-block: 24px;
+  border-bottom: 1px solid var(--line);
+}
+
+.leadership-row h3,
+.leadership-row p {
+  margin: 0;
+}
+
+.leadership-row p {
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .research-row,
+  .leadership-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}

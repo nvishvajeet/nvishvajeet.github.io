@@ -1,0 +1,181 @@
+@import url("../group-assets/site.css");
+
+.facility-statline {
+  display: flex;
+  gap: 32px;
+  margin-top: 30px;
+  color: var(--muted);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.78rem;
+}
+
+.facility-statline strong {
+  color: var(--ink);
+  font-size: 1.05rem;
+}
+
+.cluster-list {
+  border-top: 1px solid var(--line-dark);
+}
+
+.cluster-summary {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 24px;
+  padding-block: 30px;
+  border-bottom: 1px solid var(--line);
+}
+
+.cluster-number,
+.instrument-short-name,
+.cluster-count {
+  color: var(--blue);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.cluster-summary h3 {
+  margin-bottom: 6px;
+}
+
+.cluster-summary h3 a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.cluster-summary h3 a:hover {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.cluster-summary p {
+  max-width: 720px;
+  margin-bottom: 7px;
+  color: var(--muted);
+}
+
+.cluster-summary .cluster-count {
+  margin: 0;
+}
+
+.instrument-clusters {
+  border-top: 1px solid var(--line-dark);
+}
+
+.instrument-cluster {
+  padding-block: 58px;
+  border-bottom: 1px solid var(--line);
+  scroll-margin-top: 24px;
+}
+
+.instrument-cluster-heading {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 24px;
+  margin-bottom: 34px;
+}
+
+.instrument-cluster-heading h2 {
+  margin-bottom: 8px;
+  font-size: 2rem;
+}
+
+.instrument-cluster-heading p {
+  max-width: 720px;
+  margin: 0;
+  color: var(--muted);
+}
+
+.instrument-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 44px;
+  margin-left: 78px;
+  border-top: 1px solid var(--line);
+}
+
+.instrument-card {
+  padding-block: 30px;
+  border-bottom: 1px solid var(--line);
+}
+
+.instrument-card h3 {
+  margin-bottom: 7px;
+}
+
+.instrument-card p {
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+
+.instrument-card .instrument-short-name {
+  margin-bottom: 10px;
+  color: var(--blue);
+}
+
+.instrument-card .instrument-model {
+  margin-bottom: 13px;
+  color: #394651;
+  font-weight: 600;
+}
+
+.facility-people-list {
+  border-top: 1px solid var(--line-dark);
+}
+
+.facility-person {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.1fr);
+  gap: 50px;
+  padding-block: 26px;
+  border-bottom: 1px solid var(--line);
+}
+
+.facility-person h3,
+.facility-person p {
+  margin-bottom: 4px;
+}
+
+.facility-person h3 a {
+  color: var(--ink);
+}
+
+.facility-person > div > p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.source-note {
+  max-width: 780px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+@media (max-width: 760px) {
+  .instrument-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .facility-person {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+}
+
+@media (max-width: 560px) {
+  .facility-statline {
+    display: block;
+  }
+
+  .facility-statline span {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .instrument-grid {
+    margin-left: 0;
+  }
+}
