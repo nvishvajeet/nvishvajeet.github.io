@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Interactive content editor prototype for MIT-WPU research group websites.">
+  <title>Research Group Content Editor · MIT-WPU Demo</title>
+  <link rel="icon" type="image/svg+xml" href="../quantum/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="../photonics/site-data.js" defer></script>
+  <script src="../photonics/members-data.js" defer></script>
+  <script src="../quantum/data.js" defer></script>
+  <script src="editor.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#editor-workspace">Skip to editor</a>
+
+  <header class="app-header">
+    <a class="app-brand" href="../groups/">
+      <span class="brand-mark" aria-hidden="true"><span></span></span>
+      <span>
+        <strong>Research Group Content Editor</strong>
+        <small>MIT World Peace University · Demonstration</small>
+      </span>
+    </a>
+    <div class="user-area">
+      <label for="editor-role">View as</label>
+      <select id="editor-role">
+        <option value="group-editor">Group PI editor</option>
+        <option value="reviewer">Research office reviewer</option>
+      </select>
+      <span class="user-avatar" aria-hidden="true">PI</span>
+    </div>
+  </header>
+
+  <main class="editor-layout" id="editor-workspace">
+    <aside class="control-panel" aria-label="Content navigation">
+      <div class="panel-section">
+        <p class="panel-label">Research group</p>
+        <div class="group-switcher" role="group" aria-label="Choose research group">
+          <button class="group-option is-active" type="button" data-group="quantum" aria-pressed="true">
+            <span class="group-dot quantum-dot"></span>
+            <span><strong>Quantum</strong><small>Science &amp; Technology</small></span>
+          </button>
+          <button class="group-option" type="button" data-group="photonics" aria-pressed="false">
+            <span class="group-dot photonics-dot"></span>
+            <span><strong>Photonics</strong><small>Research Group</small></span>
+          </button>
+        </div>
+      </div>
+
+      <nav class="content-nav" aria-label="Content types">
+        <p class="panel-label">Content</p>
+        <button class="content-option is-active" type="button" data-view="people" aria-pressed="true">
+          <span>People</span><span class="content-count" id="people-total">0</span>
+        </button>
+        <button class="content-option" type="button" data-view="research" aria-pressed="false">
+          <span>Research areas</span><span class="content-count" id="research-total">0</span>
+        </button>
+      </nav>
+
+      <div class="record-section">
+        <div class="record-heading">
+          <p class="panel-label" id="record-label">People</p>
+          <button class="icon-button" id="add-record" type="button" aria-label="Add person" title="Add person">+</button>
+        </div>
+        <div class="record-list" id="record-list"></div>
+      </div>
+
+      <div class="access-note">
+        <strong>Group-owned content</strong>
+        <p>In production, a PI would see only their own group. University records remain centrally controlled.</p>
+      </div>
+    </aside>
+
+    <section class="form-panel" aria-labelledby="form-title">
+      <div class="form-toolbar">
+        <div>
+          <p class="breadcrumb" id="breadcrumb">Quantum / People</p>
+          <h1 id="form-title">Edit profile</h1>
+        </div>
+        <span class="status-badge" id="status-badge"><span></span> Draft</span>
+      </div>
+
+      <form id="content-form" novalidate></form>
+
+      <div class="sticky-actions">
+        <p id="save-status" role="status" aria-live="polite">Changes are saved only in this browser until submitted.</p>
+        <div class="action-row">
+          <button class="button button-quiet" id="download-data" type="button">Download data file</button>
+          <button class="button button-secondary" id="save-draft" type="button">Save draft</button>
+          <button class="button button-primary" id="submit-review" type="button">Submit for review</button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="preview-panel" aria-label="Live preview">
+      <div class="preview-toolbar">
+        <div>
+          <p class="panel-label">Live preview</p>
+          <strong id="preview-group-name">Quantum Science &amp; Technology Group</strong>
+        </div>
+        <a id="open-site" href="../quantum/" target="_blank" rel="noopener noreferrer">Open website ↗</a>
+      </div>
+      <div class="preview-canvas">
+        <div class="site-preview" id="site-preview" aria-live="polite"></div>
+      </div>
+      <p class="preview-note">This preview updates as you type. The public website changes only after approval and deployment.</p>
+    </aside>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
