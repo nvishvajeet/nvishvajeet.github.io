@@ -4,19 +4,19 @@ window.QUANTUM_GROUP = {
     {
       number: "01",
       title: "Quantum Information, Algorithms & Systems",
-      summary: "Theory and methods for quantum information processing and computation.",
+      summary: "Quantum algorithms, information, complexity, and computing systems.",
       topics: ["Quantum information", "Quantum algorithms", "Computing systems"]
     },
     {
       number: "02",
       title: "Quantum Optics & Photonics",
-      summary: "Structured and non-classical light, entanglement, photon sources, and nanoscale optical systems.",
+      summary: "Structured and non-classical light, entanglement, and photon sources.",
       topics: ["Quantum optics", "Entangled photons", "Structured light", "Nanophotonics"]
     },
     {
       number: "03",
       title: "Quantum Materials & Devices",
-      summary: "Materials, semiconductors, thin films, and photonic structures for emerging quantum technologies.",
+      summary: "Quantum materials, semiconductors, thin films, and photonic devices.",
       topics: ["Quantum materials", "Semiconductor devices", "Photonic devices", "Thin films"]
     }
   ],

@@ -18,6 +18,8 @@
 
 html { scroll-behavior: smooth; }
 
+section[id] { scroll-margin-top: 106px; }
+
 body {
   margin: 0;
   color: var(--ink);
@@ -263,6 +265,8 @@ h3 { font-size: 1.45rem; }
 }
 
 .theme-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.theme-grid-brief .theme-card { min-height: 300px; }
+.theme-grid-brief .theme-number { margin-bottom: 42px; }
 
 .theme-card {
   position: relative;
@@ -404,7 +408,8 @@ h3 { font-size: 1.45rem; }
 .profile-designation { color: #d7e4f0; font-size: 1.13rem; }
 .email-link { color: #8dddea; }
 .profile-link-row { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 24px; }
-.profile-link-row a { display: inline-flex; gap: 5px; color: inherit; font-size: .84rem; font-weight: 750; text-underline-offset: 4px; }
+.profile-link-row a { display: inline-flex; align-items: center; gap: 7px; color: inherit; font-size: .84rem; font-weight: 750; text-underline-offset: 4px; }
+.profile-link-row svg { width: 16px; height: 16px; flex: 0 0 16px; }
 .profile-intro .profile-link-row a { color: #fff; }
 
 .profile-content-section { background: var(--wash); }
@@ -450,6 +455,7 @@ h3 { font-size: 1.45rem; }
 .footer-note { white-space: nowrap; }
 
 @media (max-width: 920px) {
+  section[id] { scroll-margin-top: 24px; }
   .header-inner { align-items: flex-start; flex-direction: column; padding-block: 18px 12px; gap: 10px; }
   .site-header { position: static; }
   .site-nav { width: 100%; overflow-x: auto; gap: 22px; }

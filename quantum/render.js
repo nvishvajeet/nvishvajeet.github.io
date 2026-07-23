@@ -2,14 +2,6 @@
   "use strict";
 
   const group = window.QUANTUM_GROUP || { people: [], researchAreas: [] };
-  const peopleTypes = {
-    faculty: "Faculty",
-    "postdoctoral-researcher": "Postdoctoral Researcher",
-    "doctoral-researcher": "PhD Scholar",
-    student: "Student",
-    "technical-staff": "Technical Staff"
-  };
-
   function escapeHtml(value) {
     return String(value ?? "").replace(/[&<>'"]/g, (character) => ({
       "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", "\"": "&quot;"
@@ -43,11 +35,9 @@
     return `<article class="person-card">
       <a class="portrait-link" href="member.html?id=${encodeURIComponent(person.id)}" aria-label="View ${escapeHtml(person.name)}'s profile">${portrait(person)}</a>
       <div class="person-card-body">
-        <span class="member-flair">${escapeHtml(peopleTypes[person.memberType] || "Group Member")}</span>
         <p class="person-role">${escapeHtml(person.groupRole)}</p>
         <h3><a href="member.html?id=${encodeURIComponent(person.id)}">${escapeHtml(person.name)}</a></h3>
         <p class="person-designation">${escapeHtml(person.designation)}</p>
-        <div class="tag-row">${(person.interests || []).slice(0, 3).map((item) => `<span>${escapeHtml(item)}</span>`).join("")}</div>
         <a class="card-link" href="member.html?id=${encodeURIComponent(person.id)}">View profile <span aria-hidden="true">→</span></a>
       </div>
     </article>`;
@@ -59,7 +49,6 @@
     target.innerHTML = group.researchAreas.map((area) => `<article class="theme-card">
       <span class="theme-number">${escapeHtml(area.number)}</span>
       <h3>${escapeHtml(area.title)}</h3><p>${escapeHtml(area.summary)}</p>
-      <ul class="topic-list">${area.topics.map((topic) => `<li>${escapeHtml(topic)}</li>`).join("")}</ul>
     </article>`).join("");
   }
 
@@ -83,11 +72,22 @@
     publication: "Selected publication"
   };
 
+  const linkIcons = {
+    website: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.7 5.7 3.7 9S14.5 18.3 12 21c-2.5-2.7-3.7-5.7-3.7-9S9.5 5.7 12 3Z"/></svg>`,
+    profile: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4.5 21c.7-4.2 3.2-6.3 7.5-6.3s6.8 2.1 7.5 6.3"/></svg>`,
+    research: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 3h6M10 3v6l-5.2 9A2 2 0 0 0 6.5 21h11a2 2 0 0 0 1.7-3L14 9V3"/><path d="M7.2 16h9.6"/></svg>`,
+    scholar: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m3 9 9-5 9 5-9 5-9-5Z"/><path d="M7 12.2V17c2.8 2.2 7.2 2.2 10 0v-4.8M21 9v6"/></svg>`,
+    scopus: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h14v16H5z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>`,
+    orcid: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="8" r=".8" fill="currentColor" stroke="none"/><path d="M9 11v6M12 17v-6h1.5c2 0 3.5 1.1 3.5 3s-1.5 3-3.5 3H12Z"/></svg>`,
+    dblp: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 5h6v14H5zM13 8h6v11h-6z"/></svg>`,
+    publication: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4M9 12h6M9 16h6"/></svg>`
+  };
+
   function profileLinks(person) {
     return Object.entries(person.links || {}).map(([key, value]) => {
       const href = safeUrl(value);
       if (!href || !linkLabels[key]) return "";
-      return `<a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${escapeHtml(linkLabels[key])}<span aria-hidden="true">↗</span></a>`;
+      return `<a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${linkIcons[key] || linkIcons.website}<span>${escapeHtml(linkLabels[key])}</span></a>`;
     }).join("");
   }
 
@@ -128,6 +128,17 @@
     renderFeaturedMembers();
     renderPeople();
     renderMember();
+    if (window.location.hash) {
+      const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+      if (target) {
+        window.requestAnimationFrame(() => {
+          target.scrollIntoView({
+            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+            block: "start"
+          });
+        });
+      }
+    }
   }
 
   document.addEventListener("DOMContentLoaded", initialize);
