@@ -145,23 +145,7 @@ window.MITWPU_CRF = {
       name: "Dr. Krishna Warhade",
       role: "Director, Doctoral Programmes",
       source: "https://mitwpu.edu.in/research"
-    },
-    {
-      name: "Mrs. Vrushali Paigire",
-      role: "Assistant Professor & Coordinator",
-      source: "https://mitwpu.edu.in/research"
     }
   ],
-  facultyContacts: [
-    {
-      name: "Prof. Dr. Murthy Chavali",
-      role: "Faculty contact · characterisation and fabrication systems",
-      note: "Internal equipment inventory mapping; confirm final public designation."
-    },
-    {
-      name: "Prof. Dr. Bharat B. Kale",
-      role: "Faculty contact · battery fabrication system",
-      note: "Internal equipment inventory mapping; confirm final public designation."
-    }
-  ]
+  facultyContacts: []
 };

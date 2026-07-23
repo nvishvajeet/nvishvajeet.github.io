@@ -6,11 +6,9 @@
   --paper: #ffffff;
   --wash: #f4f7fa;
   --navy: #0b1d35;
-  --blue: #253c88;
-  --blue-dark: #182957;
-  --red: #be283c;
-  --gold: #f3be34;
-  --purple: #be283c;
+  --blue: #2d6786;
+  --blue-dark: #204e67;
+  --purple: #2f5f98;
   --green: #1d845b;
   --shadow: 0 18px 50px rgba(15, 34, 58, 0.1);
 }
@@ -190,8 +188,8 @@ a { color: inherit; }
 .group-option small { margin-top: 1px; color: var(--muted); font-size: 0.69rem; }
 
 .group-dot { width: 8px; height: 8px; border-radius: 50%; }
-.quantum-dot { background: var(--red); box-shadow: 0 0 0 4px rgba(190, 40, 60, 0.13); }
-.photonics-dot { background: var(--blue); box-shadow: 0 0 0 4px rgba(37, 60, 136, 0.13); }
+.quantum-dot { background: var(--purple); box-shadow: 0 0 0 4px rgba(47, 95, 152, 0.13); }
+.photonics-dot { background: var(--blue); box-shadow: 0 0 0 4px rgba(45, 103, 134, 0.13); }
 
 .content-nav { padding-block: 20px; border-bottom: 1px solid var(--line); }
 
@@ -482,13 +480,13 @@ a { color: inherit; }
   justify-content: space-between;
   min-height: 48px;
   padding: 10px 15px;
-  color: #fff;
-  background: var(--navy);
-  border-bottom: 3px solid var(--gold);
+  color: var(--ink);
+  background: #f3f7fa;
+  border-bottom: 1px solid #d7dfe5;
 }
 
 .mock-brand { font-family: Georgia, "Times New Roman", serif; font-size: 0.68rem; font-weight: 700; }
-.mock-nav { color: #aebdd0; font-size: 0.51rem; word-spacing: 8px; }
+.mock-nav { color: #607084; font-size: 0.51rem; word-spacing: 8px; }
 
 .mock-hero {
   min-height: 125px;
@@ -499,12 +497,12 @@ a { color: inherit; }
 }
 
 .site-preview.is-quantum .mock-hero { background: #fffdf9; }
-.mock-hero small { display: block; margin-bottom: 7px; color: var(--red); font-size: 0.49rem; font-weight: 850; letter-spacing: 0.12em; text-transform: uppercase; }
+.mock-hero small { display: block; margin-bottom: 7px; color: var(--blue); font-size: 0.49rem; font-weight: 850; letter-spacing: 0.12em; text-transform: uppercase; }
 .mock-hero h2 { max-width: 330px; margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 1.38rem; line-height: 1.08; }
 
 .mock-content { padding: 24px; }
-.mock-eyebrow { margin: 0 0 5px; color: var(--red); font-size: 0.51rem; font-weight: 850; letter-spacing: 0.12em; text-transform: uppercase; }
-.site-preview.is-quantum .mock-eyebrow { color: var(--red); }
+.mock-eyebrow { margin: 0 0 5px; color: var(--blue); font-size: 0.51rem; font-weight: 850; letter-spacing: 0.12em; text-transform: uppercase; }
+.site-preview.is-quantum .mock-eyebrow { color: var(--blue); }
 
 .mock-card {
   display: grid;
@@ -539,13 +537,13 @@ a { color: inherit; }
   margin-top: 16px;
   padding: 20px;
   border: 1px solid var(--line);
-  border-top: 4px solid var(--red);
+  border-top: 4px solid var(--blue);
   border-radius: 8px;
 }
 
-.site-preview.is-quantum .mock-theme { border-top-color: var(--red); }
-.mock-theme span { color: var(--red); font-size: 0.55rem; font-weight: 850; }
-.site-preview.is-quantum .mock-theme span { color: var(--red); }
+.site-preview.is-quantum .mock-theme { border-top-color: var(--blue); }
+.mock-theme span { color: var(--blue); font-size: 0.55rem; font-weight: 850; }
+.site-preview.is-quantum .mock-theme span { color: var(--blue); }
 .mock-theme h3 { margin: 9px 0 7px; font-family: Georgia, "Times New Roman", serif; font-size: 1.13rem; }
 .mock-theme p { margin: 0; color: var(--muted); font-size: 0.62rem; }
 

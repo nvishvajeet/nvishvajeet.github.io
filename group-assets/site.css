@@ -1,18 +1,16 @@
 :root {
-  --ink: #202735;
-  --muted: #626672;
-  --blue: #253c88;
-  --blue-dark: #182957;
-  --blue-pale: #eef1f8;
-  --red: #be283c;
-  --red-dark: #962032;
-  --gold: #f3be34;
-  --paper: #fffdf9;
-  --subtle: #f7f3ec;
-  --warm: #f4ead8;
-  --line: #ded8cf;
-  --line-dark: #aaa39a;
-  --shell: 1100px;
+  --ink: #1f2d3a;
+  --heading: #274257;
+  --muted: #5e6c78;
+  --blue: #2d6786;
+  --blue-dark: #204e67;
+  --blue-pale: #edf3f6;
+  --paper: #ffffff;
+  --subtle: #f8fafb;
+  --topbar: #f3f7fa;
+  --line: #d7dfe5;
+  --line-dark: #b7c3cc;
+  --shell: 1080px;
 }
 
 * {
@@ -60,7 +58,7 @@ ol {
 h1,
 h2,
 h3 {
-  color: var(--ink);
+  color: var(--heading);
   font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.15;
@@ -99,9 +97,9 @@ h3 {
 }
 
 .institution-bar {
-  color: #e9f0f5;
-  background: var(--blue-dark);
-  border-bottom: 3px solid var(--gold);
+  color: var(--muted);
+  background: var(--topbar);
+  border-bottom: 1px solid var(--line);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.76rem;
   letter-spacing: 0.02em;
@@ -121,7 +119,7 @@ h3 {
 }
 
 .institution-links a {
-  color: #fff;
+  color: var(--blue);
   text-decoration: none;
 }
 
@@ -159,7 +157,7 @@ h3 {
 
 .brand small {
   margin-top: 4px;
-  color: var(--red);
+  color: var(--title, #33566f);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.68rem;
   letter-spacing: 0.055em;
@@ -184,8 +182,8 @@ h3 {
 
 .site-nav a:hover,
 .site-nav a[aria-current="page"] {
-  color: var(--red);
-  border-bottom-color: var(--red);
+  color: var(--blue);
+  border-bottom-color: var(--blue);
 }
 
 .hero {
@@ -219,7 +217,7 @@ h3 {
 
 .hero-aside {
   padding-left: 30px;
-  border-left: 2px solid var(--gold);
+  border-left: 1px solid var(--line);
 }
 
 .hero-aside p {
@@ -232,7 +230,7 @@ h3 {
 
 .eyebrow {
   margin-bottom: 12px;
-  color: var(--red);
+  color: var(--blue);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.68rem;
   font-weight: 700;
@@ -254,8 +252,8 @@ h3 {
   align-items: center;
   justify-content: center;
   padding: 9px 16px;
-  border: 1px solid var(--red);
-  color: var(--red);
+  border: 1px solid var(--blue);
+  color: var(--blue);
   background: transparent;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.78rem;
@@ -265,17 +263,17 @@ h3 {
 
 .button:hover {
   color: #fff;
-  background: var(--red);
+  background: var(--blue);
 }
 
 .button-primary {
   color: #fff;
-  background: var(--red);
+  background: var(--blue);
 }
 
 .button-primary:hover {
-  background: var(--red-dark);
-  border-color: var(--red-dark);
+  background: var(--blue-dark);
+  border-color: var(--blue-dark);
 }
 
 .section {
@@ -307,7 +305,7 @@ h3 {
 
 .prose-large {
   max-width: 680px;
-  color: #414652;
+  color: #3f5362;
   font-size: 1.18rem;
 }
 
@@ -356,7 +354,7 @@ h3 {
 .theme-number {
   display: block;
   margin-bottom: 28px;
-  color: var(--red);
+  color: var(--blue);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.68rem;
   font-weight: 700;
@@ -408,7 +406,7 @@ h3 {
 .portrait-placeholder {
   display: grid;
   place-items: center;
-  color: var(--red);
+  color: var(--blue);
   font-size: 1.65rem;
 }
 
@@ -420,7 +418,7 @@ h3 {
 .person-role {
   display: inline;
   margin: 0 12px 7px 0;
-  color: var(--red);
+  color: var(--blue);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.65rem;
   font-weight: 700;
@@ -478,7 +476,7 @@ h3 {
 }
 
 .callout-section {
-  background: var(--warm);
+  background: var(--topbar);
 }
 
 .callout {
@@ -627,7 +625,7 @@ h3 {
 }
 
 .research-index {
-  color: var(--red);
+  color: var(--blue);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.7rem;
   font-weight: 700;
@@ -878,7 +876,7 @@ h3 {
 .site-footer {
   padding-block: 48px;
   color: #d8e1e8;
-  background: var(--blue-dark);
+  background: var(--heading);
 }
 
 .footer-grid {
