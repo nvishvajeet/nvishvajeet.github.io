@@ -7,7 +7,9 @@
   <meta name="description" content="Quantum Science and Technology Group at MIT World Peace University, Pune.">
   <title>Quantum Science & Technology Group · MIT-WPU</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <script>(function(){try{var t=localStorage.getItem("site-theme");if(t!=="light"&&t!=="dark")t=window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";if(t==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}})();</script>
   <link rel="stylesheet" href="style.css">
+  <script src="../group-assets/theme.js" defer></script>
   <script src="data.js" defer></script>
   <script src="render.js" defer></script>
 </head>
@@ -35,6 +37,7 @@
         <a data-nav="publications" href="publications.html">Publications</a>
         <a data-nav="education" href="course.html">Education</a>
         <a data-nav="contact" href="contact.html">Contact</a>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode"><span class="theme-icon theme-icon-light" aria-hidden="true"></span><span class="theme-icon theme-icon-dark" aria-hidden="true"></span><span class="switch-thumb" aria-hidden="true"></span></button>
       </nav>
     </div>
   </header>

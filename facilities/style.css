@@ -118,7 +118,7 @@
 
 .instrument-card .instrument-model {
   margin-bottom: 13px;
-  color: #394651;
+  color: var(--copy);
   font-weight: 600;
 }
 
