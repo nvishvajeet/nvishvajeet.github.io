@@ -1,14 +1,18 @@
 :root {
-  --ink: #17212b;
-  --muted: #5b6670;
-  --blue: #174f7a;
-  --blue-dark: #0d3554;
-  --blue-pale: #edf3f7;
-  --paper: #ffffff;
-  --subtle: #f6f7f8;
-  --line: #d8dde2;
-  --line-dark: #aeb8c1;
-  --shell: 1080px;
+  --ink: #202735;
+  --muted: #626672;
+  --blue: #253c88;
+  --blue-dark: #182957;
+  --blue-pale: #eef1f8;
+  --red: #be283c;
+  --red-dark: #962032;
+  --gold: #f3be34;
+  --paper: #fffdf9;
+  --subtle: #f7f3ec;
+  --warm: #f4ead8;
+  --line: #ded8cf;
+  --line-dark: #aaa39a;
+  --shell: 1100px;
 }
 
 * {
@@ -97,6 +101,7 @@ h3 {
 .institution-bar {
   color: #e9f0f5;
   background: var(--blue-dark);
+  border-bottom: 3px solid var(--gold);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.76rem;
   letter-spacing: 0.02em;
@@ -125,7 +130,7 @@ h3 {
 }
 
 .site-header {
-  background: #fff;
+  background: var(--paper);
   border-bottom: 1px solid var(--line);
 }
 
@@ -154,7 +159,7 @@ h3 {
 
 .brand small {
   margin-top: 4px;
-  color: var(--muted);
+  color: var(--red);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.68rem;
   letter-spacing: 0.055em;
@@ -170,7 +175,7 @@ h3 {
 
 .site-nav a {
   padding: 30px 0 25px;
-  color: #33414c;
+  color: #343b4c;
   border-bottom: 2px solid transparent;
   font-size: 0.82rem;
   font-weight: 600;
@@ -179,8 +184,8 @@ h3 {
 
 .site-nav a:hover,
 .site-nav a[aria-current="page"] {
-  color: var(--blue);
-  border-bottom-color: var(--blue);
+  color: var(--red);
+  border-bottom-color: var(--red);
 }
 
 .hero {
@@ -214,7 +219,7 @@ h3 {
 
 .hero-aside {
   padding-left: 30px;
-  border-left: 1px solid var(--line);
+  border-left: 2px solid var(--gold);
 }
 
 .hero-aside p {
@@ -227,7 +232,7 @@ h3 {
 
 .eyebrow {
   margin-bottom: 12px;
-  color: var(--blue);
+  color: var(--red);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.68rem;
   font-weight: 700;
@@ -249,8 +254,8 @@ h3 {
   align-items: center;
   justify-content: center;
   padding: 9px 16px;
-  border: 1px solid var(--blue);
-  color: var(--blue);
+  border: 1px solid var(--red);
+  color: var(--red);
   background: transparent;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.78rem;
@@ -260,17 +265,17 @@ h3 {
 
 .button:hover {
   color: #fff;
-  background: var(--blue);
+  background: var(--red);
 }
 
 .button-primary {
   color: #fff;
-  background: var(--blue);
+  background: var(--red);
 }
 
 .button-primary:hover {
-  background: var(--blue-dark);
-  border-color: var(--blue-dark);
+  background: var(--red-dark);
+  border-color: var(--red-dark);
 }
 
 .section {
@@ -302,7 +307,7 @@ h3 {
 
 .prose-large {
   max-width: 680px;
-  color: #394651;
+  color: #414652;
   font-size: 1.18rem;
 }
 
@@ -351,7 +356,7 @@ h3 {
 .theme-number {
   display: block;
   margin-bottom: 28px;
-  color: var(--blue);
+  color: var(--red);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.68rem;
   font-weight: 700;
@@ -403,7 +408,7 @@ h3 {
 .portrait-placeholder {
   display: grid;
   place-items: center;
-  color: var(--blue);
+  color: var(--red);
   font-size: 1.65rem;
 }
 
@@ -415,7 +420,7 @@ h3 {
 .person-role {
   display: inline;
   margin: 0 12px 7px 0;
-  color: var(--blue);
+  color: var(--red);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.65rem;
   font-weight: 700;
@@ -473,7 +478,7 @@ h3 {
 }
 
 .callout-section {
-  background: var(--blue-pale);
+  background: var(--warm);
 }
 
 .callout {
@@ -622,7 +627,7 @@ h3 {
 }
 
 .research-index {
-  color: var(--blue);
+  color: var(--red);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.7rem;
   font-weight: 700;

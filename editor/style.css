@@ -6,9 +6,11 @@
   --paper: #ffffff;
   --wash: #f4f7fa;
   --navy: #0b1d35;
-  --blue: #2467d1;
-  --blue-dark: #1550ac;
-  --purple: #7054d7;
+  --blue: #253c88;
+  --blue-dark: #182957;
+  --red: #be283c;
+  --gold: #f3be34;
+  --purple: #be283c;
   --green: #1d845b;
   --shadow: 0 18px 50px rgba(15, 34, 58, 0.1);
 }
@@ -68,6 +70,7 @@ a { color: inherit; }
 .app-brand small { display: block; }
 .app-brand strong { font-size: 0.96rem; letter-spacing: -0.01em; }
 .app-brand small { margin-top: 2px; color: #aebdd0; font-size: 0.71rem; }
+.app-brand small.is-active { color: #8ee5c4; }
 
 .brand-mark {
   position: relative;
@@ -187,8 +190,8 @@ a { color: inherit; }
 .group-option small { margin-top: 1px; color: var(--muted); font-size: 0.69rem; }
 
 .group-dot { width: 8px; height: 8px; border-radius: 50%; }
-.quantum-dot { background: var(--purple); box-shadow: 0 0 0 4px rgba(112, 84, 215, 0.13); }
-.photonics-dot { background: var(--blue); box-shadow: 0 0 0 4px rgba(36, 103, 209, 0.13); }
+.quantum-dot { background: var(--red); box-shadow: 0 0 0 4px rgba(190, 40, 60, 0.13); }
+.photonics-dot { background: var(--blue); box-shadow: 0 0 0 4px rgba(37, 60, 136, 0.13); }
 
 .content-nav { padding-block: 20px; border-bottom: 1px solid var(--line); }
 
@@ -481,6 +484,7 @@ a { color: inherit; }
   padding: 10px 15px;
   color: #fff;
   background: var(--navy);
+  border-bottom: 3px solid var(--gold);
 }
 
 .mock-brand { font-family: Georgia, "Times New Roman", serif; font-size: 0.68rem; font-weight: 700; }
@@ -489,17 +493,18 @@ a { color: inherit; }
 .mock-hero {
   min-height: 125px;
   padding: 27px 24px;
-  color: #fff;
-  background: linear-gradient(130deg, #102d51, #155a81);
+  color: var(--ink);
+  background: #fffdf9;
+  border-bottom: 1px solid #ded8cf;
 }
 
-.site-preview.is-quantum .mock-hero { background: linear-gradient(130deg, #22194f, #4d39a3); }
-.mock-hero small { display: block; margin-bottom: 7px; color: #7be0e7; font-size: 0.49rem; font-weight: 850; letter-spacing: 0.12em; text-transform: uppercase; }
+.site-preview.is-quantum .mock-hero { background: #fffdf9; }
+.mock-hero small { display: block; margin-bottom: 7px; color: var(--red); font-size: 0.49rem; font-weight: 850; letter-spacing: 0.12em; text-transform: uppercase; }
 .mock-hero h2 { max-width: 330px; margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 1.38rem; line-height: 1.08; }
 
 .mock-content { padding: 24px; }
-.mock-eyebrow { margin: 0 0 5px; color: var(--blue); font-size: 0.51rem; font-weight: 850; letter-spacing: 0.12em; text-transform: uppercase; }
-.site-preview.is-quantum .mock-eyebrow { color: var(--purple); }
+.mock-eyebrow { margin: 0 0 5px; color: var(--red); font-size: 0.51rem; font-weight: 850; letter-spacing: 0.12em; text-transform: uppercase; }
+.site-preview.is-quantum .mock-eyebrow { color: var(--red); }
 
 .mock-card {
   display: grid;
@@ -516,14 +521,14 @@ a { color: inherit; }
   width: 76px;
   height: 88px;
   color: #fff;
-  background: linear-gradient(140deg, #2a659b, #183750);
+  background: var(--blue);
   border-radius: 7px;
   place-items: center;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.35rem;
 }
 
-.site-preview.is-quantum .mock-avatar { background: linear-gradient(140deg, #7054d7, #312361); }
+.site-preview.is-quantum .mock-avatar { background: var(--blue); }
 .mock-card h3 { margin: 0 0 3px; font-family: Georgia, "Times New Roman", serif; font-size: 1rem; line-height: 1.2; }
 .mock-card p { margin: 0 0 8px; color: var(--muted); font-size: 0.58rem; }
 
@@ -534,13 +539,13 @@ a { color: inherit; }
   margin-top: 16px;
   padding: 20px;
   border: 1px solid var(--line);
-  border-top: 4px solid var(--blue);
+  border-top: 4px solid var(--red);
   border-radius: 8px;
 }
 
-.site-preview.is-quantum .mock-theme { border-top-color: var(--purple); }
-.mock-theme span { color: var(--blue); font-size: 0.55rem; font-weight: 850; }
-.site-preview.is-quantum .mock-theme span { color: var(--purple); }
+.site-preview.is-quantum .mock-theme { border-top-color: var(--red); }
+.mock-theme span { color: var(--red); font-size: 0.55rem; font-weight: 850; }
+.site-preview.is-quantum .mock-theme span { color: var(--red); }
 .mock-theme h3 { margin: 9px 0 7px; font-family: Georgia, "Times New Roman", serif; font-size: 1.13rem; }
 .mock-theme p { margin: 0; color: var(--muted); font-size: 0.62rem; }
 
