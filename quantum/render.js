@@ -2,9 +2,21 @@
   "use strict";
 
   const group = window.QUANTUM_GROUP || { people: [], researchAreas: [] };
+  const peopleLabels = {
+    faculty: "Faculty",
+    "postdoctoral-researcher": "Postdoctoral researcher",
+    "doctoral-researcher": "PhD scholar",
+    student: "Student",
+    "technical-staff": "Technical staff"
+  };
+
   function escapeHtml(value) {
     return String(value ?? "").replace(/[&<>'"]/g, (character) => ({
-      "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", "\"": "&quot;"
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      "'": "&#39;",
+      "\"": "&quot;"
     })[character]);
   }
 
@@ -27,35 +39,57 @@
 
   function portrait(person, modifier = "") {
     const photo = safeUrl(person.photo);
-    if (photo) return `<img class="member-portrait ${modifier}" src="${escapeHtml(photo)}" alt="${escapeHtml(person.name)}" loading="lazy">`;
+    if (photo) {
+      return `<img class="member-portrait ${modifier}" src="${escapeHtml(photo)}" alt="${escapeHtml(person.name)}" loading="lazy">`;
+    }
     return `<div class="member-portrait portrait-placeholder ${modifier}" aria-hidden="true"><span>${escapeHtml(initials(person.name))}</span></div>`;
   }
 
   function personCard(person) {
+    const interests = (person.interests || []).slice(0, 3);
     return `<article class="person-card">
       <a class="portrait-link" href="member.html?id=${encodeURIComponent(person.id)}" aria-label="View ${escapeHtml(person.name)}'s profile">${portrait(person)}</a>
       <div class="person-card-body">
+        <span class="member-flair">${escapeHtml(peopleLabels[person.memberType] || "Group member")}</span>
         <p class="person-role">${escapeHtml(person.groupRole)}</p>
         <h3><a href="member.html?id=${encodeURIComponent(person.id)}">${escapeHtml(person.name)}</a></h3>
-        <p class="person-designation">${escapeHtml(person.designation)}</p>
-        <a class="card-link" href="member.html?id=${encodeURIComponent(person.id)}">View profile <span aria-hidden="true">→</span></a>
+        <p class="person-designation">${escapeHtml(person.designation)} · ${escapeHtml(person.affiliation)}</p>
+        <div class="tag-row">${interests.map((interest) => `<span>${escapeHtml(interest)}</span>`).join("")}</div>
+        <a class="card-link" href="member.html?id=${encodeURIComponent(person.id)}">View profile →</a>
       </div>
     </article>`;
   }
 
-  function renderResearch() {
-    const target = document.getElementById("research-areas");
-    if (!target) return;
-    target.innerHTML = group.researchAreas.map((area) => `<article class="theme-card">
+  function researchCard(area) {
+    return `<article class="theme-card">
       <span class="theme-number">${escapeHtml(area.number)}</span>
-      <h3>${escapeHtml(area.title)}</h3><p>${escapeHtml(area.summary)}</p>
-    </article>`).join("");
+      <h3>${escapeHtml(area.title)}</h3>
+      <p>${escapeHtml(area.summary)}</p>
+    </article>`;
+  }
+
+  function renderResearch() {
+    const summaryTarget = document.getElementById("research-areas");
+    if (summaryTarget) {
+      summaryTarget.innerHTML = group.researchAreas.map(researchCard).join("");
+    }
+    const listTarget = document.getElementById("research-list");
+    if (listTarget) {
+      listTarget.innerHTML = group.researchAreas.map((area) => `
+        <article class="research-block">
+          <div class="research-index">${escapeHtml(area.number)}</div>
+          <div class="research-copy">
+            <h2>${escapeHtml(area.title)}</h2>
+            <p>${escapeHtml(area.summary)}</p>
+            <ul class="topic-list topic-list-wide">${(area.topics || []).map((topic) => `<li>${escapeHtml(topic)}</li>`).join("")}</ul>
+          </div>
+        </article>`).join("");
+    }
   }
 
   function renderFeaturedMembers() {
     const target = document.getElementById("featured-members");
-    if (!target) return;
-    target.innerHTML = group.people.slice(0, 3).map(personCard).join("");
+    if (target) target.innerHTML = group.people.slice(0, 3).map(personCard).join("");
   }
 
   function renderPeople() {
@@ -67,8 +101,13 @@
   }
 
   const linkLabels = {
-    website: "Website", profile: "Official profile", research: "Research profile",
-    scholar: "Google Scholar", scopus: "Scopus", orcid: "ORCID", dblp: "DBLP",
+    website: "Website",
+    profile: "Official profile",
+    research: "Research profile",
+    scholar: "Google Scholar",
+    scopus: "Scopus",
+    orcid: "ORCID",
+    dblp: "DBLP",
     publication: "Selected publication"
   };
 
@@ -89,6 +128,26 @@
       if (!href || !linkLabels[key]) return "";
       return `<a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${linkIcons[key] || linkIcons.website}<span>${escapeHtml(linkLabels[key])}</span></a>`;
     }).join("");
+  }
+
+  function publicationItem(publication) {
+    if (typeof publication === "string") return `<li>${escapeHtml(publication)}</li>`;
+    const href = safeUrl(publication?.url || "");
+    const title = escapeHtml(publication?.title || "");
+    const citation = publication?.citation
+      ? `<span class="publication-meta">${escapeHtml(publication.citation)}</span>`
+      : "";
+    return `<li>${href ? `<a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${title}</a>` : title}${citation}</li>`;
+  }
+
+  function publicationList(items, className = "publication-list") {
+    if (!Array.isArray(items) || items.length === 0) return "";
+    return `<ol class="${className}">${items.map(publicationItem).join("")}</ol>`;
+  }
+
+  function section(title, content) {
+    if (!content) return "";
+    return `<section class="profile-section"><h2>${escapeHtml(title)}</h2>${content}</section>`;
   }
 
   function renderMember() {
@@ -112,22 +171,56 @@
       </div></div></section>
       <section class="section profile-content-section"><div class="shell profile-layout profile-layout-simple">
         <div class="profile-details">
-          <section class="profile-section"><h2>Profile</h2><p class="profile-bio">${escapeHtml(person.bio)}</p></section>
-          <section class="profile-section"><h2>Research interests</h2><div class="tag-row tag-row-large">${person.interests.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}</div></section>
-          <section class="profile-section"><h2>Selected background</h2><ul class="detail-list">${person.highlights.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></section>
+          ${section("Profile", person.bio ? `<p class="profile-bio">${escapeHtml(person.bio)}</p>` : "")}
+          ${section("Research interests", `<div class="tag-row tag-row-large">${(person.interests || []).map((item) => `<span>${escapeHtml(item)}</span>`).join("")}</div>`)}
+          ${section("Selected background", `<ul class="detail-list">${(person.highlights || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`)}
+          ${section(person.publicationHeading || "Selected publications", publicationList(person.publications))}
         </div>
       </div></section>`;
+  }
+
+  function renderPublications() {
+    const target = document.getElementById("publications-list");
+    if (!target) return;
+    target.innerHTML = group.people
+      .filter((person) => (person.publications || []).length)
+      .map((person) => `<section class="publication-group">
+        <div class="publication-person">
+          <p class="eyebrow">${escapeHtml(person.publicationHeading || "Selected publications")}</p>
+          <h2><a href="member.html?id=${encodeURIComponent(person.id)}">${escapeHtml(person.name)}</a></h2>
+          <div class="profile-link-row">${profileLinks(person)}</div>
+        </div>
+        ${publicationList(person.publications, "publication-list numbered")}
+      </section>`).join("");
+  }
+
+  function renderContacts() {
+    const target = document.getElementById("contact-list");
+    if (!target) return;
+    const contacts = group.people.filter((person) => person.email);
+    target.innerHTML = contacts.map((person) => `<article class="contact-person">
+      <div class="contact-avatar" aria-hidden="true">${escapeHtml(initials(person.name))}</div>
+      <div>
+        <h3><a href="member.html?id=${encodeURIComponent(person.id)}">${escapeHtml(person.name)}</a></h3>
+        <p>${escapeHtml(person.groupRole)} · ${escapeHtml(person.designation)}</p>
+        <a href="mailto:${escapeHtml(person.email)}">${escapeHtml(person.email)}</a>
+      </div>
+    </article>`).join("");
   }
 
   function initialize() {
     const active = document.body.dataset.page;
     const activeLink = document.querySelector(`[data-nav="${active}"]`);
     if (activeLink) activeLink.setAttribute("aria-current", "page");
-    document.querySelectorAll("[data-current-year]").forEach((node) => { node.textContent = new Date().getFullYear(); });
+    document.querySelectorAll("[data-current-year]").forEach((node) => {
+      node.textContent = new Date().getFullYear();
+    });
     renderResearch();
     renderFeaturedMembers();
     renderPeople();
     renderMember();
+    renderPublications();
+    renderContacts();
     if (window.location.hash) {
       const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
       if (target) {

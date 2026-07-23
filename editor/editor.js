@@ -129,6 +129,25 @@
     return String(value || "").split(",").map((item) => item.trim()).filter(Boolean);
   }
 
+  function publicationLines(items) {
+    return (items || []).map((item) => {
+      if (typeof item === "string") return item;
+      return [item.title, item.citation, item.url].filter(Boolean).join(" | ");
+    }).join("\n");
+  }
+
+  function parsePublications(value) {
+    return lines(value).map((line) => {
+      const parts = line.split("|").map((part) => part.trim());
+      if (parts.length === 1) return parts[0];
+      return {
+        title: parts[0] || "",
+        citation: parts[1] || "",
+        url: parts[2] || ""
+      };
+    });
+  }
+
   function currentRecords() {
     return state.data[state.group][state.view];
   }
@@ -186,8 +205,8 @@
           ${quantum ? field("bio", "Short biography", person.bio || "", { type: "textarea", full: true, rows: 5 }) : ""}
           ${field("interests", "Research interests", (interests || []).join(", "), { type: "textarea", full: true, hint: "separate with commas", rows: 3 })}
           ${field("background", quantum ? "Selected background" : "Education", (background || []).join("\n"), { type: "textarea", full: true, hint: "one item per line", rows: 4 })}
-          ${quantum ? "" : field("publicationHeading", "Publication section title", person.publicationHeading || "Selected publications", { full: true })}
-          ${quantum ? "" : field("publications", "Selected publications", (person.publications || []).join("\n"), { type: "textarea", full: true, hint: "one item per line", rows: 6 })}
+          ${field("publicationHeading", "Publication section title", person.publicationHeading || "Selected publications", { full: true })}
+          ${field("publications", "Selected publications", publicationLines(person.publications), { type: "textarea", full: true, hint: "one paper per line: title | citation | URL", rows: 7 })}
         </div>
       </section>
       <section class="form-section">
@@ -256,7 +275,7 @@
       } else if (target.name === "background") {
         record[quantum ? "highlights" : "education"] = lines(target.value);
       } else if (target.name === "publications") {
-        record.publications = lines(target.value);
+        record.publications = parsePublications(target.value);
       } else if (target.name.startsWith("link-")) {
         record.links = record.links || {};
         record.links[target.name.slice(5)] = target.value;
@@ -387,6 +406,8 @@
             bio: "",
             interests: [],
             highlights: [],
+            publicationHeading: "Selected publications",
+            publications: [],
             links: {}
           }
         : {

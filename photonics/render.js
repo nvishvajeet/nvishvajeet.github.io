@@ -55,6 +55,23 @@
     return `<ul class="${className}">${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
   }
 
+  function publicationItem(publication) {
+    if (typeof publication === "string") {
+      return `<li>${escapeHtml(publication)}</li>`;
+    }
+    const title = escapeHtml(publication?.title || "");
+    const href = safeUrl(publication?.url || "");
+    const citation = publication?.citation
+      ? `<span class="publication-meta">${escapeHtml(publication.citation)}</span>`
+      : "";
+    return `<li>${href ? `<a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${title}</a>` : title}${citation}</li>`;
+  }
+
+  function publicationList(items, className = "publication-list") {
+    if (!Array.isArray(items) || items.length === 0) return "";
+    return `<ol class="${className}">${items.map(publicationItem).join("")}</ol>`;
+  }
+
   function memberCard(member) {
     const interests = (member.researchInterests || []).slice(0, 3);
     const type = peopleTypes.find((item) => item.id === member.memberType);
@@ -78,7 +95,7 @@
     const target = document.getElementById("people-directory");
     if (!target) return;
     const visibleTypes = activeType === "all"
-      ? peopleTypes
+      ? peopleTypes.filter((type) => members.some((member) => member.memberType === type.id))
       : peopleTypes.filter((type) => type.id === activeType);
     target.innerHTML = visibleTypes.map((type) => {
       const people = members.filter((member) => member.memberType === type.id);
@@ -152,6 +169,7 @@
   }
 
   const profileLabels = {
+    profile: "MIT-WPU profile",
     scholar: "Google Scholar",
     scopus: "Scopus",
     orcid: "ORCID",
@@ -203,9 +221,10 @@
       <section class="section profile-content-section">
         <div class="shell profile-layout profile-layout-simple">
           <div class="profile-details">
+            ${detailSection("Profile", member.bio ? `<p class="profile-bio">${escapeHtml(member.bio)}</p>` : "")}
             ${detailSection("Research interests", `<div class="tag-row tag-row-large">${(member.researchInterests || []).map((item) => `<span>${escapeHtml(item)}</span>`).join("")}</div>`)}
             ${detailSection("Education", list(member.education))}
-            ${detailSection(member.publicationHeading || "Selected publications", list(member.publications, "publication-list"))}
+            ${detailSection(member.publicationHeading || "Selected publications", publicationList(member.publications))}
           </div>
         </div>
       </section>`;
@@ -214,14 +233,14 @@
   function renderPublications() {
     const target = document.getElementById("publications-list");
     if (!target) return;
-    target.innerHTML = members.map((member) => `
+    target.innerHTML = members.filter((member) => (member.publications || []).length).map((member) => `
       <section class="publication-group">
         <div class="publication-person">
           <p class="eyebrow">${escapeHtml(member.publicationHeading || "Selected publications")}</p>
           <h2><a href="member.html?id=${encodeURIComponent(member.id)}">${escapeHtml(member.name)}</a></h2>
           <div class="profile-link-row">${academicLinks(member)}</div>
         </div>
-        <ol class="publication-list numbered">${(member.publications || []).map((publication) => `<li>${escapeHtml(publication)}</li>`).join("")}</ol>
+        ${publicationList(member.publications, "publication-list numbered")}
       </section>`).join("");
   }
 

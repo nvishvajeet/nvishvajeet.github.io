@@ -1,16 +1,19 @@
-# Quantum Science & Technology Group demo
+# Quantum Science & Technology Group site
 
-A concise static prototype using the same HTML structure and stylesheet as the
-Photonics Research Group demo.
+A concise static academic site using the same page structure and visual system
+as the Photonics Research Group.
 
 ## Editing
 
 - `data.js` contains the ordered team list and research areas. Edit the quoted
   values; no HTML is needed for routine profile changes.
 - The order of records in `people` is the order shown on the People page.
-- `index.html` contains the short homepage and course wording.
-- `people.html` and `member.html` use the shared Photonics templates.
-- `render.js` turns the data into cards and profiles and hides missing fields.
+- `index.html` contains the homepage summary.
+- `research.html`, `people.html`, `publications.html`, `course.html`, and
+  `contact.html` form the main academic page set.
+- `render.js` turns the data into directories, profiles, and publication lists
+  and hides missing fields.
+- `style.css` imports the shared academic visual system.
 
 No database, CMS, tracker, external framework, separate hierarchy, or
 quantum-specific stylesheet is used.

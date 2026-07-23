@@ -1,8 +1,8 @@
-# Photonics Research Group demo
+# Photonics Research Group site
 
-This folder is a standalone static prototype for the MIT-WPU Photonics
-Research Group. It does not change the design or navigation of the personal
-site that hosts it.
+This folder is a standalone static site for the MIT-WPU Photonics Research
+Group. The public preview remains `noindex` until the group approves official
+publication.
 
 The first version intentionally presents only the three submitted faculty,
 three shared research themes, concise profiles, selected publications, and
@@ -24,18 +24,17 @@ placeholder.
 
 1. A member submits or updates the profile spreadsheet/form.
 2. A group editor checks the content and marks it approved.
-3. The editor changes the matching record in `members-data.js` using GitHub's
-   web editor and opens a pull request.
+3. The editor changes the matching record in `members-data.js` or uses the
+   browser editor in `../editor/`.
 4. The PI or site administrator reviews and merges the pull request.
-5. GitHub Pages publishes the change automatically.
+5. The university web administrator publishes the approved static files.
 
 For many groups, steps 2–5 should be automated: an approved row in a central
 form/sheet becomes a validated data record, automation opens a pull request,
 and the designated group administrator approves it.
 
-## Prototype safeguards
+## Safeguards
 
-- Every page is marked `noindex` while it is a prototype.
-- A visible prototype banner is shown on every page.
+- Preview pages are marked `noindex`; the official handoff build removes it.
 - There are no external frameworks, trackers, databases, or CMS plugins.
 - Submitted content is escaped before rendering.
