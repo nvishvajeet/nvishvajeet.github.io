@@ -1,4 +1,4 @@
-# nvishvajeet.github.io — Level-2 workflow
+# nvishvajeet.github.io — editing rules
 
 Personal academic site, served by GitHub Pages at `vishvajeetn.org`.
 
