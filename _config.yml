@@ -10,3 +10,4 @@ url: https://vishvajeetn.org
 exclude:
   - README.md
   - .gitignore
+  - WORKFLOW.md
