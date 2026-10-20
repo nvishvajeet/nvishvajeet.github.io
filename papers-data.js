@@ -35,8 +35,8 @@ window.PAPERS = [
       { name: "Shrinidhi Teganahally Sridhara", url: "https://shrinidhits.bitbucket.io" }
     ],
     conference: {
-      full: "In review",
-      short: "arXiv",
+      full: "submitted",
+      short: "",
       year: "2026",
       url: "https://arxiv.org/abs/2610.25507",
       location: ""
