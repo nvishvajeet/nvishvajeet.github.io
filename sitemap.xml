@@ -55,6 +55,13 @@
   </url>
 
   <url>
+    <loc>https://vishvajeetn.org/paper.html?slug=greedy-matching</loc>
+    <lastmod>2026-10-20T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.70</priority>
+  </url>
+
+  <url>
     <loc>https://vishvajeetn.org/paper.html?slug=streaming-xor</loc>
     <lastmod>2026-04-11T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
